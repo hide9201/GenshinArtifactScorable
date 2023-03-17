@@ -91,6 +91,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0868FEDD29C43821000AC079 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				08694CA4298A51F100FC98F8 /* AppDelegate.swift */,
+				08694CA6298A51F100FC98F8 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		0868FEDE29C43843000AC079 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0868FEDF29C438BA000AC079 /* Extension */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		0868FEDF29C438BA000AC079 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		0868FEE129C438E8000AC079 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		0868FEE229C438F8000AC079 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0868FEE329C4390B000AC079 /* Target */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0868FEE329C4390B000AC079 /* Target */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Target;
+			sourceTree = "<group>";
+		};
+		0868FEE429C43936000AC079 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0868FEE529C4394F000AC079 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		08694C98298A51F100FC98F8 = {
 			isa = PBXGroup;
 			children = (
@@ -116,8 +176,12 @@
 		08694CA3298A51F100FC98F8 /* GenshinArtifactScorable */ = {
 			isa = PBXGroup;
 			children = (
-				08694CA4298A51F100FC98F8 /* AppDelegate.swift */,
-				08694CA6298A51F100FC98F8 /* SceneDelegate.swift */,
+				0868FEDD29C43821000AC079 /* App */,
+				0868FEDE29C43843000AC079 /* Common */,
+				0868FEE129C438E8000AC079 /* Presentation */,
+				0868FEE229C438F8000AC079 /* Network */,
+				0868FEE429C43936000AC079 /* Model */,
+				0868FEE529C4394F000AC079 /* Service */,
 				08694CA8298A51F100FC98F8 /* ViewController.swift */,
 				08694CAA298A51F100FC98F8 /* Main.storyboard */,
 				08694CAD298A51F500FC98F8 /* Assets.xcassets */,
@@ -154,7 +218,6 @@
 				B98B4378E074BE585F2A6110 /* Pods-GenshinArtifactScorableTests.debug.xcconfig */,
 				52BEE03A606A545B9482FBE3 /* Pods-GenshinArtifactScorableTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
