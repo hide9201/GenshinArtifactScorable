@@ -12,7 +12,8 @@ class ViewController: UIViewController {
     @IBOutlet private weak var uidTextField: UITextField!
     
     @IBAction func uidSendButtonDidTap(_ sender: Any) {
-        print(uidTextField.text!)
+        let viewController = SelectCharacterViewController(with: uidTextField.text!)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     override func viewDidLoad() {
