@@ -155,6 +155,7 @@
 		0868FEE629C43B1D000AC079 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				0868FEE829C43DC9000AC079 /* Launch */,
 				0868FEE729C43B2B000AC079 /* Main */,
 			);
 			path = Screen;
@@ -167,6 +168,14 @@
 				08694CA8298A51F100FC98F8 /* ViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		0868FEE829C43DC9000AC079 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				08694CAF298A51F500FC98F8 /* LaunchScreen.storyboard */,
+			);
+			path = Launch;
 			sourceTree = "<group>";
 		};
 		08694C98298A51F100FC98F8 = {
@@ -201,7 +210,6 @@
 				0868FEE429C43936000AC079 /* Model */,
 				0868FEE529C4394F000AC079 /* Service */,
 				08694CAD298A51F500FC98F8 /* Assets.xcassets */,
-				08694CAF298A51F500FC98F8 /* LaunchScreen.storyboard */,
 				08694CB2298A51F500FC98F8 /* Info.plist */,
 			);
 			path = GenshinArtifactScorable;
