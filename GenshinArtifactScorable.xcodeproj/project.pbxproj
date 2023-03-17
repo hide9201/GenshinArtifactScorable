@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0868FEEA29C443EF000AC079 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FEE929C443EF000AC079 /* NSObject+.swift */; };
 		0868FEEC29C44575000AC079 /* Storyboardable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FEEB29C44575000AC079 /* Storyboardable.swift */; };
+		0868FEEF29C44F27000AC079 /* SelectCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FEEE29C44F27000AC079 /* SelectCharacter.swift */; };
+		0868FEF129C44F3C000AC079 /* SelectCharacter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0868FEF029C44F3C000AC079 /* SelectCharacter.storyboard */; };
 		08694CA5298A51F100FC98F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694CA4298A51F100FC98F8 /* AppDelegate.swift */; };
 		08694CA7298A51F100FC98F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694CA6298A51F100FC98F8 /* SceneDelegate.swift */; };
 		08694CA9298A51F100FC98F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694CA8298A51F100FC98F8 /* ViewController.swift */; };
@@ -43,6 +45,8 @@
 /* Begin PBXFileReference section */
 		0868FEE929C443EF000AC079 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 		0868FEEB29C44575000AC079 /* Storyboardable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboardable.swift; sourceTree = "<group>"; };
+		0868FEEE29C44F27000AC079 /* SelectCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCharacter.swift; sourceTree = "<group>"; };
+		0868FEF029C44F3C000AC079 /* SelectCharacter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectCharacter.storyboard; sourceTree = "<group>"; };
 		08694CA1298A51F100FC98F8 /* GenshinArtifactScorable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenshinArtifactScorable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08694CA4298A51F100FC98F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08694CA6298A51F100FC98F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +166,7 @@
 			children = (
 				0868FEE829C43DC9000AC079 /* Launch */,
 				0868FEE729C43B2B000AC079 /* Main */,
+				0868FEED29C44EF5000AC079 /* SelectCharacter */,
 				0868FEEB29C44575000AC079 /* Storyboardable.swift */,
 			);
 			path = Screen;
@@ -182,6 +187,15 @@
 				08694CAF298A51F500FC98F8 /* LaunchScreen.storyboard */,
 			);
 			path = Launch;
+			sourceTree = "<group>";
+		};
+		0868FEED29C44EF5000AC079 /* SelectCharacter */ = {
+			isa = PBXGroup;
+			children = (
+				0868FEF029C44F3C000AC079 /* SelectCharacter.storyboard */,
+				0868FEEE29C44F27000AC079 /* SelectCharacter.swift */,
+			);
+			path = SelectCharacter;
 			sourceTree = "<group>";
 		};
 		08694C98298A51F100FC98F8 = {
@@ -372,6 +386,7 @@
 			files = (
 				08694CB1298A51F500FC98F8 /* LaunchScreen.storyboard in Resources */,
 				08694CAE298A51F500FC98F8 /* Assets.xcassets in Resources */,
+				0868FEF129C44F3C000AC079 /* SelectCharacter.storyboard in Resources */,
 				08694CAC298A51F100FC98F8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,6 +518,7 @@
 				08694CA9298A51F100FC98F8 /* ViewController.swift in Sources */,
 				0868FEEA29C443EF000AC079 /* NSObject+.swift in Sources */,
 				08694CA5298A51F100FC98F8 /* AppDelegate.swift in Sources */,
+				0868FEEF29C44F27000AC079 /* SelectCharacter.swift in Sources */,
 				0868FEEC29C44575000AC079 /* Storyboardable.swift in Sources */,
 				08694CA7298A51F100FC98F8 /* SceneDelegate.swift in Sources */,
 			);
