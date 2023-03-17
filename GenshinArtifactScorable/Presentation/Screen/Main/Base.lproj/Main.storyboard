@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GenshinArtifactScorable" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Home" id="BYZ-38-t0r" customClass="ViewController" customModule="GenshinArtifactScorable" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,7 +52,7 @@
                             <constraint firstItem="0Ow-0u-GNy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="144" id="pNN-9E-B7D"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="O0G-04-7ih"/>
+                    <navigationItem key="navigationItem" title="Home" id="O0G-04-7ih"/>
                     <connections>
                         <outlet property="uidTextField" destination="RhL-7W-vNB" id="5xn-e5-vLw"/>
                     </connections>
