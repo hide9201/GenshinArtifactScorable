@@ -1,0 +1,762 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		08694CA5298A51F100FC98F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694CA4298A51F100FC98F8 /* AppDelegate.swift */; };
+		08694CA7298A51F100FC98F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694CA6298A51F100FC98F8 /* SceneDelegate.swift */; };
+		08694CA9298A51F100FC98F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694CA8298A51F100FC98F8 /* ViewController.swift */; };
+		08694CAC298A51F100FC98F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08694CAA298A51F100FC98F8 /* Main.storyboard */; };
+		08694CAE298A51F500FC98F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08694CAD298A51F500FC98F8 /* Assets.xcassets */; };
+		08694CB1298A51F500FC98F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08694CAF298A51F500FC98F8 /* LaunchScreen.storyboard */; };
+		08694CBC298A51F500FC98F8 /* GenshinArtifactScorableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694CBB298A51F500FC98F8 /* GenshinArtifactScorableTests.swift */; };
+		08694CC6298A51F500FC98F8 /* GenshinArtifactScorableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694CC5298A51F500FC98F8 /* GenshinArtifactScorableUITests.swift */; };
+		08694CC8298A51F500FC98F8 /* GenshinArtifactScorableUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694CC7298A51F500FC98F8 /* GenshinArtifactScorableUITestsLaunchTests.swift */; };
+		3629DBB7B17398A227391D43 /* Pods_GenshinArtifactScorable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95BC2788A8C2A5E7E67B1DB2 /* Pods_GenshinArtifactScorable.framework */; };
+		44D2CF16DC6319759D4B3C97 /* Pods_GenshinArtifactScorable_GenshinArtifactScorableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA21D01A36B091C85C08AD74 /* Pods_GenshinArtifactScorable_GenshinArtifactScorableUITests.framework */; };
+		5BA244285196C2CF8FAB377D /* Pods_GenshinArtifactScorableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49599EDDC90BA84F791994E /* Pods_GenshinArtifactScorableTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		08694CB8298A51F500FC98F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08694C99298A51F100FC98F8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 08694CA0298A51F100FC98F8;
+			remoteInfo = GenshinArtifactScorable;
+		};
+		08694CC2298A51F500FC98F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08694C99298A51F100FC98F8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 08694CA0298A51F100FC98F8;
+			remoteInfo = GenshinArtifactScorable;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		08694CA1298A51F100FC98F8 /* GenshinArtifactScorable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenshinArtifactScorable.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		08694CA4298A51F100FC98F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		08694CA6298A51F100FC98F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		08694CA8298A51F100FC98F8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		08694CAB298A51F100FC98F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		08694CAD298A51F500FC98F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		08694CB0298A51F500FC98F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		08694CB2298A51F500FC98F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08694CB7298A51F500FC98F8 /* GenshinArtifactScorableTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GenshinArtifactScorableTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		08694CBB298A51F500FC98F8 /* GenshinArtifactScorableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinArtifactScorableTests.swift; sourceTree = "<group>"; };
+		08694CC1298A51F500FC98F8 /* GenshinArtifactScorableUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GenshinArtifactScorableUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		08694CC5298A51F500FC98F8 /* GenshinArtifactScorableUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinArtifactScorableUITests.swift; sourceTree = "<group>"; };
+		08694CC7298A51F500FC98F8 /* GenshinArtifactScorableUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinArtifactScorableUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		52BEE03A606A545B9482FBE3 /* Pods-GenshinArtifactScorableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenshinArtifactScorableTests.release.xcconfig"; path = "Target Support Files/Pods-GenshinArtifactScorableTests/Pods-GenshinArtifactScorableTests.release.xcconfig"; sourceTree = "<group>"; };
+		63B0A73634DBA5362EE43E9B /* Pods-GenshinArtifactScorable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenshinArtifactScorable.release.xcconfig"; path = "Target Support Files/Pods-GenshinArtifactScorable/Pods-GenshinArtifactScorable.release.xcconfig"; sourceTree = "<group>"; };
+		8850FAB9648F86E09503ACE9 /* Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests.debug.xcconfig"; path = "Target Support Files/Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests/Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8F179E2C875EC8B00B9521F2 /* Pods-GenshinArtifactScorable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenshinArtifactScorable.debug.xcconfig"; path = "Target Support Files/Pods-GenshinArtifactScorable/Pods-GenshinArtifactScorable.debug.xcconfig"; sourceTree = "<group>"; };
+		95BC2788A8C2A5E7E67B1DB2 /* Pods_GenshinArtifactScorable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GenshinArtifactScorable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B98B4378E074BE585F2A6110 /* Pods-GenshinArtifactScorableTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenshinArtifactScorableTests.debug.xcconfig"; path = "Target Support Files/Pods-GenshinArtifactScorableTests/Pods-GenshinArtifactScorableTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BA21D01A36B091C85C08AD74 /* Pods_GenshinArtifactScorable_GenshinArtifactScorableUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GenshinArtifactScorable_GenshinArtifactScorableUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5FD86EADF75DB0C444E89D1 /* Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests.release.xcconfig"; path = "Target Support Files/Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests/Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F49599EDDC90BA84F791994E /* Pods_GenshinArtifactScorableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GenshinArtifactScorableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		08694C9E298A51F100FC98F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3629DBB7B17398A227391D43 /* Pods_GenshinArtifactScorable.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		08694CB4298A51F500FC98F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BA244285196C2CF8FAB377D /* Pods_GenshinArtifactScorableTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		08694CBE298A51F500FC98F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44D2CF16DC6319759D4B3C97 /* Pods_GenshinArtifactScorable_GenshinArtifactScorableUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08694C98298A51F100FC98F8 = {
+			isa = PBXGroup;
+			children = (
+				08694CA3298A51F100FC98F8 /* GenshinArtifactScorable */,
+				08694CBA298A51F500FC98F8 /* GenshinArtifactScorableTests */,
+				08694CC4298A51F500FC98F8 /* GenshinArtifactScorableUITests */,
+				08694CA2298A51F100FC98F8 /* Products */,
+				0A1F6C5FAEAEEACD53D48F83 /* Pods */,
+				C9B698CE6A56794EC1E300A7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		08694CA2298A51F100FC98F8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				08694CA1298A51F100FC98F8 /* GenshinArtifactScorable.app */,
+				08694CB7298A51F500FC98F8 /* GenshinArtifactScorableTests.xctest */,
+				08694CC1298A51F500FC98F8 /* GenshinArtifactScorableUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		08694CA3298A51F100FC98F8 /* GenshinArtifactScorable */ = {
+			isa = PBXGroup;
+			children = (
+				08694CA4298A51F100FC98F8 /* AppDelegate.swift */,
+				08694CA6298A51F100FC98F8 /* SceneDelegate.swift */,
+				08694CA8298A51F100FC98F8 /* ViewController.swift */,
+				08694CAA298A51F100FC98F8 /* Main.storyboard */,
+				08694CAD298A51F500FC98F8 /* Assets.xcassets */,
+				08694CAF298A51F500FC98F8 /* LaunchScreen.storyboard */,
+				08694CB2298A51F500FC98F8 /* Info.plist */,
+			);
+			path = GenshinArtifactScorable;
+			sourceTree = "<group>";
+		};
+		08694CBA298A51F500FC98F8 /* GenshinArtifactScorableTests */ = {
+			isa = PBXGroup;
+			children = (
+				08694CBB298A51F500FC98F8 /* GenshinArtifactScorableTests.swift */,
+			);
+			path = GenshinArtifactScorableTests;
+			sourceTree = "<group>";
+		};
+		08694CC4298A51F500FC98F8 /* GenshinArtifactScorableUITests */ = {
+			isa = PBXGroup;
+			children = (
+				08694CC5298A51F500FC98F8 /* GenshinArtifactScorableUITests.swift */,
+				08694CC7298A51F500FC98F8 /* GenshinArtifactScorableUITestsLaunchTests.swift */,
+			);
+			path = GenshinArtifactScorableUITests;
+			sourceTree = "<group>";
+		};
+		0A1F6C5FAEAEEACD53D48F83 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8F179E2C875EC8B00B9521F2 /* Pods-GenshinArtifactScorable.debug.xcconfig */,
+				63B0A73634DBA5362EE43E9B /* Pods-GenshinArtifactScorable.release.xcconfig */,
+				8850FAB9648F86E09503ACE9 /* Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests.debug.xcconfig */,
+				E5FD86EADF75DB0C444E89D1 /* Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests.release.xcconfig */,
+				B98B4378E074BE585F2A6110 /* Pods-GenshinArtifactScorableTests.debug.xcconfig */,
+				52BEE03A606A545B9482FBE3 /* Pods-GenshinArtifactScorableTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C9B698CE6A56794EC1E300A7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				95BC2788A8C2A5E7E67B1DB2 /* Pods_GenshinArtifactScorable.framework */,
+				BA21D01A36B091C85C08AD74 /* Pods_GenshinArtifactScorable_GenshinArtifactScorableUITests.framework */,
+				F49599EDDC90BA84F791994E /* Pods_GenshinArtifactScorableTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		08694CA0298A51F100FC98F8 /* GenshinArtifactScorable */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 08694CCB298A51F500FC98F8 /* Build configuration list for PBXNativeTarget "GenshinArtifactScorable" */;
+			buildPhases = (
+				A4F1B9C94936F0204FE43D7F /* [CP] Check Pods Manifest.lock */,
+				08694C9D298A51F100FC98F8 /* Sources */,
+				08694C9E298A51F100FC98F8 /* Frameworks */,
+				08694C9F298A51F100FC98F8 /* Resources */,
+				C73E2BD1466FA991C7260644 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GenshinArtifactScorable;
+			productName = GenshinArtifactScorable;
+			productReference = 08694CA1298A51F100FC98F8 /* GenshinArtifactScorable.app */;
+			productType = "com.apple.product-type.application";
+		};
+		08694CB6298A51F500FC98F8 /* GenshinArtifactScorableTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 08694CCE298A51F500FC98F8 /* Build configuration list for PBXNativeTarget "GenshinArtifactScorableTests" */;
+			buildPhases = (
+				8CE32107AA331377E5F84443 /* [CP] Check Pods Manifest.lock */,
+				08694CB3298A51F500FC98F8 /* Sources */,
+				08694CB4298A51F500FC98F8 /* Frameworks */,
+				08694CB5298A51F500FC98F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				08694CB9298A51F500FC98F8 /* PBXTargetDependency */,
+			);
+			name = GenshinArtifactScorableTests;
+			productName = GenshinArtifactScorableTests;
+			productReference = 08694CB7298A51F500FC98F8 /* GenshinArtifactScorableTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		08694CC0298A51F500FC98F8 /* GenshinArtifactScorableUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 08694CD1298A51F500FC98F8 /* Build configuration list for PBXNativeTarget "GenshinArtifactScorableUITests" */;
+			buildPhases = (
+				7876CF291AD584E84B4663D8 /* [CP] Check Pods Manifest.lock */,
+				08694CBD298A51F500FC98F8 /* Sources */,
+				08694CBE298A51F500FC98F8 /* Frameworks */,
+				08694CBF298A51F500FC98F8 /* Resources */,
+				257C91C9C4BAB78D69C2CB5E /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				08694CC3298A51F500FC98F8 /* PBXTargetDependency */,
+			);
+			name = GenshinArtifactScorableUITests;
+			productName = GenshinArtifactScorableUITests;
+			productReference = 08694CC1298A51F500FC98F8 /* GenshinArtifactScorableUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08694C99298A51F100FC98F8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					08694CA0298A51F100FC98F8 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					08694CB6298A51F500FC98F8 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 08694CA0298A51F100FC98F8;
+					};
+					08694CC0298A51F500FC98F8 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 08694CA0298A51F100FC98F8;
+					};
+				};
+			};
+			buildConfigurationList = 08694C9C298A51F100FC98F8 /* Build configuration list for PBXProject "GenshinArtifactScorable" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 08694C98298A51F100FC98F8;
+			productRefGroup = 08694CA2298A51F100FC98F8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				08694CA0298A51F100FC98F8 /* GenshinArtifactScorable */,
+				08694CB6298A51F500FC98F8 /* GenshinArtifactScorableTests */,
+				08694CC0298A51F500FC98F8 /* GenshinArtifactScorableUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		08694C9F298A51F100FC98F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08694CB1298A51F500FC98F8 /* LaunchScreen.storyboard in Resources */,
+				08694CAE298A51F500FC98F8 /* Assets.xcassets in Resources */,
+				08694CAC298A51F100FC98F8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		08694CB5298A51F500FC98F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		08694CBF298A51F500FC98F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		257C91C9C4BAB78D69C2CB5E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests/Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests/Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests/Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7876CF291AD584E84B4663D8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8CE32107AA331377E5F84443 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GenshinArtifactScorableTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4F1B9C94936F0204FE43D7F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GenshinArtifactScorable-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C73E2BD1466FA991C7260644 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GenshinArtifactScorable/Pods-GenshinArtifactScorable-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GenshinArtifactScorable/Pods-GenshinArtifactScorable-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GenshinArtifactScorable/Pods-GenshinArtifactScorable-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		08694C9D298A51F100FC98F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08694CA9298A51F100FC98F8 /* ViewController.swift in Sources */,
+				08694CA5298A51F100FC98F8 /* AppDelegate.swift in Sources */,
+				08694CA7298A51F100FC98F8 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		08694CB3298A51F500FC98F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08694CBC298A51F500FC98F8 /* GenshinArtifactScorableTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		08694CBD298A51F500FC98F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08694CC8298A51F500FC98F8 /* GenshinArtifactScorableUITestsLaunchTests.swift in Sources */,
+				08694CC6298A51F500FC98F8 /* GenshinArtifactScorableUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		08694CB9298A51F500FC98F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 08694CA0298A51F100FC98F8 /* GenshinArtifactScorable */;
+			targetProxy = 08694CB8298A51F500FC98F8 /* PBXContainerItemProxy */;
+		};
+		08694CC3298A51F500FC98F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 08694CA0298A51F100FC98F8 /* GenshinArtifactScorable */;
+			targetProxy = 08694CC2298A51F500FC98F8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		08694CAA298A51F100FC98F8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				08694CAB298A51F100FC98F8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		08694CAF298A51F500FC98F8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				08694CB0298A51F500FC98F8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		08694CC9298A51F500FC98F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		08694CCA298A51F500FC98F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		08694CCC298A51F500FC98F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F179E2C875EC8B00B9521F2 /* Pods-GenshinArtifactScorable.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RNAHU294NB;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GenshinArtifactScorable/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hide.GenshinArtifactScorable;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		08694CCD298A51F500FC98F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63B0A73634DBA5362EE43E9B /* Pods-GenshinArtifactScorable.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RNAHU294NB;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GenshinArtifactScorable/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hide.GenshinArtifactScorable;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		08694CCF298A51F500FC98F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B98B4378E074BE585F2A6110 /* Pods-GenshinArtifactScorableTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RNAHU294NB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hide.GenshinArtifactScorableTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GenshinArtifactScorable.app/GenshinArtifactScorable";
+			};
+			name = Debug;
+		};
+		08694CD0298A51F500FC98F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52BEE03A606A545B9482FBE3 /* Pods-GenshinArtifactScorableTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RNAHU294NB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hide.GenshinArtifactScorableTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GenshinArtifactScorable.app/GenshinArtifactScorable";
+			};
+			name = Release;
+		};
+		08694CD2298A51F500FC98F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8850FAB9648F86E09503ACE9 /* Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RNAHU294NB;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hide.GenshinArtifactScorableUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GenshinArtifactScorable;
+			};
+			name = Debug;
+		};
+		08694CD3298A51F500FC98F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5FD86EADF75DB0C444E89D1 /* Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RNAHU294NB;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hide.GenshinArtifactScorableUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GenshinArtifactScorable;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		08694C9C298A51F100FC98F8 /* Build configuration list for PBXProject "GenshinArtifactScorable" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08694CC9298A51F500FC98F8 /* Debug */,
+				08694CCA298A51F500FC98F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		08694CCB298A51F500FC98F8 /* Build configuration list for PBXNativeTarget "GenshinArtifactScorable" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08694CCC298A51F500FC98F8 /* Debug */,
+				08694CCD298A51F500FC98F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		08694CCE298A51F500FC98F8 /* Build configuration list for PBXNativeTarget "GenshinArtifactScorableTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08694CCF298A51F500FC98F8 /* Debug */,
+				08694CD0298A51F500FC98F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		08694CD1298A51F500FC98F8 /* Build configuration list for PBXNativeTarget "GenshinArtifactScorableUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08694CD2298A51F500FC98F8 /* Debug */,
+				08694CD3298A51F500FC98F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08694C99298A51F100FC98F8 /* Project object */;
+}

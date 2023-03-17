@@ -1,0 +1,6 @@
+framework module Pods_GenshinArtifactScorable {
+  umbrella header "Pods-GenshinArtifactScorable-umbrella.h"
+
+  export *
+  module * { export * }
+}

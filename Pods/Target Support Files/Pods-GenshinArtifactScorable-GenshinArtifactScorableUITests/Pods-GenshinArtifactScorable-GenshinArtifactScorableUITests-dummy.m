@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_GenshinArtifactScorable_GenshinArtifactScorableUITests : NSObject
+@end
+@implementation PodsDummy_Pods_GenshinArtifactScorable_GenshinArtifactScorableUITests
+@end
