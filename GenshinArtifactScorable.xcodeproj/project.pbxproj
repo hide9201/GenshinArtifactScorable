@@ -118,6 +118,7 @@
 		0868FEE129C438E8000AC079 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				0868FEE629C43B1D000AC079 /* Screen */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -151,6 +152,23 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		0868FEE629C43B1D000AC079 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				0868FEE729C43B2B000AC079 /* Main */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		0868FEE729C43B2B000AC079 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				08694CAA298A51F100FC98F8 /* Main.storyboard */,
+				08694CA8298A51F100FC98F8 /* ViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		08694C98298A51F100FC98F8 = {
 			isa = PBXGroup;
 			children = (
@@ -182,8 +200,6 @@
 				0868FEE229C438F8000AC079 /* Network */,
 				0868FEE429C43936000AC079 /* Model */,
 				0868FEE529C4394F000AC079 /* Service */,
-				08694CA8298A51F100FC98F8 /* ViewController.swift */,
-				08694CAA298A51F100FC98F8 /* Main.storyboard */,
 				08694CAD298A51F500FC98F8 /* Assets.xcassets */,
 				08694CAF298A51F500FC98F8 /* LaunchScreen.storyboard */,
 				08694CB2298A51F500FC98F8 /* Info.plist */,
