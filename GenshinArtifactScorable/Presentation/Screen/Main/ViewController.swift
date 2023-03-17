@@ -9,11 +9,18 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet private weak var uidTextField: UITextField!
+    
+    @IBAction func uidSendButtonDidTap(_ sender: Any) {
+        print(uidTextField.text!)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
+    
 
 }
 
