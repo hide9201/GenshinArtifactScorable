@@ -11,6 +11,20 @@
 		0868FEEC29C44575000AC079 /* Storyboardable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FEEB29C44575000AC079 /* Storyboardable.swift */; };
 		0868FEEF29C44F27000AC079 /* SelectCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FEEE29C44F27000AC079 /* SelectCharacter.swift */; };
 		0868FEF129C44F3C000AC079 /* SelectCharacter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0868FEF029C44F3C000AC079 /* SelectCharacter.storyboard */; };
+		0868FEF329C5AD8B000AC079 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FEF229C5AD8B000AC079 /* AppConstant.swift */; };
+		0868FEF529C5AE11000AC079 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FEF429C5AE11000AC079 /* API.swift */; };
+		0868FEF729C63CDF000AC079 /* BaseTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FEF629C63CDF000AC079 /* BaseTarget.swift */; };
+		0868FEFB29C642D4000AC079 /* PlayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FEFA29C642D4000AC079 /* PlayerInfo.swift */; };
+		0868FEFD29C6452D000AC079 /* AccountAllInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FEFC29C6452D000AC079 /* AccountAllInfo.swift */; };
+		0868FEFF29C64564000AC079 /* AvatarInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FEFE29C64564000AC079 /* AvatarInfo.swift */; };
+		0868FF0129C65305000AC079 /* Equip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FF0029C65305000AC079 /* Equip.swift */; };
+		0868FF0329C66079000AC079 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FF0229C66079000AC079 /* Weapon.swift */; };
+		0868FF0529C660B0000AC079 /* Reliquary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FF0429C660B0000AC079 /* Reliquary.swift */; };
+		0868FF0729C660C6000AC079 /* Flat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FF0629C660C6000AC079 /* Flat.swift */; };
+		0868FF0929C7A439000AC079 /* ReliquaryMainStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FF0829C7A439000AC079 /* ReliquaryMainStatus.swift */; };
+		0868FF0B29C7A4D3000AC079 /* OtherEquipStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FF0A29C7A4D3000AC079 /* OtherEquipStatus.swift */; };
+		0868FF0D29C83F13000AC079 /* AccountTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FF0C29C83F13000AC079 /* AccountTarget.swift */; };
+		0868FF0F29C845AC000AC079 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FF0E29C845AC000AC079 /* AccountService.swift */; };
 		08694CA5298A51F100FC98F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694CA4298A51F100FC98F8 /* AppDelegate.swift */; };
 		08694CA7298A51F100FC98F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694CA6298A51F100FC98F8 /* SceneDelegate.swift */; };
 		08694CA9298A51F100FC98F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694CA8298A51F100FC98F8 /* ViewController.swift */; };
@@ -47,6 +61,20 @@
 		0868FEEB29C44575000AC079 /* Storyboardable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboardable.swift; sourceTree = "<group>"; };
 		0868FEEE29C44F27000AC079 /* SelectCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCharacter.swift; sourceTree = "<group>"; };
 		0868FEF029C44F3C000AC079 /* SelectCharacter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectCharacter.storyboard; sourceTree = "<group>"; };
+		0868FEF229C5AD8B000AC079 /* AppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
+		0868FEF429C5AE11000AC079 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = API.swift; path = GenshinArtifactScorable/App/API.swift; sourceTree = SOURCE_ROOT; };
+		0868FEF629C63CDF000AC079 /* BaseTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseTarget.swift; path = GenshinArtifactScorable/App/BaseTarget.swift; sourceTree = SOURCE_ROOT; };
+		0868FEFA29C642D4000AC079 /* PlayerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayerInfo.swift; path = GenshinArtifactScorable/App/PlayerInfo.swift; sourceTree = SOURCE_ROOT; };
+		0868FEFC29C6452D000AC079 /* AccountAllInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountAllInfo.swift; path = GenshinArtifactScorable/App/AccountAllInfo.swift; sourceTree = SOURCE_ROOT; };
+		0868FEFE29C64564000AC079 /* AvatarInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AvatarInfo.swift; path = GenshinArtifactScorable/App/AvatarInfo.swift; sourceTree = SOURCE_ROOT; };
+		0868FF0029C65305000AC079 /* Equip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Equip.swift; path = GenshinArtifactScorable/App/Equip.swift; sourceTree = SOURCE_ROOT; };
+		0868FF0229C66079000AC079 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Weapon.swift; path = GenshinArtifactScorable/App/Weapon.swift; sourceTree = SOURCE_ROOT; };
+		0868FF0429C660B0000AC079 /* Reliquary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Reliquary.swift; path = GenshinArtifactScorable/App/Reliquary.swift; sourceTree = SOURCE_ROOT; };
+		0868FF0629C660C6000AC079 /* Flat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Flat.swift; path = GenshinArtifactScorable/App/Flat.swift; sourceTree = SOURCE_ROOT; };
+		0868FF0829C7A439000AC079 /* ReliquaryMainStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReliquaryMainStatus.swift; path = GenshinArtifactScorable/App/ReliquaryMainStatus.swift; sourceTree = SOURCE_ROOT; };
+		0868FF0A29C7A4D3000AC079 /* OtherEquipStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OtherEquipStatus.swift; path = GenshinArtifactScorable/App/OtherEquipStatus.swift; sourceTree = SOURCE_ROOT; };
+		0868FF0C29C83F13000AC079 /* AccountTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountTarget.swift; path = GenshinArtifactScorable/App/AccountTarget.swift; sourceTree = SOURCE_ROOT; };
+		0868FF0E29C845AC000AC079 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountService.swift; path = GenshinArtifactScorable/App/AccountService.swift; sourceTree = SOURCE_ROOT; };
 		08694CA1298A51F100FC98F8 /* GenshinArtifactScorable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenshinArtifactScorable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08694CA4298A51F100FC98F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08694CA6298A51F100FC98F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +132,7 @@
 			children = (
 				08694CA4298A51F100FC98F8 /* AppDelegate.swift */,
 				08694CA6298A51F100FC98F8 /* SceneDelegate.swift */,
+				0868FEF229C5AD8B000AC079 /* AppConstant.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -136,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				0868FEE329C4390B000AC079 /* Target */,
+				0868FEF429C5AE11000AC079 /* API.swift */,
+				0868FEF629C63CDF000AC079 /* BaseTarget.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -143,6 +174,7 @@
 		0868FEE329C4390B000AC079 /* Target */ = {
 			isa = PBXGroup;
 			children = (
+				0868FF0C29C83F13000AC079 /* AccountTarget.swift */,
 			);
 			path = Target;
 			sourceTree = "<group>";
@@ -150,6 +182,15 @@
 		0868FEE429C43936000AC079 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0868FEFC29C6452D000AC079 /* AccountAllInfo.swift */,
+				0868FEFA29C642D4000AC079 /* PlayerInfo.swift */,
+				0868FEFE29C64564000AC079 /* AvatarInfo.swift */,
+				0868FF0029C65305000AC079 /* Equip.swift */,
+				0868FF0229C66079000AC079 /* Weapon.swift */,
+				0868FF0429C660B0000AC079 /* Reliquary.swift */,
+				0868FF0629C660C6000AC079 /* Flat.swift */,
+				0868FF0829C7A439000AC079 /* ReliquaryMainStatus.swift */,
+				0868FF0A29C7A4D3000AC079 /* OtherEquipStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -157,6 +198,7 @@
 		0868FEE529C4394F000AC079 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				0868FF0E29C845AC000AC079 /* AccountService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -515,12 +557,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0868FEF729C63CDF000AC079 /* BaseTarget.swift in Sources */,
+				0868FF0929C7A439000AC079 /* ReliquaryMainStatus.swift in Sources */,
+				0868FF0729C660C6000AC079 /* Flat.swift in Sources */,
+				0868FEFD29C6452D000AC079 /* AccountAllInfo.swift in Sources */,
+				0868FEFB29C642D4000AC079 /* PlayerInfo.swift in Sources */,
 				08694CA9298A51F100FC98F8 /* ViewController.swift in Sources */,
+				0868FF0329C66079000AC079 /* Weapon.swift in Sources */,
+				0868FF0B29C7A4D3000AC079 /* OtherEquipStatus.swift in Sources */,
 				0868FEEA29C443EF000AC079 /* NSObject+.swift in Sources */,
+				0868FEF329C5AD8B000AC079 /* AppConstant.swift in Sources */,
+				0868FF0D29C83F13000AC079 /* AccountTarget.swift in Sources */,
+				0868FF0529C660B0000AC079 /* Reliquary.swift in Sources */,
 				08694CA5298A51F100FC98F8 /* AppDelegate.swift in Sources */,
+				0868FF0F29C845AC000AC079 /* AccountService.swift in Sources */,
 				0868FEEF29C44F27000AC079 /* SelectCharacter.swift in Sources */,
 				0868FEEC29C44575000AC079 /* Storyboardable.swift in Sources */,
+				0868FF0129C65305000AC079 /* Equip.swift in Sources */,
+				0868FEF529C5AE11000AC079 /* API.swift in Sources */,
 				08694CA7298A51F100FC98F8 /* SceneDelegate.swift in Sources */,
+				0868FEFF29C64564000AC079 /* AvatarInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
