@@ -23,9 +23,13 @@ final class SelectCharacterViewController: UIViewController {
                 self.accountAllInfo = accountAllInfo
                 if let account = self.accountAllInfo {
                     print(account)
+                    
                     if let jpnNameFromAvatarIdJSON = self.jpnNameFromAvatarIdJSON {
-                        print(jpnNameFromAvatarIdJSON[String(account.playerInfo.profilePicture.avatarId)].stringValue)
+                        let profileCharacterName = jpnNameFromAvatarIdJSON[String(account.playerInfo.profilePicture.avatarId)].stringValue
+                        print(profileCharacterName)
                     }
+                    
+                    
                 }
             }.catch { error in
                 print(error)

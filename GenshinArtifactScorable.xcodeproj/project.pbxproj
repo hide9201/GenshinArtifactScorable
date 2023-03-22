@@ -273,7 +273,7 @@
 				0868FEE229C438F8000AC079 /* Network */,
 				0868FEE429C43936000AC079 /* Model */,
 				0868FEE529C4394F000AC079 /* Service */,
-				0896328229CB4BBD00EBCC0E /* Resources */,
+				0896328229CB4BBD00EBCC0E /* Resource */,
 				08694CAD298A51F500FC98F8 /* Assets.xcassets */,
 				08694CB2298A51F500FC98F8 /* Info.plist */,
 			);
@@ -297,12 +297,12 @@
 			path = GenshinArtifactScorableUITests;
 			sourceTree = "<group>";
 		};
-		0896328229CB4BBD00EBCC0E /* Resources */ = {
+		0896328229CB4BBD00EBCC0E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
 				0896328329CB4BEA00EBCC0E /* characters.json */,
 			);
-			path = Resources;
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		0A1F6C5FAEAEEACD53D48F83 /* Pods */ = {
