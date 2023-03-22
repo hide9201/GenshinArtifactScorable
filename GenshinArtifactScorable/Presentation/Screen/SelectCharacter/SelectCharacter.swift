@@ -18,7 +18,9 @@ final class SelectCharacterViewController: UIViewController {
         accountService.getAccountAllInfo(uid: uid)
             .done { accountAllInfo in
                 self.accountAllInfo = accountAllInfo
-                print(accountAllInfo)
+                if let account = self.accountAllInfo {
+                    print(account)
+                }
             }.catch { error in
                 print(error)
             }
