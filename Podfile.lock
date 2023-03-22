@@ -16,11 +16,13 @@ PODS:
   - PromiseKit/UIKit (6.13.1):
     - PromiseKit/CorePromise
   - Result (4.1.0)
+  - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
   - Instantiate
   - Moya
   - PromiseKit
+  - SwiftyJSON
 
 SPEC REPOS:
   trunk:
@@ -29,6 +31,7 @@ SPEC REPOS:
     - Moya
     - PromiseKit
     - Result
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -36,7 +39,8 @@ SPEC CHECKSUMS:
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 000f7c3a3a03f1d583d1f4737901bcfe5ba400b5
+PODFILE CHECKSUM: 048dccc9fec2ba0a709ab3683c33e31c21334e46
 
 COCOAPODS: 1.11.2
