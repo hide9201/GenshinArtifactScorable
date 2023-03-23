@@ -10,6 +10,6 @@ import Foundation
 struct Weapon: Codable {
     
     let level: Int
-    let promoteLevel: Int
-    let affixMap: [String: Int]
+    let promoteLevel: Int?
+    let affixMap: [String: Int]?
 }
