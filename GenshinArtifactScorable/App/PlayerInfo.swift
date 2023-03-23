@@ -10,7 +10,8 @@ import Foundation
 struct PlayerInfo: Codable {
     
     let nickname: String
-    let signature: String
+    let signature: String?
+    let level: Int
     let worldLevel: Int
     let nameCardId: Int
     let finishAchievementNum: Int
