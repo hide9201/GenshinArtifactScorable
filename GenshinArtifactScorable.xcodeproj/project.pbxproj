@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0842FA6729D3395F008CD2AC /* AppResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0842FA6629D3395F008CD2AC /* AppResource.swift */; };
 		0868FEEA29C443EF000AC079 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FEE929C443EF000AC079 /* NSObject+.swift */; };
 		0868FEEC29C44575000AC079 /* Storyboardable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FEEB29C44575000AC079 /* Storyboardable.swift */; };
 		0868FEEF29C44F27000AC079 /* SelectCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FEEE29C44F27000AC079 /* SelectCharacter.swift */; };
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0842FA6629D3395F008CD2AC /* AppResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppResource.swift; sourceTree = "<group>"; };
 		0868FEE929C443EF000AC079 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 		0868FEEB29C44575000AC079 /* Storyboardable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboardable.swift; sourceTree = "<group>"; };
 		0868FEEE29C44F27000AC079 /* SelectCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCharacter.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				08694CA4298A51F100FC98F8 /* AppDelegate.swift */,
 				08694CA6298A51F100FC98F8 /* SceneDelegate.swift */,
 				0868FEF229C5AD8B000AC079 /* AppConstant.swift */,
+				0842FA6629D3395F008CD2AC /* AppResource.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				0868FF0329C66079000AC079 /* Weapon.swift in Sources */,
 				0868FF0B29C7A4D3000AC079 /* OtherEquipStatus.swift in Sources */,
 				0868FEEA29C443EF000AC079 /* NSObject+.swift in Sources */,
+				0842FA6729D3395F008CD2AC /* AppResource.swift in Sources */,
 				0868FEF329C5AD8B000AC079 /* AppConstant.swift in Sources */,
 				0868FF0D29C83F13000AC079 /* AccountTarget.swift in Sources */,
 				0868FF0529C660B0000AC079 /* Reliquary.swift in Sources */,

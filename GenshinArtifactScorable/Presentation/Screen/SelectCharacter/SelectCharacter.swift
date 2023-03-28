@@ -1,5 +1,5 @@
 //
-//  SelectCharacter.swift
+//  SelectCharacterViewController.swift
 //  GenshinArtifactScorable
 //
 //  Created by hide on 2023/03/17.
@@ -18,10 +18,9 @@ final class SelectCharacterViewController: UIViewController {
     @IBOutlet weak var namecardImageView: UIImageView!
     
     private var uid: String!
+    private var appResource: AppResource!
     private var accountService: AccountService!
     private var accountAllInfo: AccountAllInfo?
-    private var characterNameFromAvatarIdJSON: JSON?
-    private var namecardURLFromNamecardIdJSON: JSON?
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var statusMessageLabel: UILabel!
@@ -38,12 +37,7 @@ final class SelectCharacterViewController: UIViewController {
                 self.accountAllInfo = accountAllInfo
                 if let account = self.accountAllInfo {
                     print(account)
-                    
-                    if let characterNameFromAvatarIdJSON = self.characterNameFromAvatarIdJSON {
-                        if let namecardURLFromNamecardIdJSON = self.namecardURLFromNamecardIdJSON {
-                            self.setupUI(accountAllInfo: account, characterNameFromAvatarIdJSON: characterNameFromAvatarIdJSON, namecardURLFromNamecardIdJSON: namecardURLFromNamecardIdJSON)
-                        }
-                    }
+                    self.setupUI(accountAllInfo: account)
                 }
             }.catch { error in
                 print(error)
@@ -51,7 +45,7 @@ final class SelectCharacterViewController: UIViewController {
         print(uid!)
     }
     
-    private func setupUI(accountAllInfo: AccountAllInfo, characterNameFromAvatarIdJSON: JSON, namecardURLFromNamecardIdJSON: JSON) {
+    private func setupUI(accountAllInfo: AccountAllInfo) {
         uidLabel.text = "UID " + uid
         userNameLabel.text = accountAllInfo.playerInfo.nickname
         adventureRankLabel.text = String(accountAllInfo.playerInfo.level)
@@ -62,41 +56,27 @@ final class SelectCharacterViewController: UIViewController {
         } else {
             self.statusMessageLabel.text = "ステータスメッセージを設定していません．"
         }
-        var profileIconCharacterName = characterNameFromAvatarIdJSON[String(accountAllInfo.playerInfo.profilePicture.avatarId)]["characterNameEN"].stringValue
         
-        if profileIconCharacterName == "Lumine" || profileIconCharacterName == "Aether" {
-            profileIconCharacterName += "(None)"
+        if let characterNameFromAvatarIdJSON = appResource.characterNameFromAvatarIdJSON {
+            var profileIconCharacterName = characterNameFromAvatarIdJSON[String(accountAllInfo.playerInfo.profilePicture.avatarId)]["characterNameEN"].stringValue
+            
+            if profileIconCharacterName == "Lumine" || profileIconCharacterName == "Aether" {
+                profileIconCharacterName += "(None)"
+            }
+            profileIconImageView.image = UIImage(named: "characters/\(profileIconCharacterName)/icon")
         }
-        profileIconImageView.image = UIImage(named: "characters/\(profileIconCharacterName)/icon")
         
-        let namecardURL = namecardURLFromNamecardIdJSON[String(accountAllInfo.playerInfo.nameCardId)]["icon"].stringValue
-        namecardImageView.image = UIImage(url:AppConstant.UI.baseURL + "/" + namecardURL + ".png")
-    }
-    
-    private func readJSONFile(filename: String) -> JSON? {
-        guard let url = Bundle.main.url(forResource: filename, withExtension: "json") else {
-            fatalError("ファイルが見つからない")
-        }
-        guard let data = try? Data(contentsOf: url) else {
-            fatalError("ファイル読み込みエラー")
-        }
-        do {
-            let jsonObject = try JSON(data: data)
-            return jsonObject
-        } catch let error {
-            print(error)
-            return nil
+        if let namecardURLFromNamecardIdJSON = appResource.namecardURLFromNamecardIdJSON {
+            let namecardURL = namecardURLFromNamecardIdJSON[String(accountAllInfo.playerInfo.nameCardId)]["icon"].stringValue
+            namecardImageView.image = UIImage(url:AppConstant.UI.baseURL + "/" + namecardURL + ".png")
         }
     }
 }
 
 extension SelectCharacterViewController: Storyboardable {
     func inject(_ dependency: String) {
-        uid = dependency
+        self.uid = dependency
         self.accountService = AccountService()
-        
-        characterNameFromAvatarIdJSON = readJSONFile(filename: "characters")
-        namecardURLFromNamecardIdJSON = readJSONFile(filename: "namecards")
-        
+        self.appResource = AppResource.shared
     }
 }

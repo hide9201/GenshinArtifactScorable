@@ -14,8 +14,8 @@ extension UIImage {
             let data = try Data(contentsOf: url!)
             self.init(data: data)!
             return
-        } catch let err {
-            print("Error : \(err.localizedDescription)")
+        } catch let error {
+            print("Error : \(error.localizedDescription)")
         }
         self.init()
     }
