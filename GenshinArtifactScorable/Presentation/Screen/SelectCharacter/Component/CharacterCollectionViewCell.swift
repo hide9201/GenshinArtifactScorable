@@ -30,5 +30,7 @@ extension CharacterCollectionViewCell: NibInstantiatable {
         if let characterLevelText = dependency.avatarInfo.propMap["4001"]?.val {
             characterLevelLabel.text = "Lv. \(characterLevelText)"
         }
+        
+        // 背景の画像をキャラクターのレアリティごとに変えたい
     }
 }
