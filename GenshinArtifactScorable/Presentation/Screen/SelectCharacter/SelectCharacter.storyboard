@@ -133,12 +133,12 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qGv-nv-7zX">
-                                <rect key="frame" x="0.0" y="336" width="414" height="240"/>
+                                <rect key="frame" x="0.0" y="336" width="414" height="360"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="WSs-0t-rix"/>
+                                    <constraint firstAttribute="height" constant="360" id="WSs-0t-rix"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fc0-KJ-tDa">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fc0-KJ-tDa">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -175,6 +175,7 @@
                     </view>
                     <connections>
                         <outlet property="adventureRankLabel" destination="zPx-tO-pR2" id="Wzt-ps-7NF"/>
+                        <outlet property="characterCollectionView" destination="qGv-nv-7zX" id="9S8-ry-gJx"/>
                         <outlet property="namecardImageView" destination="jO0-01-sdg" id="30I-X6-Zy4"/>
                         <outlet property="profileComponentView" destination="yHa-bC-LTp" id="eYv-yW-Sbj"/>
                         <outlet property="profileIconImageView" destination="Kgn-1b-3k4" id="Y44-EN-IUs"/>
