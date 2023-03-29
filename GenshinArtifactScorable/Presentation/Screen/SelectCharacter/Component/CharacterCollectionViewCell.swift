@@ -26,11 +26,12 @@ extension CharacterCollectionViewCell: NibInstantiatable {
                 characterName += "(None)"
             }
             characterImageView.image = UIImage(named: "characters/\(characterName)/icon")
+            
+            let characterRarity = characterNameFromAvatarIdJSON[String(dependency.avatarInfo.avatarId)]["rarity"].stringValue
+            characterBackgroundImageView.image = UIImage(named: "QualityBackground/Quality_\(characterRarity)_background")
         }
         if let characterLevelText = dependency.avatarInfo.propMap["4001"]?.val {
             characterLevelLabel.text = "Lv. \(characterLevelText)"
         }
-        
-        // 背景の画像をキャラクターのレアリティごとに変えたい
     }
 }
