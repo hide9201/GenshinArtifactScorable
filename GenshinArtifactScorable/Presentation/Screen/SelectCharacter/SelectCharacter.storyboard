@@ -132,15 +132,44 @@
                                     <constraint firstAttribute="height" constant="200" id="OBH-MA-9lP"/>
                                 </constraints>
                             </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qGv-nv-7zX">
+                                <rect key="frame" x="0.0" y="336" width="414" height="240"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="WSs-0t-rix"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fc0-KJ-tDa">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="キャラクターを選択" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4aw-pl-fcv">
+                                <rect key="frame" x="32" y="292" width="200" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="bj7-Hq-ZBH"/>
+                                    <constraint firstAttribute="height" constant="28" id="oYV-0a-5M7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="qGv-nv-7zX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6GG-1t-NGg"/>
                             <constraint firstItem="yHa-bC-LTp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="6Ii-aM-nZW"/>
                             <constraint firstItem="jO0-01-sdg" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="7eU-ts-2hX"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="yHa-bC-LTp" secondAttribute="trailing" constant="16" id="GKD-dR-XLT"/>
+                            <constraint firstItem="qGv-nv-7zX" firstAttribute="top" secondItem="4aw-pl-fcv" secondAttribute="bottom" constant="16" id="Vfp-9L-ar1"/>
+                            <constraint firstItem="4aw-pl-fcv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="fnF-3S-Nw6"/>
                             <constraint firstItem="jO0-01-sdg" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="fo4-mh-exI"/>
+                            <constraint firstItem="4aw-pl-fcv" firstAttribute="top" secondItem="jO0-01-sdg" secondAttribute="bottom" constant="40" id="n0k-jT-lrs"/>
                             <constraint firstItem="jO0-01-sdg" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ncC-Yg-fzg"/>
+                            <constraint firstItem="qGv-nv-7zX" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="oh0-xC-vxx"/>
                             <constraint firstItem="yHa-bC-LTp" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="4" id="pu9-Sh-yLd"/>
                         </constraints>
                     </view>

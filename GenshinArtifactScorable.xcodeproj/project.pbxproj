@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0842FA6729D3395F008CD2AC /* AppResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0842FA6629D3395F008CD2AC /* AppResource.swift */; };
+		0842FA6A29D34B01008CD2AC /* CharacterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0842FA6929D34B01008CD2AC /* CharacterCollectionViewCell.xib */; };
 		0868FEEA29C443EF000AC079 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FEE929C443EF000AC079 /* NSObject+.swift */; };
 		0868FEEC29C44575000AC079 /* Storyboardable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FEEB29C44575000AC079 /* Storyboardable.swift */; };
 		0868FEEF29C44F27000AC079 /* SelectCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FEEE29C44F27000AC079 /* SelectCharacter.swift */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		0842FA6629D3395F008CD2AC /* AppResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppResource.swift; sourceTree = "<group>"; };
+		0842FA6929D34B01008CD2AC /* CharacterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCollectionViewCell.xib; sourceTree = "<group>"; };
 		0868FEE929C443EF000AC079 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 		0868FEEB29C44575000AC079 /* Storyboardable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboardable.swift; sourceTree = "<group>"; };
 		0868FEEE29C44F27000AC079 /* SelectCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCharacter.swift; sourceTree = "<group>"; };
@@ -135,6 +137,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0842FA6829D349DE008CD2AC /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				0842FA6929D34B01008CD2AC /* CharacterCollectionViewCell.xib */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		0868FEDD29C43821000AC079 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +256,7 @@
 			children = (
 				0868FEF029C44F3C000AC079 /* SelectCharacter.storyboard */,
 				0868FEEE29C44F27000AC079 /* SelectCharacter.swift */,
+				0842FA6829D349DE008CD2AC /* Component */,
 			);
 			path = SelectCharacter;
 			sourceTree = "<group>";
@@ -450,6 +461,7 @@
 				0896329429CC933B00EBCC0E /* namecards.json in Resources */,
 				08694CAE298A51F500FC98F8 /* Assets.xcassets in Resources */,
 				0868FEF129C44F3C000AC079 /* SelectCharacter.storyboard in Resources */,
+				0842FA6A29D34B01008CD2AC /* CharacterCollectionViewCell.xib in Resources */,
 				0896328429CB4BEA00EBCC0E /* characters.json in Resources */,
 				08694CAC298A51F100FC98F8 /* Main.storyboard in Resources */,
 			);
