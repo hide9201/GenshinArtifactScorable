@@ -31,7 +31,7 @@ extension CharacterCollectionViewCell: NibInstantiatable {
             characterBackgroundImageView.image = UIImage(named: "QualityBackground/Quality_\(characterRarity)_background")
         }
         if let characterLevelText = dependency.avatarInfo.propMap["4001"]?.val {
-            characterLevelLabel.text = "Lv. \(characterLevelText)"
+            characterLevelLabel.text = "Lv.\(characterLevelText)"
         }
     }
 }
