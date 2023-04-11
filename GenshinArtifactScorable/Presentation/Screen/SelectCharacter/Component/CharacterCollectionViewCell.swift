@@ -18,7 +18,7 @@ final class CharacterCollectionViewCell: UICollectionViewCell {
 }
 
 extension CharacterCollectionViewCell: NibInstantiatable {
-    func inject(_ dependency: (avatarInfo: AvatarInfo, appResource: AppResource)) {
+    func inject(_ dependency: (avatarInfo: AccountAllInfo.AvatarInfo, appResource: AppResource)) {
         if let characterNameFromAvatarIdJSON = dependency.appResource.characterNameFromAvatarIdJSON {
             var characterName = characterNameFromAvatarIdJSON[String(dependency.avatarInfo.avatarId)]["characterNameEN"].stringValue
             
@@ -30,8 +30,7 @@ extension CharacterCollectionViewCell: NibInstantiatable {
             let characterRarity = characterNameFromAvatarIdJSON[String(dependency.avatarInfo.avatarId)]["rarity"].stringValue
             characterBackgroundImageView.image = UIImage(named: "QualityBackground/Quality_\(characterRarity)_background")
         }
-        if let characterLevelText = dependency.avatarInfo.propMap["4001"]?.val {
-            characterLevelLabel.text = "Lv.\(characterLevelText)"
-        }
+        
+        characterLevelLabel.text = "Lv.\(dependency.avatarInfo.propMap.level.val)"
     }
 }

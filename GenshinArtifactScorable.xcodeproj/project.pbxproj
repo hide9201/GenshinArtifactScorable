@@ -7,15 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		082077C529D3F02B00854579 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082077BC29D3F02A00854579 /* Weapon.swift */; };
-		082077C629D3F02B00854579 /* Flat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082077BD29D3F02A00854579 /* Flat.swift */; };
-		082077C729D3F02B00854579 /* OtherEquipStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082077BE29D3F02A00854579 /* OtherEquipStatus.swift */; };
-		082077C829D3F02B00854579 /* Equip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082077BF29D3F02A00854579 /* Equip.swift */; };
-		082077C929D3F02B00854579 /* Reliquary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082077C029D3F02B00854579 /* Reliquary.swift */; };
-		082077CA29D3F02B00854579 /* ReliquaryMainStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082077C129D3F02B00854579 /* ReliquaryMainStatus.swift */; };
-		082077CB29D3F02B00854579 /* AvatarInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082077C229D3F02B00854579 /* AvatarInfo.swift */; };
 		082077CC29D3F02B00854579 /* AccountAllInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082077C329D3F02B00854579 /* AccountAllInfo.swift */; };
-		082077CD29D3F02B00854579 /* PlayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082077C429D3F02B00854579 /* PlayerInfo.swift */; };
 		082077D329D3F04300854579 /* AccountTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082077D029D3F04300854579 /* AccountTarget.swift */; };
 		082077D429D3F04300854579 /* BaseTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082077D129D3F04300854579 /* BaseTarget.swift */; };
 		082077D529D3F04300854579 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082077D229D3F04300854579 /* API.swift */; };
@@ -41,6 +33,7 @@
 		0896329429CC933B00EBCC0E /* namecards.json in Resources */ = {isa = PBXBuildFile; fileRef = 0896329329CC933B00EBCC0E /* namecards.json */; };
 		0898313D29D3FC6300D9E5C8 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898313C29D3FC6300D9E5C8 /* CharacterCollectionViewCell.swift */; };
 		0898313F29D3FD7A00D9E5C8 /* NibInstantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898313E29D3FD7A00D9E5C8 /* NibInstantiatable.swift */; };
+		0898314329E5773300D9E5C8 /* FightPropMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898314229E5773300D9E5C8 /* FightPropMap.swift */; };
 		3629DBB7B17398A227391D43 /* Pods_GenshinArtifactScorable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95BC2788A8C2A5E7E67B1DB2 /* Pods_GenshinArtifactScorable.framework */; };
 		44D2CF16DC6319759D4B3C97 /* Pods_GenshinArtifactScorable_GenshinArtifactScorableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA21D01A36B091C85C08AD74 /* Pods_GenshinArtifactScorable_GenshinArtifactScorableUITests.framework */; };
 		5BA244285196C2CF8FAB377D /* Pods_GenshinArtifactScorableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49599EDDC90BA84F791994E /* Pods_GenshinArtifactScorableTests.framework */; };
@@ -64,15 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		082077BC29D3F02A00854579 /* Weapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
-		082077BD29D3F02A00854579 /* Flat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flat.swift; sourceTree = "<group>"; };
-		082077BE29D3F02A00854579 /* OtherEquipStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherEquipStatus.swift; sourceTree = "<group>"; };
-		082077BF29D3F02A00854579 /* Equip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equip.swift; sourceTree = "<group>"; };
-		082077C029D3F02B00854579 /* Reliquary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reliquary.swift; sourceTree = "<group>"; };
-		082077C129D3F02B00854579 /* ReliquaryMainStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReliquaryMainStatus.swift; sourceTree = "<group>"; };
-		082077C229D3F02B00854579 /* AvatarInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarInfo.swift; sourceTree = "<group>"; };
 		082077C329D3F02B00854579 /* AccountAllInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountAllInfo.swift; sourceTree = "<group>"; };
-		082077C429D3F02B00854579 /* PlayerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerInfo.swift; sourceTree = "<group>"; };
 		082077D029D3F04300854579 /* AccountTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTarget.swift; sourceTree = "<group>"; };
 		082077D129D3F04300854579 /* BaseTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTarget.swift; sourceTree = "<group>"; };
 		082077D229D3F04300854579 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -102,6 +87,7 @@
 		0896329329CC933B00EBCC0E /* namecards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = namecards.json; sourceTree = "<group>"; };
 		0898313C29D3FC6300D9E5C8 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		0898313E29D3FD7A00D9E5C8 /* NibInstantiatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibInstantiatable.swift; sourceTree = "<group>"; };
+		0898314229E5773300D9E5C8 /* FightPropMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightPropMap.swift; sourceTree = "<group>"; };
 		52BEE03A606A545B9482FBE3 /* Pods-GenshinArtifactScorableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenshinArtifactScorableTests.release.xcconfig"; path = "Target Support Files/Pods-GenshinArtifactScorableTests/Pods-GenshinArtifactScorableTests.release.xcconfig"; sourceTree = "<group>"; };
 		63B0A73634DBA5362EE43E9B /* Pods-GenshinArtifactScorable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenshinArtifactScorable.release.xcconfig"; path = "Target Support Files/Pods-GenshinArtifactScorable/Pods-GenshinArtifactScorable.release.xcconfig"; sourceTree = "<group>"; };
 		8850FAB9648F86E09503ACE9 /* Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests.debug.xcconfig"; path = "Target Support Files/Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests/Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -145,14 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				082077C329D3F02B00854579 /* AccountAllInfo.swift */,
-				082077C429D3F02B00854579 /* PlayerInfo.swift */,
-				082077C229D3F02B00854579 /* AvatarInfo.swift */,
-				082077BC29D3F02A00854579 /* Weapon.swift */,
-				082077BD29D3F02A00854579 /* Flat.swift */,
-				082077BE29D3F02A00854579 /* OtherEquipStatus.swift */,
-				082077BF29D3F02A00854579 /* Equip.swift */,
-				082077C029D3F02B00854579 /* Reliquary.swift */,
-				082077C129D3F02B00854579 /* ReliquaryMainStatus.swift */,
+				0898314229E5773300D9E5C8 /* FightPropMap.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -597,6 +576,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0898314329E5773300D9E5C8 /* FightPropMap.swift in Sources */,
 				08694CA9298A51F100FC98F8 /* ViewController.swift in Sources */,
 				082077D429D3F04300854579 /* BaseTarget.swift in Sources */,
 				0868FEEA29C443EF000AC079 /* NSObject+.swift in Sources */,
@@ -604,23 +584,15 @@
 				0868FEF329C5AD8B000AC079 /* AppConstant.swift in Sources */,
 				0898313D29D3FC6300D9E5C8 /* CharacterCollectionViewCell.swift in Sources */,
 				0898313F29D3FD7A00D9E5C8 /* NibInstantiatable.swift in Sources */,
-				082077CA29D3F02B00854579 /* ReliquaryMainStatus.swift in Sources */,
-				082077C929D3F02B00854579 /* Reliquary.swift in Sources */,
-				082077CB29D3F02B00854579 /* AvatarInfo.swift in Sources */,
 				08694CA5298A51F100FC98F8 /* AppDelegate.swift in Sources */,
 				082077CC29D3F02B00854579 /* AccountAllInfo.swift in Sources */,
-				082077C529D3F02B00854579 /* Weapon.swift in Sources */,
 				082077D329D3F04300854579 /* AccountTarget.swift in Sources */,
 				0868FEEF29C44F27000AC079 /* SelectCharacter.swift in Sources */,
 				082077D529D3F04300854579 /* API.swift in Sources */,
 				0896328829CC8B5C00EBCC0E /* UIImage+.swift in Sources */,
-				082077C629D3F02B00854579 /* Flat.swift in Sources */,
 				0868FEEC29C44575000AC079 /* Storyboardable.swift in Sources */,
-				082077CD29D3F02B00854579 /* PlayerInfo.swift in Sources */,
 				08694CA7298A51F100FC98F8 /* SceneDelegate.swift in Sources */,
 				082077D829D3F05200854579 /* AccountService.swift in Sources */,
-				082077C829D3F02B00854579 /* Equip.swift in Sources */,
-				082077C729D3F02B00854579 /* OtherEquipStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
