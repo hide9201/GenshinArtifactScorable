@@ -13,15 +13,23 @@ final class AppResource {
     
     let characterNameFromAvatarIdJSON: JSON?
     let namecardURLFromNamecardIdJSON: JSON?
+    let characterDetails: [String: CharacterMap.Character]?
+    let nameCard: [String: NameCardMap.NameCard]?
+    let localizedDictionary: [String: String]?
     
     private init() {
-        let jsonReader = JSONReader()
-        characterNameFromAvatarIdJSON = jsonReader.readJSONFile(filename: "characters")
+        let jsonReader = JSONFileReader()
+
+        characterNameFromAvatarIdJSON = jsonReader.readJSONFile(filename: "charactersTemp")
         namecardURLFromNamecardIdJSON = jsonReader.readJSONFile(filename: "namecards")
+        
+        characterDetails = JSONFileDecoder<CharacterMap>.decode(fileName: "characters")?.characterStaticData
+        nameCard = JSONFileDecoder<NameCardMap>.decode(fileName: "namecards")?.nameCard
+        localizedDictionary = JSONFileDecoder<Localized>.decode(fileName: "loc")?.ja.content
     }
 }
 
-struct JSONReader {
+struct JSONFileReader {
     func readJSONFile(filename: String) -> JSON? {
         guard let url = Bundle.main.url(forResource: filename, withExtension: "json") else {
             fatalError("ファイルが見つからない")

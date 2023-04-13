@@ -38,7 +38,9 @@ final class SelectCharacterViewController: UIViewController {
     private var uid: String!
     private var appResource: AppResource!
     private var accountService: AccountService!
+    private var imageService: ImageService!
     private var accountAllInfo: AccountAllInfo?
+    private var shapedAccountAllInfo: ShapedAccountAllInfo?
     
     // MARK: - Lifecycle
     
@@ -48,10 +50,15 @@ final class SelectCharacterViewController: UIViewController {
         accountService.getAccountAllInfo(uid: uid)
             .done { accountAllInfo in
                 self.accountAllInfo = accountAllInfo
-                if let account = self.accountAllInfo {
-                    print(account)
-                    self.setupUI(accountAllInfo: account)
+                if let locDict = self.appResource.localizedDictionary, let charMap = self.appResource.characterDetails, let nameCardMap = self.appResource.nameCard {
+                    self.shapedAccountAllInfo = .init(accountAllInfo: accountAllInfo, localizedDictionary: locDict, characterMap: charMap, nameCardMap: nameCardMap)
+                    self.setupUI(shapedAccountAllInfo: self.shapedAccountAllInfo!)
                 }
+                
+//                if let account = self.accountAllInfo {
+//                    print(account)
+//                    self.setupUI(accountAllInfo: account)
+//                }
             }.catch { error in
                 print(error)
             }
@@ -72,19 +79,30 @@ final class SelectCharacterViewController: UIViewController {
             self.statusMessageLabel.text = "ステータスメッセージを設定していません．"
         }
         
-        if let characterNameFromAvatarIdJSON = appResource.characterNameFromAvatarIdJSON {
-            var profileIconCharacterName = characterNameFromAvatarIdJSON[String(accountAllInfo.playerInfo.profilePicture.avatarId)]["characterNameEN"].stringValue
-            
-            if profileIconCharacterName == "Lumine" || profileIconCharacterName == "Aether" {
-                profileIconCharacterName += "(None)"
-            }
-            profileIconImageView.image = UIImage(named: "characters/\(profileIconCharacterName)/icon")
-        }
+        characterCollectionView.reloadData()
+    }
+    
+    private func setupUI(shapedAccountAllInfo: ShapedAccountAllInfo) {
+        uidLabel.text = "UID " + uid
+        userNameLabel.text = shapedAccountAllInfo.playerBasicInfo.playerName
+        adventureRankLabel.text = String(shapedAccountAllInfo.playerBasicInfo.adventureLevel)
+        worldRankLabel.text = String(shapedAccountAllInfo.playerBasicInfo.worldLevel)
         
-        if let namecardURLFromNamecardIdJSON = appResource.namecardURLFromNamecardIdJSON {
-            let namecardURL = namecardURLFromNamecardIdJSON[String(accountAllInfo.playerInfo.nameCardId)]["icon"].stringValue
-            namecardImageView.image = UIImage(url:AppConstant.UI.baseURL + "/" + namecardURL + ".png")
-        }
+        statusMessageLabel.text = shapedAccountAllInfo.playerBasicInfo.statusMessage
+        
+        imageService.fetchUIImage(imageName: "\(shapedAccountAllInfo.playerBasicInfo.profilePictureCharacterIconString).png")
+            .done { profileIconImage in
+                self.profileIconImageView.image = profileIconImage
+            }.catch { error in
+                print(error)
+            }
+        
+        imageService.fetchUIImage(imageName: "\(shapedAccountAllInfo.playerBasicInfo.nameCardString).png")
+            .done { nameCardImage in
+                self.namecardImageView.image = nameCardImage
+            }.catch { error in
+                print(error)
+            }
         characterCollectionView.reloadData()
     }
 }
@@ -93,6 +111,7 @@ extension SelectCharacterViewController: Storyboardable {
     func inject(_ dependency: String) {
         self.uid = dependency
         self.accountService = AccountService()
+        self.imageService = ImageService()
         self.appResource = AppResource.shared
     }
 }

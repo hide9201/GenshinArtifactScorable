@@ -17,7 +17,7 @@ extension AccountTarget: BaseTarget {
     var path: String {
         switch self {
         case .getAccountAllInfo(let uid):
-            return "/uid/\(uid)"
+            return "/api/uid/\(uid)"
         }
     }
     
