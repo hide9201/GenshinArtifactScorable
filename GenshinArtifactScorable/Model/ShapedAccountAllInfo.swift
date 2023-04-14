@@ -66,7 +66,7 @@ struct ShapedAccountAllInfo {
         let quality: Quality
         
         init?(avatarInfo: AccountAllInfo.AvatarInfo, localizedDictionary: [String: String], characterMap: [String: CharacterMap.Character]) {
-            guard let character = characterMap["\(avatarInfo.avatarId)"] else { return nil }
+            guard let character = characterMap["\(avatarInfo.avatarId)-\(avatarInfo.skillDepotId)"] ?? characterMap["\(avatarInfo.avatarId)"] else { return nil }
             
             name = localizedDictionary.nameFrom(id: character.nameTextMapHash)
             element = Element.init(rawValue: character.element) ?? .unknown
@@ -216,6 +216,15 @@ struct ShapedAccountAllInfo {
                     score += subAttributes.reduce(0) { (result, attribute) -> Double in
                         switch attribute.propId {
                         case "FIGHT_PROP_ATTACK_PERCENT":
+                            return result + attribute.value
+                        default:
+                            return result
+                        }
+                    }
+                case .hp:
+                    score += subAttributes.reduce(0) { (result, attribute) -> Double in
+                        switch attribute.propId {
+                        case "FIGHT_PROP_HP_PERCENT":
                             return result + attribute.value
                         default:
                             return result

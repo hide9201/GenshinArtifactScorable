@@ -16,6 +16,7 @@ protocol Scorable {
 
 enum ScoreCriteria {
     case attack
+    case hp
     case defense
     case energyRecharge
     case elementalMastery

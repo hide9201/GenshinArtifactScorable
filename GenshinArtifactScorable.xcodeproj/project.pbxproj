@@ -37,6 +37,7 @@
 		088A4EFA29E8712300F99D85 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A4EF929E8712300F99D85 /* ImageAPI.swift */; };
 		088A4EFC29E8729200F99D85 /* ImageTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A4EFB29E8729200F99D85 /* ImageTarget.swift */; };
 		088A4EFE29E8770500F99D85 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A4EFD29E8770500F99D85 /* ImageService.swift */; };
+		088A4F0129E99ED300F99D85 /* ja-jp.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 088A4F0029E99ED300F99D85 /* ja-jp.ttf */; };
 		0896328429CB4BEA00EBCC0E /* charactersTemp.json in Resources */ = {isa = PBXBuildFile; fileRef = 0896328329CB4BEA00EBCC0E /* charactersTemp.json */; };
 		0896328829CC8B5C00EBCC0E /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0896328729CC8B5C00EBCC0E /* UIImage+.swift */; };
 		0898313D29D3FC6300D9E5C8 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898313C29D3FC6300D9E5C8 /* CharacterCollectionViewCell.swift */; };
@@ -103,6 +104,7 @@
 		088A4EF929E8712300F99D85 /* ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPI.swift; sourceTree = "<group>"; };
 		088A4EFB29E8729200F99D85 /* ImageTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTarget.swift; sourceTree = "<group>"; };
 		088A4EFD29E8770500F99D85 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		088A4F0029E99ED300F99D85 /* ja-jp.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ja-jp.ttf"; sourceTree = "<group>"; };
 		0896328329CB4BEA00EBCC0E /* charactersTemp.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = charactersTemp.json; sourceTree = "<group>"; };
 		0896328729CC8B5C00EBCC0E /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		0898313C29D3FC6300D9E5C8 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -335,9 +337,18 @@
 			path = GenshinArtifactScorableUITests;
 			sourceTree = "<group>";
 		};
+		088A4EFF29E99E9E00F99D85 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				088A4F0029E99ED300F99D85 /* ja-jp.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		0896328229CB4BBD00EBCC0E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				088A4EFF29E99E9E00F99D85 /* Font */,
 				0896328329CB4BEA00EBCC0E /* charactersTemp.json */,
 				088A4EF329E809B800F99D85 /* loc.json */,
 				088A4EEF29E7FFBA00F99D85 /* characters.json */,
@@ -483,6 +494,7 @@
 				088A4EF429E809B800F99D85 /* loc.json in Resources */,
 				0868FEF129C44F3C000AC079 /* SelectCharacter.storyboard in Resources */,
 				0842FA6A29D34B01008CD2AC /* CharacterCollectionViewCell.xib in Resources */,
+				088A4F0129E99ED300F99D85 /* ja-jp.ttf in Resources */,
 				088A4EEE29E7FF9300F99D85 /* namecards.json in Resources */,
 				0896328429CB4BEA00EBCC0E /* charactersTemp.json in Resources */,
 				08694CAC298A51F100FC98F8 /* Main.storyboard in Resources */,

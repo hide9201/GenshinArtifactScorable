@@ -14,6 +14,7 @@ final class CharacterCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var characterBackgroundImageView: UIImageView!
     @IBOutlet weak var characterImageView: UIImageView!
+    @IBOutlet weak var elementIconView: UIImageView!
     @IBOutlet weak var characterLevelLabel: UILabel!
 }
 
@@ -27,5 +28,6 @@ extension CharacterCollectionViewCell: NibInstantiatable {
             }
         characterLevelLabel.text = "Lv.\(dependency.character.level)"
         characterBackgroundImageView.image = UIImage(named: dependency.character.quality.characterBackgroundIconString)
+        elementIconView.image = UIImage(named: "ElementIcon/\(dependency.character.element)")
     }
 }

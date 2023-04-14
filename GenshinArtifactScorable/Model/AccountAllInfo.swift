@@ -34,6 +34,7 @@ struct AccountAllInfo: Codable {
         let talentIdList: [Int]?
         let propMap: PropMap
         let fightPropMap: FightPropMap
+        let skillDepotId: Int
         let skillLevelMap: SkillLevelMap
         let equipList: [Equip]
         let fetterInfo: FetterInfo
