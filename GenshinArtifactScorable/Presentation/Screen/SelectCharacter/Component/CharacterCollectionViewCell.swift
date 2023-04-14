@@ -18,19 +18,14 @@ final class CharacterCollectionViewCell: UICollectionViewCell {
 }
 
 extension CharacterCollectionViewCell: NibInstantiatable {
-    func inject(_ dependency: (avatarInfo: AccountAllInfo.AvatarInfo, appResource: AppResource)) {
-        if let characterNameFromAvatarIdJSON = dependency.appResource.characterNameFromAvatarIdJSON {
-            var characterName = characterNameFromAvatarIdJSON[String(dependency.avatarInfo.avatarId)]["characterNameEN"].stringValue
-            
-            if characterName == "Lumine" || characterName == "Aether" {
-                characterName += "(None)"
+    func inject(_ dependency: (character: ShapedAccountAllInfo.ScorableCharacter, imageService: ImageService)) {
+        dependency.imageService.fetchUIImage(imageName: "\(dependency.character.iconString)")
+            .done { image in
+                self.characterImageView.image = image
+            }.catch { error in
+                print(error)
             }
-            characterImageView.image = UIImage(named: "characters/\(characterName)/icon")
-            
-            let characterRarity = characterNameFromAvatarIdJSON[String(dependency.avatarInfo.avatarId)]["rarity"].stringValue
-            characterBackgroundImageView.image = UIImage(named: "QualityBackground/Quality_\(characterRarity)_background")
-        }
-        
-        characterLevelLabel.text = "Lv.\(dependency.avatarInfo.propMap.level.val)"
+        characterLevelLabel.text = "Lv.\(dependency.character.level)"
+        characterBackgroundImageView.image = UIImage(named: dependency.character.quality.characterBackgroundIconString)
     }
 }

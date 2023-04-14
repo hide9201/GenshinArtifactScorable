@@ -286,6 +286,17 @@ struct ShapedAccountAllInfo {
             case orange = "QUALITY_ORANGE"
             /// アーロイ用
             case orangeSpecial = "QUALITY_ORANGE_SP"
+            
+            var characterBackgroundIconString: String {
+                switch self {
+                case .purple:
+                    return "QualityBackground/Quality_4_background"
+                case .orange:
+                    return "QualityBackground/Quality_5_background"
+                case .orangeSpecial:
+                    return "QualityBackground/Quality_5sp_background"
+                }
+            }
         }
     }
 }

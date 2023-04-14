@@ -36,10 +36,8 @@ final class SelectCharacterViewController: UIViewController {
     // MARK: - Property
     
     private var uid: String!
-    private var appResource: AppResource!
     private var accountService: AccountService!
     private var imageService: ImageService!
-    private var accountAllInfo: AccountAllInfo?
     private var shapedAccountAllInfo: ShapedAccountAllInfo?
     
     // MARK: - Lifecycle
@@ -49,16 +47,8 @@ final class SelectCharacterViewController: UIViewController {
         
         accountService.getAccountAllInfo(uid: uid)
             .done { accountAllInfo in
-                self.accountAllInfo = accountAllInfo
-                if let locDict = self.appResource.localizedDictionary, let charMap = self.appResource.characterDetails, let nameCardMap = self.appResource.nameCard {
-                    self.shapedAccountAllInfo = .init(accountAllInfo: accountAllInfo, localizedDictionary: locDict, characterMap: charMap, nameCardMap: nameCardMap)
-                    self.setupUI(shapedAccountAllInfo: self.shapedAccountAllInfo!)
-                }
-                
-//                if let account = self.accountAllInfo {
-//                    print(account)
-//                    self.setupUI(accountAllInfo: account)
-//                }
+                self.shapedAccountAllInfo = accountAllInfo
+                self.setupUI()
             }.catch { error in
                 print(error)
             }
@@ -67,42 +57,29 @@ final class SelectCharacterViewController: UIViewController {
     
     // MARK: - Private
     
-    private func setupUI(accountAllInfo: AccountAllInfo) {
+    private func setupUI() {
         uidLabel.text = "UID " + uid
-        userNameLabel.text = accountAllInfo.playerInfo.nickname
-        adventureRankLabel.text = String(accountAllInfo.playerInfo.level)
-        worldRankLabel.text = String(accountAllInfo.playerInfo.worldLevel)
+        guard let shapedAccountAllInfo = self.shapedAccountAllInfo else { return }
         
-        if let statusMessage = accountAllInfo.playerInfo.signature {
-            self.statusMessageLabel.text = statusMessage
-        } else {
-            self.statusMessageLabel.text = "ステータスメッセージを設定していません．"
-        }
-        
-        characterCollectionView.reloadData()
-    }
-    
-    private func setupUI(shapedAccountAllInfo: ShapedAccountAllInfo) {
-        uidLabel.text = "UID " + uid
         userNameLabel.text = shapedAccountAllInfo.playerBasicInfo.playerName
         adventureRankLabel.text = String(shapedAccountAllInfo.playerBasicInfo.adventureLevel)
         worldRankLabel.text = String(shapedAccountAllInfo.playerBasicInfo.worldLevel)
-        
         statusMessageLabel.text = shapedAccountAllInfo.playerBasicInfo.statusMessage
         
-        imageService.fetchUIImage(imageName: "\(shapedAccountAllInfo.playerBasicInfo.profilePictureCharacterIconString).png")
+        imageService.fetchUIImage(imageName: "\(shapedAccountAllInfo.playerBasicInfo.profilePictureCharacterIconString)")
             .done { profileIconImage in
                 self.profileIconImageView.image = profileIconImage
             }.catch { error in
                 print(error)
             }
         
-        imageService.fetchUIImage(imageName: "\(shapedAccountAllInfo.playerBasicInfo.nameCardString).png")
+        imageService.fetchUIImage(imageName: "\(shapedAccountAllInfo.playerBasicInfo.nameCardString)")
             .done { nameCardImage in
                 self.namecardImageView.image = nameCardImage
             }.catch { error in
                 print(error)
             }
+        
         characterCollectionView.reloadData()
     }
 }
@@ -112,26 +89,22 @@ extension SelectCharacterViewController: Storyboardable {
         self.uid = dependency
         self.accountService = AccountService()
         self.imageService = ImageService()
-        self.appResource = AppResource.shared
     }
 }
 
 extension SelectCharacterViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let accountAllInfo = accountAllInfo {
-            if let avatarInfoList = accountAllInfo.avatarInfoList {
-                return avatarInfoList.count
-            }
+        if let shapedAccountAllInfo = shapedAccountAllInfo {
+            return shapedAccountAllInfo.characters.count
+        } else {
+            return 0
         }
-        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(CharacterCollectionViewCell.reusable, for: indexPath)
-        if let accountAllInfo = accountAllInfo {
-            if let avatarInfoList = accountAllInfo.avatarInfoList {
-                cell.inject((avatarInfoList[indexPath.row], appResource))
-            }
+        if let shapedAccountAllInfo = shapedAccountAllInfo {
+            cell.inject((shapedAccountAllInfo.characters[indexPath.row], imageService))
         }
         return cell
     }

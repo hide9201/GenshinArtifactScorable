@@ -17,7 +17,7 @@ extension ImageTarget: BaseTarget {
     var path: String {
         switch self {
         case .fetchUIImage(let imageName):
-            return "/ui/\(imageName)"
+            return "/ui/\(imageName).png"
         }
     }
     

@@ -10,3 +10,11 @@ import Foundation
 enum APIError: Error {
     case invalidData
 }
+
+enum FileReadError: Error {
+    
+}
+
+enum DataError: Error {
+    case notFound
+}
