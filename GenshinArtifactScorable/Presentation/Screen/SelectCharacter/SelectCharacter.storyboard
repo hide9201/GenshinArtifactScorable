@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,13 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UI_NameCardPic_0_P" translatesAutoresizingMaskIntoConstraints="NO" id="jO0-01-sdg">
-                                <rect key="frame" x="0.0" y="43.999999999999986" width="428" height="203.66666666666663"/>
+                                <rect key="frame" x="0.0" y="46.999999999999986" width="428" height="203.66666666666663"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="jO0-01-sdg" secondAttribute="height" multiplier="21:10" id="Pnz-AL-c0u"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="yHa-bC-LTp">
-                                <rect key="frame" x="8" y="52.000000000000014" width="412" height="187.33333333333337"/>
+                                <rect key="frame" x="8" y="55.000000000000014" width="412" height="187.33333333333337"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="tJh-8o-9nl">
                                         <rect key="frame" x="0.0" y="0.0" width="159" height="187.33333333333334"/>
@@ -67,6 +68,7 @@
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="ああああああああああああああああああああああああああああああ" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Z2a-Cp-VMi">
                                                         <rect key="frame" x="0.0" y="44.666666666666671" width="209" height="88.000000000000014"/>
+                                                        <color key="backgroundColor" white="0.33333333329999998" alpha="0.29685540789999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="88" id="kgb-Ye-5bK"/>
                                                         </constraints>
@@ -130,7 +132,7 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qGv-nv-7zX">
-                                <rect key="frame" x="0.0" y="331.66666666666669" width="428" height="360.00000000000006"/>
+                                <rect key="frame" x="0.0" y="334.66666666666674" width="428" height="360"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="360" id="WSs-0t-rix"/>
@@ -144,7 +146,7 @@
                                 <cells/>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="キャラクターを選択" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4aw-pl-fcv">
-                                <rect key="frame" x="32" y="287.66666666666669" width="200" height="28"/>
+                                <rect key="frame" x="32" y="290.66666666666669" width="200" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="bj7-Hq-ZBH"/>
                                     <constraint firstAttribute="height" constant="28" id="oYV-0a-5M7"/>
