@@ -85,7 +85,9 @@ struct ShapedAccountAllInfo {
                     key == String(skillID)
                 }?.value ?? 0
                 let icon = character.skills.skillData[String(skillID)] ?? "unknown"
-                return Skill(name: localizedDictionary.nameFrom(id: skillID), level: level, iconString: icon)
+                let adjustedDelta = avatarInfo.proudSkillExtraLevelMap?[(character.proudMap.proudData[skillID.description] ?? 0).description] ?? 0
+                
+                return Skill(name: localizedDictionary.nameFrom(id: skillID), level: level, levelAdjusted: level + adjustedDelta ,iconString: icon)
             })
             
             level = Int(avatarInfo.propMap.level.val) ?? 0
@@ -116,6 +118,7 @@ struct ShapedAccountAllInfo {
         struct Skill {
             let name: String
             let level: Int
+            let levelAdjusted: Int
             let iconString: String
         }
         

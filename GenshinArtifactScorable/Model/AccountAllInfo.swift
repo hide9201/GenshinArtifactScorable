@@ -38,6 +38,7 @@ struct AccountAllInfo: Codable {
         let skillLevelMap: SkillLevelMap
         let equipList: [Equip]
         let fetterInfo: FetterInfo
+        let proudSkillExtraLevelMap: [String: Int]?
         
         struct PropMap: Codable {
             let level: Level

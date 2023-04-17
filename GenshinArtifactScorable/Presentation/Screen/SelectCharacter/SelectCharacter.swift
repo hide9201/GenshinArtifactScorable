@@ -52,7 +52,6 @@ final class SelectCharacterViewController: UIViewController {
             }.catch { error in
                 print(error)
             }
-        print(uid!)
     }
     
     // MARK: - Private
@@ -134,6 +133,7 @@ extension SelectCharacterViewController: UICollectionViewDelegate {
         let character = shapedAccountAllInfo!.characters[indexPath.row]
         print(character.name)
         print(character.element)
+        print(character.skills)
         print("会心スコア：\(character.calculateCriticalScore())")
         print("総合スコア(攻撃換算)：\(character.calculateTotalScore(criteria: .attack))")
         print("総合スコア(HP換算)：\(character.calculateTotalScore(criteria: .hp))")
