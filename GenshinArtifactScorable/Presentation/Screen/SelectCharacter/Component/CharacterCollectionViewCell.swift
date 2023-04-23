@@ -12,6 +12,12 @@ import Instantiate
 final class CharacterCollectionViewCell: UICollectionViewCell {
     static let reusable = ReusableCell<CharacterCollectionViewCell>(nibName: "CharacterCollectionViewCell")
     
+    override var isSelected: Bool {
+        didSet {
+            contentView.backgroundColor = isSelected ? .lightGray : .clear
+        }
+    }
+    
     @IBOutlet weak var characterBackgroundImageView: UIImageView!
     @IBOutlet weak var characterImageView: UIImageView!
     @IBOutlet weak var elementIconView: UIImageView!

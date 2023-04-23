@@ -19,4 +19,12 @@ extension UIImage {
         }
         self.init()
     }
+    
+    func resize(toWidth width: CGFloat, toHeight height: CGFloat) -> UIImage? {
+        let canvasSize = CGSize(width: width, height: height)
+        UIGraphicsBeginImageContextWithOptions(canvasSize, false, 0.0)
+        defer { UIGraphicsEndImageContext() }
+        self.draw(in: CGRect(origin: .zero, size: canvasSize))
+        return UIGraphicsGetImageFromCurrentImageContext()?.withRenderingMode(self.renderingMode)
+    }
 }

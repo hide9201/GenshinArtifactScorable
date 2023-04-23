@@ -50,7 +50,7 @@ struct ShapedAccountAllInfo {
         let artifacts: [ScorableArtifact]
         let fightPropMap: FightPropMap
         
-        private var nameID: String { iconString.replacingOccurrences(of: "UI_AvatarIcon_", with: "")}
+        private var nameID: String { iconString.replacingOccurrences(of: "UI_AvatarIcon_", with: "") }
         let iconString: String
         let sideIconString: String
         var namecardIconString: String {
@@ -163,7 +163,6 @@ struct ShapedAccountAllInfo {
         }
         
         struct ScorableArtifact: Scorable {
-            
             let id: String
             let name: String
             let setName: String
@@ -190,7 +189,7 @@ struct ShapedAccountAllInfo {
                 mainAttribute = Attribute(propId: artifactEquipment.flat.reliquaryMainstat!.mainPropId, name: localizedDictionary.nameFrom(id: artifactEquipment.flat.reliquaryMainstat!.mainPropId), value: artifactEquipment.flat.reliquaryMainstat!.statValue)
                 
                 subAttributes = artifactEquipment.flat.reliquarySubstats?.map({ stats in
-                    Attribute(propId: stats.appendPropId ,name: localizedDictionary.nameFrom(id: stats.appendPropId), value: stats.statValue)
+                    Attribute(propId: stats.appendPropId, name: localizedDictionary.nameFrom(id: stats.appendPropId), value: stats.statValue)
                 }) ?? []
                 
                 iconString = artifactEquipment.flat.icon
@@ -268,12 +267,9 @@ struct ShapedAccountAllInfo {
         
         struct Attribute {
             let propId: String
+            var propIconString: String { propId.replacingOccurrences(of: "FIGHT_PROP_", with: "") }
             let name: String
-            var valueString: String {
-                get {
-                    return String(format: "%.1f", value)
-                }
-            }
+            var valueString: String { String(format: "%.1f", value) }
             var value: Double
             init(propId: String, name: String, value: Double) {
                 self.propId = propId

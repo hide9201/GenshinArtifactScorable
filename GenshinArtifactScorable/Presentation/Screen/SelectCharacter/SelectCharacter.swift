@@ -32,6 +32,7 @@ final class SelectCharacterViewController: UIViewController {
     @IBOutlet weak var uidLabel: UILabel!
     @IBOutlet weak var adventureRankLabel: UILabel!
     @IBOutlet weak var worldRankLabel: UILabel!
+    @IBOutlet weak var selectCriteriaButton: UIButton!
     
     // MARK: - Property
     
@@ -39,12 +40,13 @@ final class SelectCharacterViewController: UIViewController {
     private var accountService: AccountService!
     private var imageService: ImageService!
     private var shapedAccountAllInfo: ShapedAccountAllInfo?
+    private var selectedCriteria: ScoreCriteria?
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configureMenu()
         accountService.getAccountAllInfo(uid: uid)
             .done { accountAllInfo in
                 self.shapedAccountAllInfo = accountAllInfo
@@ -58,6 +60,7 @@ final class SelectCharacterViewController: UIViewController {
     
     private func setupUI() {
         uidLabel.text = "UID " + uid
+        
         guard let shapedAccountAllInfo = self.shapedAccountAllInfo else { return }
         
         userNameLabel.text = shapedAccountAllInfo.playerBasicInfo.playerName
@@ -65,14 +68,14 @@ final class SelectCharacterViewController: UIViewController {
         worldRankLabel.text = String(shapedAccountAllInfo.playerBasicInfo.worldLevel)
         statusMessageLabel.text = shapedAccountAllInfo.playerBasicInfo.statusMessage
         
-        imageService.fetchUIImage(imageName: "\(shapedAccountAllInfo.playerBasicInfo.profilePictureCharacterIconString)")
+        imageService.fetchUIImage(imageName: shapedAccountAllInfo.playerBasicInfo.profilePictureCharacterIconString)
             .done { profileIconImage in
                 self.profileIconImageView.image = profileIconImage
             }.catch { error in
                 print(error)
             }
         
-        imageService.fetchUIImage(imageName: "\(shapedAccountAllInfo.playerBasicInfo.nameCardString)")
+        imageService.fetchUIImage(imageName: shapedAccountAllInfo.playerBasicInfo.nameCardString)
             .done { nameCardImage in
                 self.namecardImageView.image = nameCardImage
             }.catch { error in
@@ -80,6 +83,34 @@ final class SelectCharacterViewController: UIViewController {
             }
         
         characterCollectionView.reloadData()
+    }
+    
+    private func configureMenu() {
+        var actions = ScoreCriteria.allCases
+            .map { criteria in
+                UIAction(
+                    title: criteria.criteriaString,
+                    image: UIImage(named: criteria.propIconString)?.withTintColor(.darkGray, renderingMode: .alwaysOriginal),
+                    state: criteria == selectedCriteria ? .on : .off,
+                    handler: { _ in
+                        self.selectedCriteria = criteria
+                        self.configureMenu()
+                    })
+            }
+        
+        selectCriteriaButton.menu = UIMenu(title: "スコアの計算基準", options: .displayInline, children: actions)
+        selectCriteriaButton.showsMenuAsPrimaryAction = true
+        selectCriteriaButton.setTitle(selectedCriteria?.criteriaString ?? "選択してください", for: .normal)
+        
+        var configuration = UIButton.Configuration.filled()
+        configuration.cornerStyle = .capsule
+        configuration.imagePadding = 4
+        configuration.imagePlacement = .trailing
+        configuration.automaticallyUpdateForSelection = false
+        configuration.image = UIImage(systemName: "chevron.up.chevron.down")
+        configuration.preferredSymbolConfigurationForImage
+        = UIImage.SymbolConfiguration(scale: .small)
+        selectCriteriaButton.configuration = configuration
     }
 }
 
