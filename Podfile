@@ -6,7 +6,6 @@ target 'GenshinArtifactScorable' do
   use_frameworks!
 
   pod 'ReusableKit'
-  pod 'SwiftyJSON'
 
   # Network
   pod 'Moya'

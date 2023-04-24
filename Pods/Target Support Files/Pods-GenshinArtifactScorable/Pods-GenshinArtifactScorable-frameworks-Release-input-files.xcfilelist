@@ -5,4 +5,3 @@ ${BUILT_PRODUCTS_DIR}/Moya/Moya.framework
 ${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework
 ${BUILT_PRODUCTS_DIR}/Result/Result.framework
 ${BUILT_PRODUCTS_DIR}/ReusableKit/ReusableKit.framework
-${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework

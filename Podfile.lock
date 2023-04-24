@@ -19,14 +19,12 @@ PODS:
   - ReusableKit (3.0.0):
     - ReusableKit/Core (= 3.0.0)
   - ReusableKit/Core (3.0.0)
-  - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
   - Instantiate
   - Moya
   - PromiseKit
   - ReusableKit
-  - SwiftyJSON
 
 SPEC REPOS:
   trunk:
@@ -36,7 +34,6 @@ SPEC REPOS:
     - PromiseKit
     - Result
     - ReusableKit
-    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -45,8 +42,7 @@ SPEC CHECKSUMS:
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   ReusableKit: e5f853ad4652e411f96b6119b2488afa12929be6
-  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: f7e3e8b27e0c5fd9dcbf685b2a7291565ec1e0c0
+PODFILE CHECKSUM: 4b5139523093e47ebd21f63dbe9476a547625453
 
 COCOAPODS: 1.11.2
