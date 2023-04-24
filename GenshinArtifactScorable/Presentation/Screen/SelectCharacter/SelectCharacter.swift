@@ -85,7 +85,7 @@ final class SelectCharacterViewController: UIViewController {
     }
     
     private func configureMenu() {
-        var actions = ScoreCriteria.allCases
+        let actions = ScoreCriteria.allCases
             .map { criteria in
                 UIAction(
                     title: criteria.criteriaString,
