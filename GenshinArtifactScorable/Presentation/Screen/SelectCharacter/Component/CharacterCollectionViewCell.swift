@@ -7,7 +7,6 @@
 
 import UIKit
 import ReusableKit
-import Instantiate
 
 final class CharacterCollectionViewCell: UICollectionViewCell {
     static let reusable = ReusableCell<CharacterCollectionViewCell>(nibName: "CharacterCollectionViewCell")

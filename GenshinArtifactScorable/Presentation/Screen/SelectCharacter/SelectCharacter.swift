@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftyJSON
 import ReusableKit
 
 final class SelectCharacterViewController: UIViewController {

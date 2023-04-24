@@ -39,7 +39,6 @@
 		088A4EFE29E8770500F99D85 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A4EFD29E8770500F99D85 /* ImageService.swift */; };
 		088A4F0129E99ED300F99D85 /* ja-jp.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 088A4F0029E99ED300F99D85 /* ja-jp.ttf */; };
 		0896328429CB4BEA00EBCC0E /* charactersTemp.json in Resources */ = {isa = PBXBuildFile; fileRef = 0896328329CB4BEA00EBCC0E /* charactersTemp.json */; };
-		0896328829CC8B5C00EBCC0E /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0896328729CC8B5C00EBCC0E /* UIImage+.swift */; };
 		0898313D29D3FC6300D9E5C8 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898313C29D3FC6300D9E5C8 /* CharacterCollectionViewCell.swift */; };
 		0898313F29D3FD7A00D9E5C8 /* NibInstantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898313E29D3FD7A00D9E5C8 /* NibInstantiatable.swift */; };
 		0898314329E5773300D9E5C8 /* FightPropMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898314229E5773300D9E5C8 /* FightPropMap.swift */; };
@@ -106,7 +105,6 @@
 		088A4EFD29E8770500F99D85 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		088A4F0029E99ED300F99D85 /* ja-jp.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ja-jp.ttf"; sourceTree = "<group>"; };
 		0896328329CB4BEA00EBCC0E /* charactersTemp.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = charactersTemp.json; sourceTree = "<group>"; };
-		0896328729CC8B5C00EBCC0E /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		0898313C29D3FC6300D9E5C8 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		0898313E29D3FD7A00D9E5C8 /* NibInstantiatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibInstantiatable.swift; sourceTree = "<group>"; };
 		0898314229E5773300D9E5C8 /* FightPropMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightPropMap.swift; sourceTree = "<group>"; };
@@ -230,7 +228,6 @@
 			isa = PBXGroup;
 			children = (
 				0868FEE929C443EF000AC079 /* NSObject+.swift */,
-				0896328729CC8B5C00EBCC0E /* UIImage+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -647,7 +644,6 @@
 				082077D529D3F04300854579 /* API.swift in Sources */,
 				0898314729E5800E00D9E5C8 /* Scorable.swift in Sources */,
 				088A4EF629E80A8A00F99D85 /* Localized.swift in Sources */,
-				0896328829CC8B5C00EBCC0E /* UIImage+.swift in Sources */,
 				0868FEEC29C44575000AC079 /* Storyboardable.swift in Sources */,
 				088A4EF829E86E5200F99D85 /* AppError.swift in Sources */,
 				08694CA7298A51F100FC98F8 /* SceneDelegate.swift in Sources */,

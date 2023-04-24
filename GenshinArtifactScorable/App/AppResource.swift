@@ -5,8 +5,6 @@
 //  Created by hide on 2023/03/29.
 //
 
-import SwiftyJSON
-
 final class AppResource {
     
     static let shared = AppResource()
