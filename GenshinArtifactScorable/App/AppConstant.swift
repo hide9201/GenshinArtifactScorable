@@ -8,10 +8,6 @@
 enum AppConstant {
     
     enum API {
-        static let baseURL = "https://enka.network/api"
-    }
-    
-    enum UI {
-        static let baseURL = "https://enka.network/ui"
+        static let baseURL = "https://enka.network"
     }
 }

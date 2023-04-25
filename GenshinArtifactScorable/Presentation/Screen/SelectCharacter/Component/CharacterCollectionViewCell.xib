@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ja-jp.ttf">
+            <string>SDK_JP_Web-85W</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7wy-lz-4bh" customClass="CharacterCollectionViewCell" customModule="GenshinArtifactScorable" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="94" height="125"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eJE-um-rUc">
+                <rect key="frame" x="0.0" y="0.0" width="94" height="125"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QualityBackground/Quality_5_background" translatesAutoresizingMaskIntoConstraints="NO" id="4Iw-et-Ij3">
+                        <rect key="frame" x="4" y="4" width="86" height="104.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="4Iw-et-Ij3" secondAttribute="height" multiplier="112:136" id="M6b-L2-UXv"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="characters/Wanderer/icon" translatesAutoresizingMaskIntoConstraints="NO" id="h7I-jx-ifR">
+                        <rect key="frame" x="4" y="4" width="86" height="86"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="h7I-jx-ifR" secondAttribute="height" multiplier="1:1" id="Ru2-wH-ID3"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lv.90" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="8yq-h7-8da">
+                        <rect key="frame" x="31" y="76" width="32" height="41"/>
+                        <fontDescription key="fontDescription" name="SDK_JP_Web-85W" family="SDK_JP_Web" pointSize="36"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ElementIcon/anemo" translatesAutoresizingMaskIntoConstraints="NO" id="gGy-59-cGO">
+                        <rect key="frame" x="4" y="4" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="IiJ-Z6-umU"/>
+                            <constraint firstAttribute="height" constant="32" id="ZPQ-q9-nWW"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="h7I-jx-ifR" secondAttribute="trailing" constant="4" id="6b5-0w-jW0"/>
+                    <constraint firstAttribute="trailing" secondItem="4Iw-et-Ij3" secondAttribute="trailing" constant="4" id="6dP-Wc-q9N"/>
+                    <constraint firstItem="8yq-h7-8da" firstAttribute="leading" secondItem="eJE-um-rUc" secondAttribute="leading" constant="31" id="P4y-xw-WFg"/>
+                    <constraint firstItem="gGy-59-cGO" firstAttribute="top" secondItem="eJE-um-rUc" secondAttribute="top" constant="4" id="R8o-vA-QJz"/>
+                    <constraint firstItem="h7I-jx-ifR" firstAttribute="top" secondItem="eJE-um-rUc" secondAttribute="top" constant="4" id="RYC-1h-58q"/>
+                    <constraint firstItem="4Iw-et-Ij3" firstAttribute="top" secondItem="eJE-um-rUc" secondAttribute="top" constant="4" id="TDw-6r-TH7"/>
+                    <constraint firstItem="4Iw-et-Ij3" firstAttribute="leading" secondItem="eJE-um-rUc" secondAttribute="leading" constant="4" id="cCM-Yi-6Vs"/>
+                    <constraint firstItem="8yq-h7-8da" firstAttribute="top" secondItem="h7I-jx-ifR" secondAttribute="bottom" constant="-14" id="dvQ-pv-EyV"/>
+                    <constraint firstItem="gGy-59-cGO" firstAttribute="leading" secondItem="eJE-um-rUc" secondAttribute="leading" constant="4" id="m4k-bQ-N9X"/>
+                    <constraint firstItem="h7I-jx-ifR" firstAttribute="leading" secondItem="eJE-um-rUc" secondAttribute="leading" constant="4" id="m8f-qa-ffy"/>
+                    <constraint firstAttribute="trailing" secondItem="8yq-h7-8da" secondAttribute="trailing" constant="31" id="p1T-F9-nu0"/>
+                    <constraint firstAttribute="bottom" secondItem="8yq-h7-8da" secondAttribute="bottom" constant="8" id="uFh-u2-YYR"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="94" height="125"/>
+            <connections>
+                <outlet property="characterBackgroundImageView" destination="4Iw-et-Ij3" id="0Al-gG-Cu9"/>
+                <outlet property="characterImageView" destination="h7I-jx-ifR" id="ir6-ot-GzL"/>
+                <outlet property="characterLevelLabel" destination="8yq-h7-8da" id="PM0-7D-6NA"/>
+                <outlet property="elementIconView" destination="gGy-59-cGO" id="Bli-Qz-doZ"/>
+            </connections>
+            <point key="canvasLocation" x="-337.68115942028987" y="-42.522321428571423"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ElementIcon/anemo" width="256" height="256"/>
+        <image name="QualityBackground/Quality_5_background" width="112" height="136"/>
+        <image name="characters/Wanderer/icon" width="256" height="256"/>
+    </resources>
+</document>
