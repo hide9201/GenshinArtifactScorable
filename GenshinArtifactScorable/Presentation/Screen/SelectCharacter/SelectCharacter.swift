@@ -45,6 +45,7 @@ final class SelectCharacterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
         configureMenu()
         refreshShapedAccountAllInfo()
     }
