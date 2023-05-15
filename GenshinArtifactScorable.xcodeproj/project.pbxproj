@@ -38,6 +38,9 @@
 		088A4EFC29E8729200F99D85 /* ImageTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A4EFB29E8729200F99D85 /* ImageTarget.swift */; };
 		088A4EFE29E8770500F99D85 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A4EFD29E8770500F99D85 /* ImageService.swift */; };
 		088A4F0129E99ED300F99D85 /* ja-jp.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 088A4F0029E99ED300F99D85 /* ja-jp.ttf */; };
+		088A4F0429F8AD4000F99D85 /* ShapedAccountAllInfoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A4F0329F8AD4000F99D85 /* ShapedAccountAllInfoObject.swift */; };
+		088A4F0729FB76E200F99D85 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A4F0629FB76E200F99D85 /* RealmManager.swift */; };
+		088A4F0929FF515400F99D85 /* FightPropMapObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A4F0829FF515400F99D85 /* FightPropMapObject.swift */; };
 		0896328429CB4BEA00EBCC0E /* charactersTemp.json in Resources */ = {isa = PBXBuildFile; fileRef = 0896328329CB4BEA00EBCC0E /* charactersTemp.json */; };
 		0898313D29D3FC6300D9E5C8 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898313C29D3FC6300D9E5C8 /* CharacterCollectionViewCell.swift */; };
 		0898313F29D3FD7A00D9E5C8 /* NibInstantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898313E29D3FD7A00D9E5C8 /* NibInstantiatable.swift */; };
@@ -104,6 +107,9 @@
 		088A4EFB29E8729200F99D85 /* ImageTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTarget.swift; sourceTree = "<group>"; };
 		088A4EFD29E8770500F99D85 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		088A4F0029E99ED300F99D85 /* ja-jp.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ja-jp.ttf"; sourceTree = "<group>"; };
+		088A4F0329F8AD4000F99D85 /* ShapedAccountAllInfoObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapedAccountAllInfoObject.swift; sourceTree = "<group>"; };
+		088A4F0629FB76E200F99D85 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		088A4F0829FF515400F99D85 /* FightPropMapObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightPropMapObject.swift; sourceTree = "<group>"; };
 		0896328329CB4BEA00EBCC0E /* charactersTemp.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = charactersTemp.json; sourceTree = "<group>"; };
 		0898313C29D3FC6300D9E5C8 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		0898313E29D3FD7A00D9E5C8 /* NibInstantiatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibInstantiatable.swift; sourceTree = "<group>"; };
@@ -154,6 +160,7 @@
 		082077BB29D3F02A00854579 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				088A4F0229F8AD2A00F99D85 /* Realm */,
 				082077C329D3F02B00854579 /* AccountAllInfo.swift */,
 				0898314429E57E2800D9E5C8 /* ShapedAccountAllInfo.swift */,
 				0898314229E5773300D9E5C8 /* FightPropMap.swift */,
@@ -309,6 +316,7 @@
 				0868FEE129C438E8000AC079 /* Presentation */,
 				082077BB29D3F02A00854579 /* Model */,
 				082077D629D3F05200854579 /* Service */,
+				088A4F0529FB769E00F99D85 /* Manager */,
 				082077CE29D3F04300854579 /* Network */,
 				0896328229CB4BBD00EBCC0E /* Resource */,
 				08694CAD298A51F500FC98F8 /* Assets.xcassets */,
@@ -340,6 +348,23 @@
 				088A4F0029E99ED300F99D85 /* ja-jp.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		088A4F0229F8AD2A00F99D85 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				088A4F0329F8AD4000F99D85 /* ShapedAccountAllInfoObject.swift */,
+				088A4F0829FF515400F99D85 /* FightPropMapObject.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		088A4F0529FB769E00F99D85 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				088A4F0629FB76E200F99D85 /* RealmManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		0896328229CB4BBD00EBCC0E /* Resource */ = {
@@ -625,8 +650,11 @@
 			files = (
 				0898314329E5773300D9E5C8 /* FightPropMap.swift in Sources */,
 				08694CA9298A51F100FC98F8 /* ViewController.swift in Sources */,
+				088A4F0929FF515400F99D85 /* FightPropMapObject.swift in Sources */,
 				088A4EFE29E8770500F99D85 /* ImageService.swift in Sources */,
+				088A4F0429F8AD4000F99D85 /* ShapedAccountAllInfoObject.swift in Sources */,
 				0898314529E57E2800D9E5C8 /* ShapedAccountAllInfo.swift in Sources */,
+				088A4F0729FB76E200F99D85 /* RealmManager.swift in Sources */,
 				082077D429D3F04300854579 /* BaseTarget.swift in Sources */,
 				0868FEEA29C443EF000AC079 /* NSObject+.swift in Sources */,
 				088A4EF229E8005600F99D85 /* NameCardMap.swift in Sources */,

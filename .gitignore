@@ -51,6 +51,8 @@ playground.xcworkspace
 # Add this line if you want to avoid checking in source code from the Xcode workspace
 # *.xcworkspace
 
+Pods/Realm/core/realm-monorepo.xcframework/watchos-arm64_i386_x86_64-simulator/librealm-monorepo.a
+
 # Carthage
 #
 # Add this line if you want to avoid checking in source code from Carthage dependencies.

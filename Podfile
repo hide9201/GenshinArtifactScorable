@@ -6,6 +6,7 @@ target 'GenshinArtifactScorable' do
   use_frameworks!
 
   pod 'ReusableKit'
+  pod 'RealmSwift'
 
   # Network
   pod 'Moya'

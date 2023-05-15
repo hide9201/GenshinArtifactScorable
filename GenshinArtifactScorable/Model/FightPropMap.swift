@@ -71,11 +71,11 @@ struct FightPropMap: Codable {
     var geoEnergyCost: Double?
 
     /// HP上限
-    var HP: Double
+    var hp: Double
     /// 攻撃力
-    var ATK: Double
+    var atk: Double
     /// 防御力
-    var DEF: Double
+    var def: Double
 
     private enum CodingKeys: String, CodingKey {
         case baseHP = "1"
@@ -110,8 +110,8 @@ struct FightPropMap: Codable {
         case anemoEnergyCost = "74"
         case cryoEnergyCost = "75"
         case geoEnergyCost = "76"
-        case HP = "2000"
-        case ATK = "2001"
-        case DEF = "2002"
+        case hp = "2000"
+        case atk = "2001"
+        case def = "2002"
     }
 }

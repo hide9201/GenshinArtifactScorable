@@ -46,16 +46,22 @@ final class SelectCharacterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureMenu()
-        accountService.getAccountAllInfo(uid: uid)
+        refreshShapedAccountAllInfo()
+    }
+    
+    // MARK: - Private
+    
+    private func refreshShapedAccountAllInfo() {
+        accountService.getAccountAllInfoFromAPI(uid: uid, nextRefreshableDate: shapedAccountAllInfo?.nextRefreshableDate)
             .done { accountAllInfo in
                 self.shapedAccountAllInfo = accountAllInfo
                 self.setupUI()
+                self.accountService.saveAccountAllInfo(to: accountAllInfo)
+                
             }.catch { error in
                 print(error)
             }
     }
-    
-    // MARK: - Private
     
     private func setupUI() {
         uidLabel.text = "UID " + uid
@@ -118,6 +124,7 @@ extension SelectCharacterViewController: Storyboardable {
         self.uid = dependency
         self.accountService = AccountService()
         self.imageService = ImageService()
+        self.shapedAccountAllInfo = accountService.getAccountAllInfoFromRealm(uid: uid)
     }
 }
 
@@ -159,16 +166,6 @@ extension SelectCharacterViewController: UICollectionViewDelegateFlowLayout {
 extension SelectCharacterViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // CollectionViewCellがタップできる = shapedAccountAllInfoを参照してセルを作成できているので，強制アンラップでも良い
-        print(indexPath.row)
         let character = shapedAccountAllInfo!.characters[indexPath.row]
-        print(character.name)
-        print(character.element)
-        print(character.skills)
-        print("会心スコア：\(character.calculateCriticalScore())")
-        print("総合スコア(攻撃換算)：\(character.calculateTotalScore(criteria: .attack))")
-        print("総合スコア(HP換算)：\(character.calculateTotalScore(criteria: .hp))")
-        print("総合スコア(防御換算)：\(character.calculateTotalScore(criteria: .defense))")
-        print("総合スコア(チャージ換算)：\(character.calculateTotalScore(criteria: .energyRecharge))")
-        print("総合スコア(熟知換算)：\(character.calculateTotalScore(criteria: .elementalMastery))")
     }
 }
