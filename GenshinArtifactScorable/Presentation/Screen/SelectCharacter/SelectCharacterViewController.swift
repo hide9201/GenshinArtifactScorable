@@ -149,7 +149,7 @@ extension SelectCharacterViewController: UICollectionViewDataSource {
 
 extension SelectCharacterViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSizeWidth = self.characterCollectionView.frame.width / 4
+        let cellSizeWidth = characterCollectionView.frame.width / 4
         let cellSizeHeight = cellSizeWidth * (136.0 / 112.0)
         
         return CGSize(width: cellSizeWidth, height: cellSizeHeight)
