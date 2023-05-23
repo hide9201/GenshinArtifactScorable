@@ -24,6 +24,11 @@ enum AppResourceError: Error {
     case notFound
 }
 
+enum ImageCachesManagerError: Error {
+    /// 書き込みに失敗した
+    case write(Error)
+}
+
 enum DataStoreError: Error, CauseTraceable {
 
     /// トランザクションが失敗した

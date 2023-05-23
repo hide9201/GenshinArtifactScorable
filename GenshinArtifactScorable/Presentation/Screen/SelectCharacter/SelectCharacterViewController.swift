@@ -74,16 +74,18 @@ final class SelectCharacterViewController: UIViewController {
         worldRankLabel.text = String(shapedAccountAllInfo.playerBasicInfo.worldLevel)
         statusMessageLabel.text = shapedAccountAllInfo.playerBasicInfo.statusMessage
         
-        imageService.fetchUIImage(imageName: shapedAccountAllInfo.playerBasicInfo.profilePictureCharacterIconString)
+        imageService.fetchUIImage(imageString: shapedAccountAllInfo.playerBasicInfo.profilePictureCharacterIconString)
             .done { profileIconImage in
                 self.profileIconImageView.image = profileIconImage
+                self.imageService.saveUIImage(image: profileIconImage, imageString: shapedAccountAllInfo.playerBasicInfo.profilePictureCharacterIconString)
             }.catch { error in
                 print(error)
             }
         
-        imageService.fetchUIImage(imageName: shapedAccountAllInfo.playerBasicInfo.nameCardString)
+        imageService.fetchUIImage(imageString: shapedAccountAllInfo.playerBasicInfo.nameCardString)
             .done { nameCardImage in
                 self.namecardImageView.image = nameCardImage
+                self.imageService.saveUIImage(image: nameCardImage, imageString: shapedAccountAllInfo.playerBasicInfo.nameCardString)
             }.catch { error in
                 print(error)
             }

@@ -9,7 +9,27 @@ import PromiseKit
 
 struct ImageService {
     
-    func fetchUIImage(imageName: String) -> Promise<UIImage> {
-        return ImageAPI.shared.call(ImageTarget.fetchUIImage(imageName: imageName))
+    private let imageCachesManager: ImageCachesManager
+    
+    init() {
+        imageCachesManager = ImageCachesManager()
+    }
+    
+    func fetchUIImage(imageString: String) -> Promise<UIImage> {
+        if let image = imageCachesManager.getUIImage(imageString: imageString) {
+            return Promise { resolver in
+                resolver.fulfill(image)
+            }
+        } else {
+            return ImageAPI.shared.call(ImageTarget.fetchUIImage(imageString: imageString))
+        }
+    }
+    
+    func saveUIImage(image: UIImage, imageString: String) {
+        do {
+            try imageCachesManager.saveUIImage(image: image, imageString: imageString)
+        } catch {
+            print(error)
+        }
     }
 }

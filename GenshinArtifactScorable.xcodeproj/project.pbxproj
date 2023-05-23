@@ -49,6 +49,7 @@
 		0898314729E5800E00D9E5C8 /* Scorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898314629E5800E00D9E5C8 /* Scorable.swift */; };
 		0898314929E583E600D9E5C8 /* CharacterMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898314829E583E600D9E5C8 /* CharacterMap.swift */; };
 		0898314E29E63D3000D9E5C8 /* JSONFileDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898314D29E63D3000D9E5C8 /* JSONFileDecoder.swift */; };
+		08D13C362A1C9EA700EBBC2C /* ImageCachesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D13C352A1C9EA700EBBC2C /* ImageCachesManager.swift */; };
 		3629DBB7B17398A227391D43 /* Pods_GenshinArtifactScorable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95BC2788A8C2A5E7E67B1DB2 /* Pods_GenshinArtifactScorable.framework */; };
 		44D2CF16DC6319759D4B3C97 /* Pods_GenshinArtifactScorable_GenshinArtifactScorableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA21D01A36B091C85C08AD74 /* Pods_GenshinArtifactScorable_GenshinArtifactScorableUITests.framework */; };
 		5BA244285196C2CF8FAB377D /* Pods_GenshinArtifactScorableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49599EDDC90BA84F791994E /* Pods_GenshinArtifactScorableTests.framework */; };
@@ -118,6 +119,7 @@
 		0898314629E5800E00D9E5C8 /* Scorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scorable.swift; sourceTree = "<group>"; };
 		0898314829E583E600D9E5C8 /* CharacterMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMap.swift; sourceTree = "<group>"; };
 		0898314D29E63D3000D9E5C8 /* JSONFileDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONFileDecoder.swift; sourceTree = "<group>"; };
+		08D13C352A1C9EA700EBBC2C /* ImageCachesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCachesManager.swift; sourceTree = "<group>"; };
 		52BEE03A606A545B9482FBE3 /* Pods-GenshinArtifactScorableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenshinArtifactScorableTests.release.xcconfig"; path = "Target Support Files/Pods-GenshinArtifactScorableTests/Pods-GenshinArtifactScorableTests.release.xcconfig"; sourceTree = "<group>"; };
 		63B0A73634DBA5362EE43E9B /* Pods-GenshinArtifactScorable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenshinArtifactScorable.release.xcconfig"; path = "Target Support Files/Pods-GenshinArtifactScorable/Pods-GenshinArtifactScorable.release.xcconfig"; sourceTree = "<group>"; };
 		8850FAB9648F86E09503ACE9 /* Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests.debug.xcconfig"; path = "Target Support Files/Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests/Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				088A4F0629FB76E200F99D85 /* RealmManager.swift */,
+				08D13C352A1C9EA700EBBC2C /* ImageCachesManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				088A4EF629E80A8A00F99D85 /* Localized.swift in Sources */,
 				0868FEEC29C44575000AC079 /* Storyboardable.swift in Sources */,
 				088A4EF829E86E5200F99D85 /* AppError.swift in Sources */,
+				08D13C362A1C9EA700EBBC2C /* ImageCachesManager.swift in Sources */,
 				08694CA7298A51F100FC98F8 /* SceneDelegate.swift in Sources */,
 				082077D829D3F05200854579 /* AccountService.swift in Sources */,
 				0898314E29E63D3000D9E5C8 /* JSONFileDecoder.swift in Sources */,

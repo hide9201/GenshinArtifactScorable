@@ -22,7 +22,7 @@ final class DataStore {
         })
         Realm.Configuration.defaultConfiguration = config
         
-        self.realm = try! Realm()
+        realm = try! Realm()
     }
 }
 
