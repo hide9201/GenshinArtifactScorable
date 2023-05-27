@@ -41,7 +41,6 @@
 		088A4F0429F8AD4000F99D85 /* ShapedAccountAllInfoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A4F0329F8AD4000F99D85 /* ShapedAccountAllInfoObject.swift */; };
 		088A4F0729FB76E200F99D85 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A4F0629FB76E200F99D85 /* RealmManager.swift */; };
 		088A4F0929FF515400F99D85 /* FightPropMapObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A4F0829FF515400F99D85 /* FightPropMapObject.swift */; };
-		0896328429CB4BEA00EBCC0E /* charactersTemp.json in Resources */ = {isa = PBXBuildFile; fileRef = 0896328329CB4BEA00EBCC0E /* charactersTemp.json */; };
 		0898313D29D3FC6300D9E5C8 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898313C29D3FC6300D9E5C8 /* CharacterCollectionViewCell.swift */; };
 		0898313F29D3FD7A00D9E5C8 /* NibInstantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898313E29D3FD7A00D9E5C8 /* NibInstantiatable.swift */; };
 		0898314329E5773300D9E5C8 /* FightPropMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898314229E5773300D9E5C8 /* FightPropMap.swift */; };
@@ -111,7 +110,6 @@
 		088A4F0329F8AD4000F99D85 /* ShapedAccountAllInfoObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapedAccountAllInfoObject.swift; sourceTree = "<group>"; };
 		088A4F0629FB76E200F99D85 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		088A4F0829FF515400F99D85 /* FightPropMapObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightPropMapObject.swift; sourceTree = "<group>"; };
-		0896328329CB4BEA00EBCC0E /* charactersTemp.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = charactersTemp.json; sourceTree = "<group>"; };
 		0898313C29D3FC6300D9E5C8 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		0898313E29D3FD7A00D9E5C8 /* NibInstantiatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibInstantiatable.swift; sourceTree = "<group>"; };
 		0898314229E5773300D9E5C8 /* FightPropMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightPropMap.swift; sourceTree = "<group>"; };
@@ -374,7 +372,6 @@
 			isa = PBXGroup;
 			children = (
 				088A4EFF29E99E9E00F99D85 /* Font */,
-				0896328329CB4BEA00EBCC0E /* charactersTemp.json */,
 				088A4EF329E809B800F99D85 /* loc.json */,
 				088A4EEF29E7FFBA00F99D85 /* characters.json */,
 				088A4EED29E7FF9300F99D85 /* namecards.json */,
@@ -521,7 +518,6 @@
 				0842FA6A29D34B01008CD2AC /* CharacterCollectionViewCell.xib in Resources */,
 				088A4F0129E99ED300F99D85 /* ja-jp.ttf in Resources */,
 				088A4EEE29E7FF9300F99D85 /* namecards.json in Resources */,
-				0896328429CB4BEA00EBCC0E /* charactersTemp.json in Resources */,
 				08694CAC298A51F100FC98F8 /* Main.storyboard in Resources */,
 				088A4EF029E7FFBA00F99D85 /* characters.json in Resources */,
 			);
