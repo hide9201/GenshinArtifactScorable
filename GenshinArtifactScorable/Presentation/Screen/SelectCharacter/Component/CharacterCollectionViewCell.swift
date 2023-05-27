@@ -34,6 +34,6 @@ extension CharacterCollectionViewCell: NibInstantiatable {
             }
         characterLevelLabel.text = "Lv.\(dependency.character.level)"
         characterBackgroundImageView.image = UIImage(named: dependency.character.quality.characterBackgroundIconString)
-        elementIconView.image = UIImage(named: "ElementIcon/\(dependency.character.element)")
+        elementIconView.image = UIImage(named: "ElementIcon/\(dependency.character.element.rawValue)")
     }
 }

@@ -49,6 +49,8 @@
 		0898314929E583E600D9E5C8 /* CharacterMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898314829E583E600D9E5C8 /* CharacterMap.swift */; };
 		0898314E29E63D3000D9E5C8 /* JSONFileDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898314D29E63D3000D9E5C8 /* JSONFileDecoder.swift */; };
 		08D13C362A1C9EA700EBBC2C /* ImageCachesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D13C352A1C9EA700EBBC2C /* ImageCachesManager.swift */; };
+		08D13C392A22074C00EBBC2C /* BuildCardGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D13C382A22074C00EBBC2C /* BuildCardGeneratorViewController.swift */; };
+		08D13C3B2A22076C00EBBC2C /* BuildCardGenerator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08D13C3A2A22076C00EBBC2C /* BuildCardGenerator.storyboard */; };
 		3629DBB7B17398A227391D43 /* Pods_GenshinArtifactScorable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95BC2788A8C2A5E7E67B1DB2 /* Pods_GenshinArtifactScorable.framework */; };
 		44D2CF16DC6319759D4B3C97 /* Pods_GenshinArtifactScorable_GenshinArtifactScorableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA21D01A36B091C85C08AD74 /* Pods_GenshinArtifactScorable_GenshinArtifactScorableUITests.framework */; };
 		5BA244285196C2CF8FAB377D /* Pods_GenshinArtifactScorableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49599EDDC90BA84F791994E /* Pods_GenshinArtifactScorableTests.framework */; };
@@ -118,6 +120,8 @@
 		0898314829E583E600D9E5C8 /* CharacterMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMap.swift; sourceTree = "<group>"; };
 		0898314D29E63D3000D9E5C8 /* JSONFileDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONFileDecoder.swift; sourceTree = "<group>"; };
 		08D13C352A1C9EA700EBBC2C /* ImageCachesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCachesManager.swift; sourceTree = "<group>"; };
+		08D13C382A22074C00EBBC2C /* BuildCardGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildCardGeneratorViewController.swift; sourceTree = "<group>"; };
+		08D13C3A2A22076C00EBBC2C /* BuildCardGenerator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BuildCardGenerator.storyboard; sourceTree = "<group>"; };
 		52BEE03A606A545B9482FBE3 /* Pods-GenshinArtifactScorableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenshinArtifactScorableTests.release.xcconfig"; path = "Target Support Files/Pods-GenshinArtifactScorableTests/Pods-GenshinArtifactScorableTests.release.xcconfig"; sourceTree = "<group>"; };
 		63B0A73634DBA5362EE43E9B /* Pods-GenshinArtifactScorable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenshinArtifactScorable.release.xcconfig"; path = "Target Support Files/Pods-GenshinArtifactScorable/Pods-GenshinArtifactScorable.release.xcconfig"; sourceTree = "<group>"; };
 		8850FAB9648F86E09503ACE9 /* Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests.debug.xcconfig"; path = "Target Support Files/Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests/Pods-GenshinArtifactScorable-GenshinArtifactScorableUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -253,6 +257,7 @@
 				0868FEE829C43DC9000AC079 /* Launch */,
 				0868FEE729C43B2B000AC079 /* Main */,
 				0868FEED29C44EF5000AC079 /* SelectCharacter */,
+				08D13C372A2206F100EBBC2C /* BuildCardGenerator */,
 				0868FEEB29C44575000AC079 /* Storyboardable.swift */,
 				0898313E29D3FD7A00D9E5C8 /* NibInstantiatable.swift */,
 			);
@@ -377,6 +382,15 @@
 				088A4EED29E7FF9300F99D85 /* namecards.json */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		08D13C372A2206F100EBBC2C /* BuildCardGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				08D13C3A2A22076C00EBBC2C /* BuildCardGenerator.storyboard */,
+				08D13C382A22074C00EBBC2C /* BuildCardGeneratorViewController.swift */,
+			);
+			path = BuildCardGenerator;
 			sourceTree = "<group>";
 		};
 		0A1F6C5FAEAEEACD53D48F83 /* Pods */ = {
@@ -518,6 +532,7 @@
 				0842FA6A29D34B01008CD2AC /* CharacterCollectionViewCell.xib in Resources */,
 				088A4F0129E99ED300F99D85 /* ja-jp.ttf in Resources */,
 				088A4EEE29E7FF9300F99D85 /* namecards.json in Resources */,
+				08D13C3B2A22076C00EBBC2C /* BuildCardGenerator.storyboard in Resources */,
 				08694CAC298A51F100FC98F8 /* Main.storyboard in Resources */,
 				088A4EF029E7FFBA00F99D85 /* characters.json in Resources */,
 			);
@@ -650,6 +665,7 @@
 				0898314329E5773300D9E5C8 /* FightPropMap.swift in Sources */,
 				08694CA9298A51F100FC98F8 /* ViewController.swift in Sources */,
 				088A4F0929FF515400F99D85 /* FightPropMapObject.swift in Sources */,
+				08D13C392A22074C00EBBC2C /* BuildCardGeneratorViewController.swift in Sources */,
 				088A4EFE29E8770500F99D85 /* ImageService.swift in Sources */,
 				088A4F0429F8AD4000F99D85 /* ShapedAccountAllInfoObject.swift in Sources */,
 				0898314529E57E2800D9E5C8 /* ShapedAccountAllInfo.swift in Sources */,

@@ -88,7 +88,7 @@ struct Character {
         guard let character = characterMap["\(avatarInfo.avatarId)-\(avatarInfo.skillDepotId)"] ?? characterMap["\(avatarInfo.avatarId)"] else { return nil }
         
         name = localizedDictionary.nameFrom(id: character.nameTextMapHash)
-        element = Element.init(rawValue: character.element) ?? .unknown
+        element = Element.init(rawValue: character.elementMap[character.element] ?? "") ?? .unknown
         
         if let talentIdList = avatarInfo.talentIdList {
             constellationLevel = talentIdList.count
@@ -141,13 +141,13 @@ struct Character {
     }
     
     enum Element: String {
-        case cryo = "Ice"
-        case anemo = "Wind"
-        case electro = "Electric"
-        case hydro = "Water"
-        case pyro = "Fire"
-        case geo = "Rock"
-        case dendro = "Grass"
+        case cryo = "Cryo"
+        case anemo = "Anemo"
+        case electro = "Electro"
+        case hydro = "Hydro"
+        case pyro = "Pyro"
+        case geo = "Geo"
+        case dendro = "Dendro"
         case unknown
     }
     

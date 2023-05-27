@@ -56,6 +56,15 @@ struct CharacterMap: Codable {
                 return "UI_NameCardPic_\(nameID)_P"
             }
         }
+        let elementMap = [
+            "Ice": "Cryo",
+            "Wind": "Anemo",
+            "Electric": "Electro",
+            "Water": "Hydro",
+            "Fire": "Pyro",
+            "Rock": "Geo",
+            "Grass": "Dendro"
+        ]
         
         private enum CodingKeys: String, CodingKey {
             case element = "Element"
