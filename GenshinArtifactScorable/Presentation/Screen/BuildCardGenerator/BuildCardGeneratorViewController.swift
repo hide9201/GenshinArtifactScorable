@@ -11,6 +11,7 @@ final class BuildCardGeneratorViewController: UIViewController {
     
     // MARK: - Outlet
     
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var buildCardImageView: UIImageView! {
         didSet {
             buildCardImageView.image = UIImage(named: "BuildCard/Base/\(character.element.rawValue)")
@@ -27,6 +28,7 @@ final class BuildCardGeneratorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scoreLabel.text = "スコア：\(String(format: "%.1f", character.calculateTotalScore(criteria: scoreCriteria)))"
     }
     
     // MARK: - Private

@@ -23,13 +23,24 @@
                                     <constraint firstAttribute="height" constant="240" id="Tmm-qM-AQv"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="スコア：150" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SO8-ki-szu">
+                                <rect key="frame" x="128" y="415" width="137.33333333333337" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="dt6-eu-O49"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="NCi-Q4-Q8c" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Cw2-r9-BSW"/>
                             <constraint firstItem="NCi-Q4-Q8c" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ZFx-ev-pm0"/>
+                            <constraint firstItem="SO8-ki-szu" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="cTy-PK-JyD"/>
                             <constraint firstItem="NCi-Q4-Q8c" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="kEs-zp-ESu"/>
+                            <constraint firstItem="SO8-ki-szu" firstAttribute="top" secondItem="NCi-Q4-Q8c" secondAttribute="bottom" constant="72" id="t24-kz-kYy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="ビルドカード" id="GDr-1Z-I9S">
@@ -38,6 +49,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="buildCardImageView" destination="NCi-Q4-Q8c" id="T9k-3i-hDK"/>
+                        <outlet property="scoreLabel" destination="SO8-ki-szu" id="F8Y-wg-x4U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
