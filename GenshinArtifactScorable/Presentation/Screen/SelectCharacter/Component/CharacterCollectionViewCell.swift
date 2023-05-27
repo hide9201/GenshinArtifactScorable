@@ -24,10 +24,11 @@ final class CharacterCollectionViewCell: UICollectionViewCell {
 }
 
 extension CharacterCollectionViewCell: NibInstantiatable {
-    func inject(_ dependency: (character: ShapedAccountAllInfo.ScorableCharacter, imageService: ImageService)) {
-        dependency.imageService.fetchUIImage(imageName: "\(dependency.character.iconString)")
+    func inject(_ dependency: (character: Character, imageService: ImageService)) {
+        dependency.imageService.fetchUIImage(imageString: dependency.character.iconString)
             .done { image in
                 self.characterImageView.image = image
+                dependency.imageService.saveUIImage(image: image, imageString: dependency.character.iconString)
             }.catch { error in
                 print(error)
             }

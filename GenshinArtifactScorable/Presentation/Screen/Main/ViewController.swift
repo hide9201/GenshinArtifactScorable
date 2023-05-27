@@ -12,7 +12,8 @@ class ViewController: UIViewController {
     @IBOutlet private weak var uidTextField: UITextField!
     
     @IBAction func uidSendButtonDidTap(_ sender: Any) {
-        let viewController = SelectCharacterViewController(with: uidTextField.text!)
+        let uid = uidTextField.text!
+        let viewController = SelectCharacterViewController(with: uid)
         navigationController?.pushViewController(viewController, animated: true)
     }
     

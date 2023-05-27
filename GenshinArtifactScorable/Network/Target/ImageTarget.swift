@@ -9,15 +9,15 @@ import Moya
 
 enum ImageTarget {
     
-    case fetchUIImage(imageName: String)
+    case fetchUIImage(imageString: String)
 }
 
 extension ImageTarget: BaseTarget {
     
     var path: String {
         switch self {
-        case .fetchUIImage(let imageName):
-            return "/ui/\(imageName).png"
+        case .fetchUIImage(let imageString):
+            return "/ui/\(imageString).png"
         }
     }
     
