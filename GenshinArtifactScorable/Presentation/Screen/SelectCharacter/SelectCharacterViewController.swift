@@ -132,7 +132,7 @@ final class SelectCharacterViewController: UIViewController {
         configuration.imagePadding = 8
         configuration.imagePlacement = .trailing
         configuration.automaticallyUpdateForSelection = false
-        configuration.image = UIImage(systemName: "chevron.up")
+        configuration.image = UIImage(systemName: "chevron.down")
         configuration.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(scale: .small)
         selectCriteriaButton.configuration = configuration
     }
