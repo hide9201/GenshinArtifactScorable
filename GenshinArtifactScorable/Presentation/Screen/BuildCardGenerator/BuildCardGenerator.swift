@@ -10,7 +10,7 @@ import UIKit
 
 struct BuildCardGenerator {
     
-    func buildCardCreate(buildCardBaseImage: UIImage, characterImage: UIImage, weaponImage: UIImage, artifactImages: [UIImage?]) -> UIImage {
+    func buildCardCreate(buildCardBaseImage: UIImage, characterImage: UIImage, weaponImage: UIImage, skillIcons: [UIImage?], artifactImages: [UIImage?]) -> UIImage {
         //画像の下地をサイズを指定して作成
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 1920, height: 1080), false, 0)
         
@@ -31,16 +31,32 @@ struct BuildCardGenerator {
         let weaponImageHeight = weaponImage.size.height * weaponImageScale
         weaponImage.draw(in: CGRect(x: 1418 + (weaponImageMaxWidth - weaponImageWidth) / 2, y: 32 + (weaponImageMaxHeight - weaponImageHeight) / 2, width: weaponImageWidth, height: weaponImageHeight))
         
-        for (i, artifactImage) in artifactImages.enumerated() {
+        let skillIconBack = UIImage(named: "BuildCard/TalentBack.png")!
+        let skillIconBackWidth: CGFloat = 128
+        let skillIconBackHeight: CGFloat = 128
+        let skillIconWidth: CGFloat = 76
+        let skillIconHeight: CGFloat = 76
+        for (index, skillIcon) in skillIcons.enumerated() {
+            if let skillIcon = skillIcon {
+                let skillIconBackRectX: CGFloat = 12
+                let skillIconBackRectY: CGFloat = 276 + (skillIconBackHeight - 12) * CGFloat(index)
+                let skillIconBackRect = CGRect(x: skillIconBackRectX, y: skillIconBackRectY, width: skillIconBackWidth, height: skillIconBackHeight)
+                skillIconBack.draw(in: skillIconBackRect, blendMode: .sourceAtop, alpha: 1)
+                
+                let skillIconRectX: CGFloat = 38
+                let skillIconRectY: CGFloat = 302 + (40 + skillIconHeight) * CGFloat(index)
+                let skillIconRect = CGRect(x: skillIconRectX, y: skillIconRectY, width: skillIconWidth, height: skillIconHeight)
+                skillIcon.draw(in: skillIconRect, blendMode: .sourceAtop, alpha: 1)
+            }
+        }
+        
+        
+        let artifactImageWidth: CGFloat = 264
+        let artifactImageHeight: CGFloat = 264
+        for (index, artifactImage) in artifactImages.enumerated() {
             if let artifactImage = artifactImage {
-                let artifactImageMaxWidth: CGFloat = 240
-                let artifactImageMaxHeight: CGFloat = 240
-                let artifactImageScale = min(artifactImageMaxWidth / artifactImage.size.width, artifactImageMaxHeight / artifactImageMaxHeight)
-                let artifactImageWidth = artifactImage.size.width * artifactImageScale
-                let artifactImageHeight = artifactImage.size.height * artifactImageScale
-                let offset = CGFloat(30) + (CGFloat(190) + artifactImageWidth) * CGFloat(i)
-                let rectX = offset + (artifactImageMaxWidth - artifactImageWidth) / 2
-                let rectY = 624 + (artifactImageMaxHeight - artifactImageHeight) / 2
+                let rectX: CGFloat = 12 + (108 + artifactImageWidth) * CGFloat(index)
+                let rectY: CGFloat = 632
                 let rect = CGRect(x: rectX, y: rectY, width: artifactImageWidth, height: artifactImageHeight)
                 artifactImage.draw(in: rect, blendMode: .sourceAtop, alpha: 0.8)
             }
