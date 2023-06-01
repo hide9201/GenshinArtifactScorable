@@ -25,6 +25,7 @@ extension BuildCardGeneratable {
         let buildCardBaseImage = UIImage(named: "BuildCard/Base/\(character.element.rawValue)")!
         buildCardBaseImage.draw(in: CGRect(x: 0, y: 0, width: 1920, height: 1080))
         
+        // characterImageはアスペクト比がキャラ毎に違うので，アスペクト比固定で最大サイズに合わせる
         // characterImageMaxHeightはもうちょい小さくてもいいかも，画像の横がはみ出るようならcharacterImageMaxHeightを小さくしてみる
         let characterImageMaxWidth: CGFloat = 756
         let characterImageMaxHeight: CGFloat = 646
@@ -33,12 +34,14 @@ extension BuildCardGeneratable {
         let characterImageHeight = characterImage.size.height * characterImageScale
         characterImage.draw(in: CGRect(x: (characterImageMaxWidth - characterImageWidth) / 2, y: (characterImageMaxHeight - characterImageHeight) / 2, width: characterImageWidth, height: characterImageHeight))
         
-        let weaponImageMaxWidth: CGFloat = 152
-        let weaponImageMaxHeight: CGFloat = 180
-        let weaponImageScale = weaponImageMaxWidth / weaponImage.size.width
-        let weaponImageWidth = weaponImage.size.width * weaponImageScale
-        let weaponImageHeight = weaponImage.size.height * weaponImageScale
-        weaponImage.draw(in: CGRect(x: 1418 + (weaponImageMaxWidth - weaponImageWidth) / 2, y: 32 + (weaponImageMaxHeight - weaponImageHeight) / 2, width: weaponImageWidth, height: weaponImageHeight))
+        let weaponImageWidth: CGFloat = 153
+        let weaponImageHeight: CGFloat = 153
+        weaponImage.draw(in: CGRect(x: 1418, y: 32, width: weaponImageWidth, height: weaponImageHeight))
+        
+        let weaponRealityIcon = UIImage(named: "BuildCard/WeaponRealityIcon/\(character.weapon.rankLevel.rawValue).png")!
+        let weaponRealityIconWidth: CGFloat = 153
+        let weaponRealityIconHeight: CGFloat = 33
+        weaponRealityIcon.draw(in: CGRect(x: 1418, y: 172, width: weaponRealityIconWidth, height: weaponRealityIconHeight))
         
         let skillIconBack = UIImage(named: "BuildCard/TalentBack.png")!
         let skillIconBackWidth: CGFloat = 128
@@ -90,6 +93,28 @@ extension BuildCardGeneratable {
                 artifactImage.draw(in: rect, blendMode: .sourceAtop, alpha: 0.7)
             }
         }
+        
+        let characterNameFont = UIFont(name: "SDK_JP_Web", size: 48)!
+        let characterName = NSString(string: character.name)
+        characterName.draw(at: CGPoint(x: 32, y: 32), withAttributes: [
+            NSAttributedString.Key.font: characterNameFont,
+            NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        let characterLevelFont = UIFont(name: "SDK_JP_Web", size: 28)!
+        let characterLevelString = NSString(string: String("Lv.\(character.level)"))
+        characterLevelString.draw(at: CGPoint(x: 32, y: 84), withAttributes: [
+            NSAttributedString.Key.font: characterLevelFont,
+            NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        let friendshipIcon = UIImage(named: "BuildCard/Friendship.png")!
+        let friendshipIconWidth: CGFloat = 39
+        let friendshipIconHeight: CGFloat = 32
+        friendshipIcon.draw(in: CGRect(x: 116, y: 84, width: friendshipIconWidth, height: friendshipIconHeight))
+        
+        let friendshipLevel = NSString(string: String(character.friendshipLevel))
+        friendshipLevel.draw(at: CGPoint(x: 152, y: 84), withAttributes: [
+            NSAttributedString.Key.font: characterLevelFont,
+            NSAttributedString.Key.foregroundColor: UIColor.white])
         
         let buildCardImage = UIGraphicsGetImageFromCurrentImageContext()
 

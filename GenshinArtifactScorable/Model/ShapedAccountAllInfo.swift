@@ -66,6 +66,7 @@ struct Character {
     let constellationStrings: [String]
     let skills: [Skill]
     let level: Int
+    let friendshipLevel: Int
     let weapon: Weapon
     let artifacts: [Artifact]
     let fightPropMap: FightPropMap
@@ -112,6 +113,7 @@ struct Character {
         })
         
         level = Int(avatarInfo.propMap.level.val) ?? 0
+        friendshipLevel = avatarInfo.fetterInfo.expLevel
         
         guard let weaponEquipment = avatarInfo.equipList.first(where: { equipment in
             equipment.flat.itemType == "ITEM_WEAPON"
@@ -128,13 +130,14 @@ struct Character {
         quality = .init(rawValue: character.qualityType) ?? .purple
     }
     
-    init(name: String, element: Element, constellationLevel: Int, constellationStrings: [String], skills: [Skill], level: Int, weapon: Weapon, artifacts: [Artifact], fightPropMap: FightPropMap, iconString: String, sideIconString: String,  quality: Quality) {
+    init(name: String, element: Element, constellationLevel: Int, constellationStrings: [String], skills: [Skill], level: Int, friendshipLevel: Int, weapon: Weapon, artifacts: [Artifact], fightPropMap: FightPropMap, iconString: String, sideIconString: String,  quality: Quality) {
         self.name = name
         self.element = element
         self.constellationLevel = constellationLevel
         self.constellationStrings = constellationStrings
         self.skills = skills
         self.level = level
+        self.friendshipLevel = friendshipLevel
         self.weapon = weapon
         self.artifacts = artifacts
         self.fightPropMap = fightPropMap
