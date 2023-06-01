@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class BuildCardGeneratorViewController: UIViewController {
+final class BuildCardGeneratorViewController: UIViewController, BuildCardGeneratable {
     
     // MARK: - Outlet
     
@@ -23,7 +23,6 @@ final class BuildCardGeneratorViewController: UIViewController {
     private var character: Character!
     private var scoreCriteria: ScoreCriteria!
     private var imageService: ImageService!
-    private var buildCardGenerator: BuildCardGenerator!
     
     private var buildCardBaseImage: UIImage!
     
@@ -105,7 +104,7 @@ final class BuildCardGeneratorViewController: UIViewController {
         // 全ての画像についてAPIを叩き終えたかをどう管理するべき？
         // ビルドカード作成をAPIが叩き終わるごとに毎回呼ぶ？その場合，ビルドカード生成コードの引数を(現状で完成しているまでのビルドカード, 新しく追加する画像, 追加する画像のパーツ名(新しく追加する画像をどこに配置するかを判断するため，enumとかで管理する))とかにする．ビルドカード生成中に他のAPIが完了して再度呼ばれるとやばそう
         if isSkillIconsPrepared(), isArtifactsImagesPrepared() {
-            buildCardImageView.image = buildCardGenerator.buildCardCreate(buildCardBaseImage: buildCardBaseImage, characterImage: characterImage, weaponImage: weaponImage, skillIcons: skillIcons, artifactImages: artifactImages)
+            buildCardImageView.image = generateBuildCard(buildCardBaseImage: buildCardBaseImage, characterImage: characterImage, weaponImage: weaponImage, skillIcons: skillIcons, artifactImages: artifactImages)
         }
     }
     
@@ -135,7 +134,6 @@ extension BuildCardGeneratorViewController: Storyboardable {
         self.scoreCriteria = dependency.scoreCriteria
         
         self.imageService = ImageService()
-        self.buildCardGenerator = BuildCardGenerator()
         
         self.buildCardBaseImage = UIImage(named: "BuildCard/Base/\(character.element.rawValue)")
         self.artifactImages = Array(repeating: nil, count: 5)

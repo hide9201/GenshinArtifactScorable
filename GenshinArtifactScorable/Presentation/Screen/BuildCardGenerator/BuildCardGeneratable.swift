@@ -1,5 +1,5 @@
 //
-//  BuildCardGenerator.swift
+//  BuildCardGeneratable.swift
 //  GenshinArtifactScorable
 //
 //  Created by hide on 2023/05/31.
@@ -8,9 +8,16 @@
 import Foundation
 import UIKit
 
-struct BuildCardGenerator {
+protocol BuildCardGeneratable {
+}
+
+extension BuildCardGeneratable {
     
-    func buildCardCreate(buildCardBaseImage: UIImage, characterImage: UIImage, weaponImage: UIImage, skillIcons: [UIImage?], artifactImages: [UIImage?]) -> UIImage {
+    func generateBuildCard(buildCardBaseImage: UIImage,
+                         characterImage: UIImage,
+                         weaponImage: UIImage,
+                         skillIcons: [UIImage?],
+                         artifactImages: [UIImage?]) -> UIImage {
         //画像の下地をサイズを指定して作成
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 1920, height: 1080), false, 0)
         
