@@ -24,11 +24,10 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
     private var scoreCriteria: ScoreCriteria!
     private var imageService: ImageService!
     
-    private var buildCardBaseImage: UIImage!
-    
     private var characterImage: UIImage?
     private var weaponImage: UIImage?
     private var skillIcons: [UIImage?]!
+    private var constellationIcons: [UIImage?]!
     private var artifactImages: [UIImage?]!
     
     private var isArtifactEquipedArray: [Bool]!
@@ -71,6 +70,16 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
                     print(error)
                 }
         }
+        
+        for index in 0..<constellationIcons.count {
+            imageService.fetchUIImage(imageString: character.constellationStrings[index])
+                .done { constellationIcon in
+                    self.constellationIcons[index] = constellationIcon
+                    self.generateBuildCardIfPrepared()
+                }.catch { error in
+                    print(error)
+                }
+        }
     
         // character.artifactsは長さが不定(1〜5の間)なので，artifactImagesはenumeratedによるインデックスアクセス不可
         // forEachにより，装備している各聖遺物タイプに応じたインデックスアクセスとする
@@ -103,14 +112,22 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
         // 全ての画像が用意できたら生成する(聖遺物をつけていない場合，聖遺物の画像がnilになるので今のままだとヤバい)
         // 全ての画像についてAPIを叩き終えたかをどう管理するべき？
         // ビルドカード作成をAPIが叩き終わるごとに毎回呼ぶ？その場合，ビルドカード生成コードの引数を(現状で完成しているまでのビルドカード, 新しく追加する画像, 追加する画像のパーツ名(新しく追加する画像をどこに配置するかを判断するため，enumとかで管理する))とかにする．ビルドカード生成中に他のAPIが完了して再度呼ばれるとやばそう
-        if isSkillIconsPrepared(), isArtifactsImagesPrepared() {
-            buildCardImageView.image = generateBuildCard(buildCardBaseImage: buildCardBaseImage, characterImage: characterImage, weaponImage: weaponImage, skillIcons: skillIcons, artifactImages: artifactImages)
+        if isSkillIconsPrepared(), isArtifactsImagesPrepared(), isConstellationIconsPrepared() {
+            buildCardImageView.image = generateBuildCard(character: character, characterImage: characterImage, weaponImage: weaponImage, skillIcons: skillIcons.map { $0! }, constellationIcons: constellationIcons.map { $0! }, artifactImages: artifactImages)
         }
     }
     
     private func isSkillIconsPrepared() -> Bool {
         var isPrepared = true
         skillIcons.forEach {
+            if $0 == nil { isPrepared = false }
+        }
+        return isPrepared
+    }
+    
+    private func isConstellationIconsPrepared() -> Bool {
+        var isPrepared = true
+        constellationIcons.forEach {
             if $0 == nil { isPrepared = false }
         }
         return isPrepared
@@ -134,10 +151,10 @@ extension BuildCardGeneratorViewController: Storyboardable {
         self.scoreCriteria = dependency.scoreCriteria
         
         self.imageService = ImageService()
-        
-        self.buildCardBaseImage = UIImage(named: "BuildCard/Base/\(character.element.rawValue)")
-        self.artifactImages = Array(repeating: nil, count: 5)
+    
         self.skillIcons = Array(repeating: nil, count: character.skills.count)
+        self.constellationIcons = Array(repeating: nil, count: character.constellationLevel)
+        self.artifactImages = Array(repeating: nil, count: 5)
         self.isArtifactEquipedArray = Array(repeating: false, count: 5)
         
         character.artifacts.forEach { artifact in

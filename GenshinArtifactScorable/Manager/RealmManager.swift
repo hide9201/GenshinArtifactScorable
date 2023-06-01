@@ -15,7 +15,7 @@ final class DataStore {
     let realm: Realm
     
     private init() {
-        let currentSchemaVersion: UInt64 = 1
+        let currentSchemaVersion: UInt64 = 2
         let config = Realm.Configuration(schemaVersion: currentSchemaVersion, migrationBlock: { migration, oldSchemaVersion in
           if oldSchemaVersion < currentSchemaVersion {
           }

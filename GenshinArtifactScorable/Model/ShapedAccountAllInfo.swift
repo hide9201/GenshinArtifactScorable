@@ -63,6 +63,7 @@ struct Character {
     let name: String
     let element: Element
     let constellationLevel: Int
+    let constellationStrings: [String]
     let skills: [Skill]
     let level: Int
     let weapon: Weapon
@@ -95,6 +96,7 @@ struct Character {
         } else {
             constellationLevel = 0
         }
+        constellationStrings = character.constellationStrings
         
         iconString = character.sideIconName.replacingOccurrences(of: "_Side", with: "")
         sideIconString = character.sideIconName
@@ -126,10 +128,11 @@ struct Character {
         quality = .init(rawValue: character.qualityType) ?? .purple
     }
     
-    init(name: String, element: Element, constellationLevel: Int, skills: [Skill], level: Int, weapon: Weapon, artifacts: [Artifact], fightPropMap: FightPropMap, iconString: String, sideIconString: String,  quality: Quality) {
+    init(name: String, element: Element, constellationLevel: Int, constellationStrings: [String], skills: [Skill], level: Int, weapon: Weapon, artifacts: [Artifact], fightPropMap: FightPropMap, iconString: String, sideIconString: String,  quality: Quality) {
         self.name = name
         self.element = element
         self.constellationLevel = constellationLevel
+        self.constellationStrings = constellationStrings
         self.skills = skills
         self.level = level
         self.weapon = weapon

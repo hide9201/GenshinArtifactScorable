@@ -38,7 +38,7 @@ struct CharacterMap: Codable {
     
     struct Character: Codable {
         let element: String
-        let consts: [String]
+        let constellationStrings: [String]
         let skillOrder: [Int]
         let skills: Skill
         let nameTextMapHash: Int
@@ -68,7 +68,7 @@ struct CharacterMap: Codable {
         
         private enum CodingKeys: String, CodingKey {
             case element = "Element"
-            case consts = "Consts"
+            case constellationStrings = "Consts"
             case skillOrder = "SkillOrder"
             case skills = "Skills"
             case nameTextMapHash = "NameTextMapHash"
