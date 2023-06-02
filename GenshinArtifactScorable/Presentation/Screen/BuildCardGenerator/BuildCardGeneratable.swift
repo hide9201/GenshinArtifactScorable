@@ -22,7 +22,7 @@ extension BuildCardGeneratable {
 
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 1920, height: 1080), false, 0)
         
-        let genshinUIFont = "SDK_JP_Web"
+        let genshinUIFontName = "SDK_JP_Web"
         
         let buildCardBaseImage = UIImage(named: "BuildCard/Base/\(character.element.rawValue)")!
         buildCardBaseImage.draw(in: CGRect(x: 0, y: 0, width: 1920, height: 1080))
@@ -36,7 +36,7 @@ extension BuildCardGeneratable {
         let characterImageHeight = characterImage.size.height * characterImageScale
         characterImage.draw(in: CGRect(x: (characterImageMaxWidth - characterImageWidth) / 2, y: (characterImageMaxHeight - characterImageHeight) / 2, width: characterImageWidth, height: characterImageHeight))
         
-        let characterNameFont = UIFont(name: genshinUIFont, size: 48)!
+        let characterNameFont = UIFont(name: genshinUIFontName, size: 48)!
         let characterName = NSString(string: character.name)
         let characterNameX: CGFloat = 32
         let characterNameY: CGFloat = 32
@@ -44,7 +44,7 @@ extension BuildCardGeneratable {
             NSAttributedString.Key.font: characterNameFont,
             NSAttributedString.Key.foregroundColor: UIColor.white])
         
-        let characterLevelFont = UIFont(name: genshinUIFont, size: 28)!
+        let characterLevelFont = UIFont(name: genshinUIFontName, size: 28)!
         let characterLevelString = NSString(string: String("Lv.\(character.level)"))
         let characterLevelX: CGFloat = characterNameX
         let characterLevelY: CGFloat = characterNameY + characterNameFont.pointSize + 4
@@ -77,7 +77,7 @@ extension BuildCardGeneratable {
         let weaponRealityIconHeight: CGFloat = 33
         weaponRealityIcon.draw(in: CGRect(x: weaponInfoBaseX - 16, y: weaponInfoBaseY + weaponImageHeight, width: weaponRealityIconWidth, height: weaponRealityIconHeight))
         
-        let weaponRefinementRankFont = UIFont(name: genshinUIFont, size: 26)!
+        let weaponRefinementRankFont = UIFont(name: genshinUIFontName, size: 26)!
         let weaponRefinementRankString = NSString(string: "R\(character.weapon.refinementRank)")
         let weaponRefinementRankX: CGFloat = weaponInfoBaseX
         let weaponRefinementRankY: CGFloat = weaponInfoBaseY
@@ -85,7 +85,7 @@ extension BuildCardGeneratable {
             NSAttributedString.Key.font: weaponRefinementRankFont,
             NSAttributedString.Key.foregroundColor: UIColor.white])
         
-        let weaponNameFont = UIFont(name: genshinUIFont, size: 26)!
+        let weaponNameFont = UIFont(name: genshinUIFontName, size: 26)!
         let weaponName = NSString(string: character.weapon.name)
         let weaponNameX: CGFloat = weaponInfoBaseX + weaponImageWidth + 16
         let weaponNameY: CGFloat = weaponInfoBaseY
@@ -93,7 +93,7 @@ extension BuildCardGeneratable {
             NSAttributedString.Key.font: weaponNameFont,
             NSAttributedString.Key.foregroundColor: UIColor.white])
         
-        let weaponStatusFont = UIFont(name: genshinUIFont, size: 22)!
+        let weaponStatusFont = UIFont(name: genshinUIFontName, size: 22)!
         let weaponStatusIconWidth: CGFloat = 22
         let weaponStatusIconHeight: CGFloat = 22
         
@@ -161,6 +161,20 @@ extension BuildCardGeneratable {
             let skillIconRectY: CGFloat = 302 + (40 + skillIconHeight) * CGFloat(index)
             let skillIconRect = CGRect(x: skillIconRectX, y: skillIconRectY, width: skillIconWidth, height: skillIconHeight)
             skillIcon.draw(in: skillIconRect, blendMode: .sourceAtop, alpha: 1)
+            
+            let skillLevelX = skillIconRectX + 8
+            let skillLevelY = skillIconRectY + skillIconHeight - 6
+            let skillLevelString = NSString(string: "Lv.\(character.skills[index].levelAdjusted)")
+            let skillLevelFont = UIFont(name: genshinUIFontName, size: 24)!
+            if character.skills[index].level != character.skills[index].levelAdjusted {
+                skillLevelString.draw(at: CGPoint(x: skillLevelX, y: skillLevelY), withAttributes: [
+                    NSAttributedString.Key.font: skillLevelFont,
+                    NSAttributedString.Key.foregroundColor: UIColor.cyan])
+            } else {
+                skillLevelString.draw(at: CGPoint(x: skillLevelX, y: skillLevelY), withAttributes: [
+                    NSAttributedString.Key.font: skillLevelFont,
+                    NSAttributedString.Key.foregroundColor: UIColor.white])
+            }
         }
         
         let constellationIconBack = UIImage(named: "BuildCard/ConstellationIcon/\(character.element.rawValue)")!
