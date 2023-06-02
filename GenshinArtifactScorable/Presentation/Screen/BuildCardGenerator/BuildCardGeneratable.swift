@@ -22,6 +22,8 @@ extension BuildCardGeneratable {
 
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 1920, height: 1080), false, 0)
         
+        let genshinUIFont = "SDK_JP_Web"
+        
         let buildCardBaseImage = UIImage(named: "BuildCard/Base/\(character.element.rawValue)")!
         buildCardBaseImage.draw(in: CGRect(x: 0, y: 0, width: 1920, height: 1080))
         
@@ -34,14 +36,115 @@ extension BuildCardGeneratable {
         let characterImageHeight = characterImage.size.height * characterImageScale
         characterImage.draw(in: CGRect(x: (characterImageMaxWidth - characterImageWidth) / 2, y: (characterImageMaxHeight - characterImageHeight) / 2, width: characterImageWidth, height: characterImageHeight))
         
-        let weaponImageWidth: CGFloat = 153
-        let weaponImageHeight: CGFloat = 153
-        weaponImage.draw(in: CGRect(x: 1418, y: 32, width: weaponImageWidth, height: weaponImageHeight))
+        let characterNameFont = UIFont(name: genshinUIFont, size: 48)!
+        let characterName = NSString(string: character.name)
+        let characterNameX: CGFloat = 32
+        let characterNameY: CGFloat = 32
+        characterName.draw(at: CGPoint(x: characterNameX, y: characterNameY), withAttributes: [
+            NSAttributedString.Key.font: characterNameFont,
+            NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        let characterLevelFont = UIFont(name: genshinUIFont, size: 28)!
+        let characterLevelString = NSString(string: String("Lv.\(character.level)"))
+        let characterLevelX: CGFloat = characterNameX
+        let characterLevelY: CGFloat = characterNameY + characterNameFont.pointSize + 4
+        characterLevelString.draw(at: CGPoint(x: characterLevelX, y: characterLevelY), withAttributes: [
+            NSAttributedString.Key.font: characterLevelFont,
+            NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        let friendshipIcon = UIImage(named: "BuildCard/Friendship.png")!
+        let friendshipIconX: CGFloat = characterLevelX + CGFloat(characterLevelString.length - 2) * characterLevelFont.pointSize
+        let friendshipIconY: CGFloat = characterLevelY
+        let friendshipIconWidth: CGFloat = 34
+        let friendshipIconHeight: CGFloat = 28
+        friendshipIcon.draw(in: CGRect(x: friendshipIconX, y: friendshipIconY, width: friendshipIconWidth, height: friendshipIconHeight))
+        
+        let friendshipLevel = NSString(string: String(character.friendshipLevel))
+        let friendshipLevelX: CGFloat = friendshipIconX + friendshipIconWidth
+        let friendshipLevelY: CGFloat = friendshipIconY
+        friendshipLevel.draw(at: CGPoint(x: friendshipLevelX, y: friendshipLevelY), withAttributes: [
+            NSAttributedString.Key.font: characterLevelFont,
+            NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        let weaponInfoBaseX: CGFloat = 1436
+        let weaponInfoBaseY: CGFloat = 44
+        let weaponImageWidth: CGFloat = 128
+        let weaponImageHeight: CGFloat = 128
+        weaponImage.draw(in: CGRect(x: weaponInfoBaseX, y: weaponInfoBaseY, width: weaponImageWidth, height: weaponImageHeight)) // 1418, 32
         
         let weaponRealityIcon = UIImage(named: "BuildCard/WeaponRealityIcon/\(character.weapon.rankLevel.rawValue).png")!
         let weaponRealityIconWidth: CGFloat = 153
         let weaponRealityIconHeight: CGFloat = 33
-        weaponRealityIcon.draw(in: CGRect(x: 1418, y: 172, width: weaponRealityIconWidth, height: weaponRealityIconHeight))
+        weaponRealityIcon.draw(in: CGRect(x: weaponInfoBaseX - 16, y: weaponInfoBaseY + weaponImageHeight, width: weaponRealityIconWidth, height: weaponRealityIconHeight))
+        
+        let weaponRefinementRankFont = UIFont(name: genshinUIFont, size: 26)!
+        let weaponRefinementRankString = NSString(string: "R\(character.weapon.refinementRank)")
+        let weaponRefinementRankX: CGFloat = weaponInfoBaseX
+        let weaponRefinementRankY: CGFloat = weaponInfoBaseY
+        weaponRefinementRankString.draw(at: CGPoint(x: weaponRefinementRankX, y: weaponRefinementRankY), withAttributes: [
+            NSAttributedString.Key.font: weaponRefinementRankFont,
+            NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        let weaponNameFont = UIFont(name: genshinUIFont, size: 26)!
+        let weaponName = NSString(string: character.weapon.name)
+        let weaponNameX: CGFloat = weaponInfoBaseX + weaponImageWidth + 16
+        let weaponNameY: CGFloat = weaponInfoBaseY
+        weaponName.draw(at: CGPoint(x: weaponNameX, y: weaponNameY), withAttributes: [
+            NSAttributedString.Key.font: weaponNameFont,
+            NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        let weaponStatusFont = UIFont(name: genshinUIFont, size: 22)!
+        let weaponStatusIconWidth: CGFloat = 22
+        let weaponStatusIconHeight: CGFloat = 22
+        
+        let weaponLevelString = NSString(string: "Lv.\(character.weapon.level)")
+        let weaponLevelX: CGFloat = weaponNameX
+        let weaponLevelY: CGFloat = weaponNameY + weaponNameFont.pointSize + 16
+        weaponLevelString.draw(at: CGPoint(x: weaponLevelX, y: weaponLevelY), withAttributes: [
+            NSAttributedString.Key.font: weaponStatusFont,
+            NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        let weaponMainStatusIcon = UIImage(named: "PropIcon/\(character.weapon.mainAttribute.propIconString).png")!
+        let weaponMainStatusIconX: CGFloat = weaponLevelX + weaponStatusFont.pointSize / 2
+        let weaponMainStatusIconY: CGFloat = weaponLevelY + weaponStatusFont.pointSize + 20
+        weaponMainStatusIcon.draw(in: CGRect(x: weaponMainStatusIconX, y: weaponMainStatusIconY, width: weaponStatusIconWidth, height: weaponStatusIconHeight))
+        
+        let weaponMainStatusName = NSString(string: character.weapon.mainAttribute.name)
+        let weaponMainStatusNameX: CGFloat = weaponMainStatusIconX + weaponStatusIconWidth
+        let weaponMainStatusNameY: CGFloat = weaponMainStatusIconY
+        weaponMainStatusName.draw(at: CGPoint(x: weaponMainStatusNameX, y: weaponMainStatusNameY), withAttributes: [
+            NSAttributedString.Key.font: weaponStatusFont,
+            NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        let weaponMainStatusValue = NSString(string: character.weapon.mainAttribute.valueString)
+        let weaponMainStatusValueX: CGFloat = weaponMainStatusNameX + (CGFloat(weaponMainStatusName.length) + 0.5) * weaponStatusFont.pointSize
+        let weaponMainStatusValueY: CGFloat = weaponMainStatusNameY
+        weaponMainStatusValue.draw(at: CGPoint(x: weaponMainStatusValueX, y: weaponMainStatusValueY), withAttributes: [
+            NSAttributedString.Key.font: weaponStatusFont,
+            NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        if let weaponSubStatus = character.weapon.subAttribute {
+            print(weaponSubStatus)
+            let weaponSubStatusIcon = UIImage(named: "PropIcon/\(weaponSubStatus.propIconString).png")!
+            let weaponSubStatusIconX: CGFloat = weaponMainStatusIconX
+            let weaponSubStatusIconY: CGFloat = weaponMainStatusIconY + weaponStatusIconHeight + 16
+            weaponSubStatusIcon.draw(in: CGRect(x: weaponSubStatusIconX, y: weaponSubStatusIconY, width: weaponStatusIconWidth, height: weaponStatusIconHeight))
+            
+            let weaponSubStatusNameX = weaponSubStatusIconX + weaponStatusIconWidth
+            let weaponSubStatusNameY = weaponSubStatusIconY
+            let weaponSubStatusName = NSString(string: weaponSubStatus.name)
+            weaponSubStatusName.draw(at: CGPoint(x: weaponSubStatusNameX, y: weaponSubStatusNameY), withAttributes: [
+                NSAttributedString.Key.font: weaponStatusFont,
+                NSAttributedString.Key.foregroundColor: UIColor.white])
+            
+            let weaponSubStatusValue = NSString(string: weaponSubStatus.valueString)
+            let weaponSubStatusValueX: CGFloat = weaponSubStatusNameX + (CGFloat(weaponSubStatusName.length) + 0.5) * weaponStatusFont.pointSize
+            let weaponSubStatusValueY: CGFloat = weaponSubStatusNameY
+            weaponSubStatusValue.draw(at: CGPoint(x: weaponSubStatusValueX, y: weaponSubStatusValueY), withAttributes: [
+                NSAttributedString.Key.font: weaponStatusFont,
+                NSAttributedString.Key.foregroundColor: UIColor.white])
+        }
+        
         
         let skillIconBack = UIImage(named: "BuildCard/TalentBack.png")!
         let skillIconBackWidth: CGFloat = 128
@@ -93,28 +196,6 @@ extension BuildCardGeneratable {
                 artifactImage.draw(in: rect, blendMode: .sourceAtop, alpha: 0.7)
             }
         }
-        
-        let characterNameFont = UIFont(name: "SDK_JP_Web", size: 48)!
-        let characterName = NSString(string: character.name)
-        characterName.draw(at: CGPoint(x: 32, y: 32), withAttributes: [
-            NSAttributedString.Key.font: characterNameFont,
-            NSAttributedString.Key.foregroundColor: UIColor.white])
-        
-        let characterLevelFont = UIFont(name: "SDK_JP_Web", size: 28)!
-        let characterLevelString = NSString(string: String("Lv.\(character.level)"))
-        characterLevelString.draw(at: CGPoint(x: 32, y: 84), withAttributes: [
-            NSAttributedString.Key.font: characterLevelFont,
-            NSAttributedString.Key.foregroundColor: UIColor.white])
-        
-        let friendshipIcon = UIImage(named: "BuildCard/Friendship.png")!
-        let friendshipIconWidth: CGFloat = 39
-        let friendshipIconHeight: CGFloat = 32
-        friendshipIcon.draw(in: CGRect(x: 116, y: 84, width: friendshipIconWidth, height: friendshipIconHeight))
-        
-        let friendshipLevel = NSString(string: String(character.friendshipLevel))
-        friendshipLevel.draw(at: CGPoint(x: 152, y: 84), withAttributes: [
-            NSAttributedString.Key.font: characterLevelFont,
-            NSAttributedString.Key.foregroundColor: UIColor.white])
         
         let buildCardImage = UIGraphicsGetImageFromCurrentImageContext()
 

@@ -294,7 +294,13 @@ struct Attribute {
     let propId: String
     var propIconString: String { propId.replacingOccurrences(of: "FIGHT_PROP_", with: "") }
     let name: String
-    var valueString: String { String(format: "%.1f", value) }
+    var valueString: String {
+        if propId.contains("PERCENT") || propId.contains("HURT") || propId.contains("CRITICAL") || propId.contains("CHARGE") {
+            return "\(String(format: "%.1f", value))%"
+        } else {
+            return String(format: "%.0f", value)
+        }
+    }
     var value: Double
     init(propId: String, name: String, value: Double) {
         self.propId = propId
