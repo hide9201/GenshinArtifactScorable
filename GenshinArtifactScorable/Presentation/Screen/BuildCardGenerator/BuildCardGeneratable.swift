@@ -87,7 +87,7 @@ extension BuildCardGeneratable {
         
         let weaponNameFont = UIFont(name: genshinUIFontName, size: 26)!
         let weaponName = NSString(string: character.weapon.name)
-        let weaponNameX: CGFloat = weaponInfoBaseX + weaponImageWidth + 16
+        let weaponNameX: CGFloat = weaponInfoBaseX + weaponImageWidth + 20
         let weaponNameY: CGFloat = weaponInfoBaseY
         weaponName.draw(at: CGPoint(x: weaponNameX, y: weaponNameY), withAttributes: [
             NSAttributedString.Key.font: weaponNameFont,
@@ -124,7 +124,6 @@ extension BuildCardGeneratable {
             NSAttributedString.Key.foregroundColor: UIColor.white])
         
         if let weaponSubStatus = character.weapon.subAttribute {
-            print(weaponSubStatus)
             let weaponSubStatusIcon = UIImage(named: "PropIcon/\(weaponSubStatus.propIconString).png")!
             let weaponSubStatusIconX: CGFloat = weaponMainStatusIconX
             let weaponSubStatusIconY: CGFloat = weaponMainStatusIconY + weaponStatusIconHeight + 16
@@ -200,14 +199,42 @@ extension BuildCardGeneratable {
             }
         }
         
+        let characterStatusBaseX: CGFloat = 1360
+        let characterStatusBaseY: CGFloat = 64
+        let characterStatusFont = UIFont(name: genshinUIFontName, size: 28)!
+        for index in 0..<8 {
+            let characterStatusString = NSString(string: character.basicFightPropString(index: index))
+            let textSize = characterStatusString.size(withAttributes: [NSAttributedString.Key.font: characterStatusFont])
+            let characterStatusX = characterStatusBaseX - textSize.width
+            let characterStatusY = characterStatusBaseY + (textSize.height + 37) * CGFloat(index)
+            characterStatusString.draw(at: CGPoint(x: characterStatusX, y: characterStatusY), withAttributes: [
+                NSAttributedString.Key.font: characterStatusFont,
+                NSAttributedString.Key.foregroundColor: UIColor.white])
+            
+            if index == 7 {
+                let elementDamageIcon = UIImage(named: "ElementIcon/\(character.element.rawValue)")!
+                let elementDamageIconX: CGFloat = 786
+                let elementDamageIconY: CGFloat = characterStatusY - 6
+                let elementDamageIconWidth: CGFloat = 44
+                let elementDamageIconHeight: CGFloat = 44
+                elementDamageIcon.draw(in: CGRect(x: elementDamageIconX, y: elementDamageIconY, width: elementDamageIconWidth, height: elementDamageIconHeight))
+                
+                let elementDamageString = NSString(string: "\(character.element.jpName)ダメージ")
+                let elementDamageStringX = elementDamageIconX + elementDamageIconWidth + characterStatusFont.pointSize / 2
+                let elementDamageStringY = characterStatusY
+                elementDamageString.draw(at: CGPoint(x: elementDamageStringX, y: elementDamageStringY), withAttributes: [
+                    NSAttributedString.Key.font: characterStatusFont,
+                    NSAttributedString.Key.foregroundColor: UIColor.white])
+            }
+        }
+        
         let artifactImageWidth: CGFloat = 248
         let artifactImageHeight: CGFloat = 248
         for (index, artifactImage) in artifactImages.enumerated() {
             if let artifactImage = artifactImage {
                 let rectX: CGFloat = 28 + (124 + artifactImageWidth) * CGFloat(index)
                 let rectY: CGFloat = 640
-                let rect = CGRect(x: rectX, y: rectY, width: artifactImageWidth, height: artifactImageHeight)
-                artifactImage.draw(in: rect, blendMode: .sourceAtop, alpha: 0.7)
+                artifactImage.draw(in: CGRect(x: rectX, y: rectY, width: artifactImageWidth, height: artifactImageHeight), blendMode: .sourceAtop, alpha: 0.7)
             }
         }
         

@@ -86,6 +86,57 @@ struct Character {
         }
     }
     
+    func basicFightPropString(index: Int) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        switch index {
+        case 0:
+            return formatter.string(from: Int(round(fightPropMap.hp)) as NSNumber) ?? String(format: "%.0f", round(fightPropMap.hp))
+        case 1:
+            return formatter.string(from: Int(round(fightPropMap.atk)) as NSNumber) ?? String(format: "%.0f", round(fightPropMap.atk))
+        case 2:
+            return formatter.string(from: Int(round(fightPropMap.def)) as NSNumber) ?? String(format: "%.0f", round(fightPropMap.def))
+        case 3:
+            return formatter.string(from: Int(round(fightPropMap.elementalMastery)) as NSNumber) ?? String(format: "%.0f", round(fightPropMap.elementalMastery))
+        case 4:
+            let value = round(fightPropMap.criticalRate * 1000) / 10
+            let valueString = formatter.string(from: value as NSNumber) ?? String(value)
+            return "\(valueString)%"
+        case 5:
+            let value = round(fightPropMap.criticalDamage * 1000) / 10
+            let valueString = formatter.string(from: value as NSNumber) ?? String(value)
+            return "\(valueString)%"
+        case 6:
+            let value = round(fightPropMap.energyRecharge * 1000) / 10
+            let valueString = formatter.string(from: value as NSNumber) ?? String(value)
+            return "\(valueString)%"
+        case 7:
+            var value: Double
+            switch element {
+            case .cryo:
+                value = round(fightPropMap.cryoDamage * 1000) / 10
+            case .anemo:
+                value = round(fightPropMap.anemoDamage * 1000) / 10
+            case .electro:
+                value = round(fightPropMap.electroDamage * 1000) / 10
+            case .hydro:
+                value = round(fightPropMap.hydroDamage * 1000) / 10
+            case .pyro:
+                value = round(fightPropMap.pyroDamage * 1000) / 10
+            case .geo:
+                value = round(fightPropMap.geoDamage * 1000) / 10
+            case .dendro:
+                value = round(fightPropMap.dendroDamage * 1000) / 10
+            case .unknown:
+                value = 0.0
+            }
+            let valueString = formatter.string(from: value as NSNumber) ?? String(value)
+            return "\(valueString)%"
+        default:
+            return "0"
+        }
+    }
+    
     init?(avatarInfo: AccountAllInfo.AvatarInfo, localizedDictionary: [String: String], characterMap: [String: CharacterMap.Character]) {
         guard let character = characterMap["\(avatarInfo.avatarId)-\(avatarInfo.skillDepotId)"] ?? characterMap["\(avatarInfo.avatarId)"] else { return nil }
         
@@ -155,6 +206,27 @@ struct Character {
         case geo = "Geo"
         case dendro = "Dendro"
         case unknown
+        
+        var jpName: String {
+            switch self {
+            case .cryo:
+                return "氷元素"
+            case .anemo:
+                return "風元素"
+            case .electro:
+                return "雷元素"
+            case .hydro:
+                return "水元素"
+            case .pyro:
+                return "炎元素"
+            case .geo:
+                return "岩元素"
+            case .dendro:
+                return "草元素"
+            case .unknown:
+                return "不明"
+            }
+        }
     }
     
     enum Quality: String {
