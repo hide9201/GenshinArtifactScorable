@@ -52,16 +52,16 @@ extension BuildCardGeneratable {
             NSAttributedString.Key.font: characterLevelFont,
             NSAttributedString.Key.foregroundColor: UIColor.white])
         
-        let friendshipIcon = UIImage(named: "BuildCard/Friendship.png")!
+        let friendshipIcon = UIImage(named: "BuildCard/Friendship")!
         let friendshipIconX: CGFloat = characterLevelX + CGFloat(characterLevelString.length - 2) * characterLevelFont.pointSize
-        let friendshipIconY: CGFloat = characterLevelY
+        let friendshipIconY: CGFloat = characterLevelY + 2
         let friendshipIconWidth: CGFloat = 34
         let friendshipIconHeight: CGFloat = 28
         friendshipIcon.draw(in: CGRect(x: friendshipIconX, y: friendshipIconY, width: friendshipIconWidth, height: friendshipIconHeight))
         
         let friendshipLevel = NSString(string: String(character.friendshipLevel))
         let friendshipLevelX: CGFloat = friendshipIconX + friendshipIconWidth
-        let friendshipLevelY: CGFloat = friendshipIconY
+        let friendshipLevelY: CGFloat = characterLevelY
         friendshipLevel.draw(at: CGPoint(x: friendshipLevelX, y: friendshipLevelY), withAttributes: [
             NSAttributedString.Key.font: characterLevelFont,
             NSAttributedString.Key.foregroundColor: UIColor.white])
@@ -72,7 +72,7 @@ extension BuildCardGeneratable {
         let weaponImageHeight: CGFloat = 128
         weaponImage.draw(in: CGRect(x: weaponInfoBaseX, y: weaponInfoBaseY, width: weaponImageWidth, height: weaponImageHeight)) // 1418, 32
         
-        let weaponRealityIcon = UIImage(named: "BuildCard/WeaponRealityIcon/\(character.weapon.rankLevel.rawValue).png")!
+        let weaponRealityIcon = UIImage(named: "BuildCard/WeaponRealityIcon/\(character.weapon.rankLevel.rawValue)")!
         let weaponRealityIconWidth: CGFloat = 153
         let weaponRealityIconHeight: CGFloat = 33
         weaponRealityIcon.draw(in: CGRect(x: weaponInfoBaseX - 16, y: weaponInfoBaseY + weaponImageHeight, width: weaponRealityIconWidth, height: weaponRealityIconHeight))
@@ -104,7 +104,7 @@ extension BuildCardGeneratable {
             NSAttributedString.Key.font: weaponStatusFont,
             NSAttributedString.Key.foregroundColor: UIColor.white])
         
-        let weaponMainStatusIcon = UIImage(named: "PropIcon/\(character.weapon.mainAttribute.propIconString).png")!
+        let weaponMainStatusIcon = UIImage(named: "PropIcon/\(character.weapon.mainAttribute.propIconString)")!
         let weaponMainStatusIconX: CGFloat = weaponLevelX + weaponStatusFont.pointSize / 2
         let weaponMainStatusIconY: CGFloat = weaponLevelY + weaponStatusFont.pointSize + 20
         weaponMainStatusIcon.draw(in: CGRect(x: weaponMainStatusIconX, y: weaponMainStatusIconY, width: weaponStatusIconWidth, height: weaponStatusIconHeight))
@@ -124,7 +124,7 @@ extension BuildCardGeneratable {
             NSAttributedString.Key.foregroundColor: UIColor.white])
         
         if let weaponSubStatus = character.weapon.subAttribute {
-            let weaponSubStatusIcon = UIImage(named: "PropIcon/\(weaponSubStatus.propIconString).png")!
+            let weaponSubStatusIcon = UIImage(named: "PropIcon/\(weaponSubStatus.propIconString)")!
             let weaponSubStatusIconX: CGFloat = weaponMainStatusIconX
             let weaponSubStatusIconY: CGFloat = weaponMainStatusIconY + weaponStatusIconHeight + 16
             weaponSubStatusIcon.draw(in: CGRect(x: weaponSubStatusIconX, y: weaponSubStatusIconY, width: weaponStatusIconWidth, height: weaponStatusIconHeight))
@@ -144,8 +144,7 @@ extension BuildCardGeneratable {
                 NSAttributedString.Key.foregroundColor: UIColor.white])
         }
         
-        
-        let skillIconBack = UIImage(named: "BuildCard/TalentBack.png")!
+        let skillIconBack = UIImage(named: "BuildCard/TalentBack")!
         let skillIconBackWidth: CGFloat = 128
         let skillIconBackHeight: CGFloat = 128
         let skillIconWidth: CGFloat = 76
@@ -230,11 +229,80 @@ extension BuildCardGeneratable {
         
         let artifactImageWidth: CGFloat = 248
         let artifactImageHeight: CGFloat = 248
+        var equipedArtifactIndex = 0
+        let artifactMainStatusValueFont = UIFont(name: genshinUIFontName, size: 50)!
+        let artifactStatusNameFont = UIFont(name: genshinUIFontName, size: 32)!
+        let artifactSubStatusFont = UIFont(name: genshinUIFontName, size: 24)!
+        let artifactLevelFont = UIFont(name: genshinUIFontName, size: 24)!
+        let artifactMainStatusIconWidth: CGFloat = 44
+        let artifactMainStatusIconHeight: CGFloat = 44
+        let artifactSubStatusIconWidth: CGFloat = 32
+        let artifactSubStatusIconHeight: CGFloat = 32
+        let artifactScoreString = UIFont(name: genshinUIFontName, size: 36)
         for (index, artifactImage) in artifactImages.enumerated() {
             if let artifactImage = artifactImage {
                 let rectX: CGFloat = 28 + (124 + artifactImageWidth) * CGFloat(index)
                 let rectY: CGFloat = 640
                 artifactImage.draw(in: CGRect(x: rectX, y: rectY, width: artifactImageWidth, height: artifactImageHeight), blendMode: .sourceAtop, alpha: 0.7)
+                
+                let artifact = character.artifacts[equipedArtifactIndex]
+                let statusX: CGFloat = 372 + CGFloat(373 * index)
+                let statusY: CGFloat = 658
+                
+                let mainStatusName = NSString(string: artifact.mainAttribute.name)
+                let mainStatusTextSize = mainStatusName.size(withAttributes: [NSAttributedString.Key.font: artifactStatusNameFont])
+                let mainStatusNameX = statusX - mainStatusTextSize.width
+                let mainStatusNameY = statusY + 4
+                mainStatusName.draw(at: CGPoint(x: mainStatusNameX, y: mainStatusNameY), withAttributes: [
+                    NSAttributedString.Key.font: artifactStatusNameFont,
+                    NSAttributedString.Key.foregroundColor: UIColor.white])
+                
+                let mainStatusIcon = UIImage(named: "PropIcon/\(artifact.mainAttribute.propIconString)")!
+                let mainStatusIconX: CGFloat = mainStatusNameX - artifactMainStatusIconWidth
+                mainStatusIcon.draw(in: CGRect(x: mainStatusIconX, y: statusY, width: artifactMainStatusIconWidth, height: artifactMainStatusIconHeight))
+                
+                let mainStatusValueString = NSString(string: artifact.mainAttribute.valueString)
+                let mainStatusValueTextSize = mainStatusValueString.size(withAttributes: [NSAttributedString.Key.font: artifactMainStatusValueFont])
+                let mainStatusValueStringX = statusX - mainStatusValueTextSize.width
+                let mainStatusValueStringY = statusY + mainStatusTextSize.height + 4
+                mainStatusValueString.draw(at: CGPoint(x: mainStatusValueStringX, y: mainStatusValueStringY), withAttributes: [
+                    NSAttributedString.Key.font: artifactMainStatusValueFont,
+                    NSAttributedString.Key.foregroundColor: UIColor.white])
+                
+                let levelString = NSString(string: "+\(artifact.level)")
+                let levelTextSize = levelString.size(withAttributes: [NSAttributedString.Key.font: artifactLevelFont])
+                let levelStringX = statusX - levelTextSize.width
+                let levelStringY = mainStatusValueStringY + mainStatusValueTextSize.height
+                levelString.draw(at: CGPoint(x: levelStringX, y: levelStringY), withAttributes: [
+                    NSAttributedString.Key.font: artifactLevelFont,
+                    NSAttributedString.Key.foregroundColor: UIColor.white])
+                
+                let subStatusIconX: CGFloat = 44 + CGFloat(373 * index)
+                var subStatusIconY: CGFloat = levelStringY + levelTextSize.height + 40
+                for subStatus in artifact.subAttributes {
+                    let icon = UIImage(named: "PropIcon/\(subStatus.propIconString)")!
+                    icon.draw(in: CGRect(x: subStatusIconX, y: subStatusIconY, width: artifactSubStatusIconWidth, height: artifactSubStatusIconHeight))
+                    
+                    let name = NSString(string: subStatus.name)
+                    let nameTextSize = name.size(withAttributes: [NSAttributedString.Key.font: artifactSubStatusFont])
+                    let nameX = subStatusIconX + artifactMainStatusIconWidth
+                    let nameY = subStatusIconY + 2
+                    name.draw(at: CGPoint(x: nameX, y: nameY), withAttributes: [
+                        NSAttributedString.Key.font: artifactSubStatusFont,
+                        NSAttributedString.Key.foregroundColor: UIColor.white])
+                    
+                    let valueString = NSString(string: subStatus.valueString)
+                    let valueStringTextSize = valueString.size(withAttributes: [NSAttributedString.Key.font: artifactSubStatusFont])
+                    let valueX = statusX - valueStringTextSize.width
+                    let valueY = nameY
+                    valueString.draw(at: CGPoint(x: valueX, y: valueY), withAttributes: [
+                        NSAttributedString.Key.font: artifactSubStatusFont,
+                        NSAttributedString.Key.foregroundColor: UIColor.white])
+                    
+                    subStatusIconY += nameTextSize.height + 16
+                }
+                
+                equipedArtifactIndex += 1
             }
         }
         

@@ -67,6 +67,7 @@ final class SkillObject: Object {
 final class ArtifactObject: Object {
 
     @Persisted var id = ""
+    @Persisted var level = 0
     @Persisted var name = ""
     @Persisted var setName = ""
     @Persisted var mainAttribute: AttributeObject? = nil
@@ -228,6 +229,7 @@ extension ArtifactObject {
         
         let artifactObject = ArtifactObject()
         artifactObject.id = value.id
+        artifactObject.level = value.level
         artifactObject.name = value.name
         artifactObject.setName = value.setName
         artifactObject.mainAttribute = AttributeObject.decode(from: value.mainAttribute)
@@ -243,6 +245,6 @@ extension ArtifactObject {
     
     var value: Artifact? {
         guard let mainAttribute = mainAttribute else { return nil }
-        return Artifact(id: id, name: name, setName: setName, mainAttribute: mainAttribute.value, subAttributes: subAttributes.map { $0.value }, iconString: iconString, artifactType: Artifact.ArtifactType(rawValue: artifactType) ?? .flower, rankLevel: RankLevel(rawValue: rankLevel) ?? .five)
+        return Artifact(id: id, level: level, name: name, setName: setName, mainAttribute: mainAttribute.value, subAttributes: subAttributes.map { $0.value }, iconString: iconString, artifactType: Artifact.ArtifactType(rawValue: artifactType) ?? .flower, rankLevel: RankLevel(rawValue: rankLevel) ?? .five)
     }
 }

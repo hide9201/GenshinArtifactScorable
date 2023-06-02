@@ -99,18 +99,22 @@ struct Character {
         case 3:
             return formatter.string(from: Int(round(fightPropMap.elementalMastery)) as NSNumber) ?? String(format: "%.0f", round(fightPropMap.elementalMastery))
         case 4:
+            formatter.positiveFormat = "0.0"
             let value = round(fightPropMap.criticalRate * 1000) / 10
             let valueString = formatter.string(from: value as NSNumber) ?? String(value)
             return "\(valueString)%"
         case 5:
+            formatter.positiveFormat = "0.0"
             let value = round(fightPropMap.criticalDamage * 1000) / 10
             let valueString = formatter.string(from: value as NSNumber) ?? String(value)
             return "\(valueString)%"
         case 6:
+            formatter.positiveFormat = "0.0"
             let value = round(fightPropMap.energyRecharge * 1000) / 10
             let valueString = formatter.string(from: value as NSNumber) ?? String(value)
             return "\(valueString)%"
         case 7:
+            formatter.positiveFormat = "0.0"
             var value: Double
             switch element {
             case .cryo:
@@ -317,6 +321,7 @@ struct Weapon {
         
 struct Artifact {
     let id: String
+    let level: Int
     let name: String
     let setName: String
     let mainAttribute: Attribute
@@ -336,6 +341,7 @@ struct Artifact {
     init?(artifactEquipment: AccountAllInfo.AvatarInfo.Equip, localizedDictionary: [String: String]) {
         guard artifactEquipment.flat.itemType == "ITEM_RELIQUARY" else { return nil }
         id = artifactEquipment.flat.nameTextMapHash
+        level = artifactEquipment.reliquary!.level - 1
         name = localizedDictionary.nameFrom(id: artifactEquipment.flat.nameTextMapHash)
         setName = localizedDictionary.nameFrom(id: artifactEquipment.flat.setNameTextMapHash!)
         
@@ -350,8 +356,9 @@ struct Artifact {
         rankLevel = .init(rawValue: artifactEquipment.flat.rankLevel) ?? .five
     }
     
-    init(id: String, name: String, setName: String, mainAttribute: Attribute, subAttributes: [Attribute], iconString: String, artifactType: ArtifactType, rankLevel: RankLevel) {
+    init(id: String, level: Int, name: String, setName: String, mainAttribute: Attribute, subAttributes: [Attribute], iconString: String, artifactType: ArtifactType, rankLevel: RankLevel) {
         self.id = id
+        self.level = level
         self.name = name
         self.setName = setName
         self.mainAttribute = mainAttribute
@@ -366,14 +373,19 @@ struct Attribute {
     let propId: String
     var propIconString: String { propId.replacingOccurrences(of: "FIGHT_PROP_", with: "") }
     let name: String
+    var value: Double
+    
+    // %表記が必要なステータスは%付きのStringを返す
     var valueString: String {
         if propId.contains("PERCENT") || propId.contains("HURT") || propId.contains("CRITICAL") || propId.contains("CHARGE") {
             return "\(String(format: "%.1f", value))%"
         } else {
-            return String(format: "%.0f", value)
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            return formatter.string(from: value as NSNumber) ?? String(format: "%.0f", value)
         }
     }
-    var value: Double
+    
     init(propId: String, name: String, value: Double) {
         self.propId = propId
         self.name = name
