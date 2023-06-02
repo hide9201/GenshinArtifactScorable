@@ -14,6 +14,7 @@ protocol BuildCardGeneratable {
 extension BuildCardGeneratable {
     
     func generateBuildCard(character: Character,
+                           scoreCriteria: ScoreCriteria,
                            characterImage: UIImage,
                            weaponImage: UIImage,
                            skillIcons: [UIImage],
@@ -238,14 +239,25 @@ extension BuildCardGeneratable {
         let artifactMainStatusIconHeight: CGFloat = 44
         let artifactSubStatusIconWidth: CGFloat = 32
         let artifactSubStatusIconHeight: CGFloat = 32
-        let artifactScoreString = UIFont(name: genshinUIFontName, size: 36)
+        let artifactScoreGradeIconWidth: CGFloat = 44
+        let artifactScoreGradeIconHeight: CGFloat = 44
+        let artifactScoreNameFont = UIFont(name: genshinUIFontName, size: 28)!
+        let artifactScoreValueStringFont = UIFont(name: genshinUIFontName, size: 36)!
+        var artifactSetCount: [String: Int] = [:]
+        
         for (index, artifactImage) in artifactImages.enumerated() {
             if let artifactImage = artifactImage {
+                let artifact = character.artifacts[equipedArtifactIndex]
+                if let count = artifactSetCount[artifact.setName] {
+                    artifactSetCount.updateValue(count + 1, forKey: artifact.setName)
+                } else {
+                    artifactSetCount.updateValue(1, forKey: artifact.setName)
+                }
+                
                 let rectX: CGFloat = 28 + (124 + artifactImageWidth) * CGFloat(index)
                 let rectY: CGFloat = 640
                 artifactImage.draw(in: CGRect(x: rectX, y: rectY, width: artifactImageWidth, height: artifactImageHeight), blendMode: .sourceAtop, alpha: 0.7)
                 
-                let artifact = character.artifacts[equipedArtifactIndex]
                 let statusX: CGFloat = 372 + CGFloat(373 * index)
                 let statusY: CGFloat = 658
                 
@@ -302,9 +314,104 @@ extension BuildCardGeneratable {
                     subStatusIconY += nameTextSize.height + 16
                 }
                 
+                let score = artifact.judgeScore(criteria: scoreCriteria)
+                let scoreGradeIcon = UIImage(named: score.gradeIconString)!
+                let scoreGradeIconX: CGFloat = 84 + CGFloat(373 * index)
+                let scoreGradeIconY: CGFloat = subStatusIconY
+                scoreGradeIcon.draw(in: CGRect(x: scoreGradeIconX, y: scoreGradeIconY, width: artifactScoreGradeIconWidth, height: artifactScoreGradeIconHeight))
+                
+                let scoreValueString = NSString(string: score.valueString)
+                let scoreValueStringTextSize = scoreValueString.size(withAttributes: [NSAttributedString.Key.font: artifactScoreValueStringFont])
+                let scoreValueStringX = statusX - scoreValueStringTextSize.width
+                let scoreValueStringY = scoreGradeIconY + 2
+                scoreValueString.draw(at: CGPoint(x: scoreValueStringX, y: scoreValueStringY), withAttributes: [
+                    NSAttributedString.Key.font: artifactScoreValueStringFont,
+                    NSAttributedString.Key.foregroundColor: UIColor.white])
+                
+                let scoreName = NSString(string: "Score")
+                let scoreNameTextSize = scoreName.size(withAttributes: [NSAttributedString.Key.font: artifactScoreNameFont])
+                let scoreNameX = scoreValueStringX - scoreNameTextSize.width - 8
+                let scoreNameY = scoreValueStringY + (scoreValueStringTextSize.height - scoreNameTextSize.height)
+                scoreName.draw(at: CGPoint(x: scoreNameX, y: scoreNameY), withAttributes: [
+                    NSAttributedString.Key.font: artifactScoreNameFont,
+                    NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+                
                 equipedArtifactIndex += 1
             }
         }
+        
+        var setName = "セット効果はありません"
+        var setCount = 0
+        let setNameFont = UIFont(name: genshinUIFontName, size: 26)!
+        let setNameX: CGFloat = 1536
+        var setNameY: CGFloat = 260
+        let twoSet = artifactSetCount.filter { (_, value) in value >= 2 && value < 4 }
+        if twoSet.count > 1 {
+            setNameY = 240
+            for (setName, count) in twoSet {
+                let setNameText = NSString(string: setName)
+                let setCountText = NSString(string: String(count))
+                setNameText.draw(at: CGPoint(x: setNameX, y: setNameY), withAttributes: [
+                    NSAttributedString.Key.font: setNameFont,
+                    NSAttributedString.Key.foregroundColor: UIColor.green])
+                
+                setCountText.draw(at: CGPoint(x: setNameX + 288, y: setNameY), withAttributes: [
+                    NSAttributedString.Key.font: setNameFont,
+                    NSAttributedString.Key.foregroundColor: UIColor.white])
+                
+                setNameY += setNameText.size(withAttributes: [NSAttributedString.Key.font: setNameFont]).height + 12
+            }
+        } else {
+            let fourSet = artifactSetCount.filter { (_, value) in value >= 4 }
+            if fourSet.count > 0 {
+                setName = fourSet.keys.first!
+                setCount = fourSet[setName]!
+            } else if twoSet.count > 0 {
+                setName = twoSet.keys.first!
+                setCount = twoSet[setName]!
+            }
+            
+            let setNameText = NSString(string: setName)
+            if setCount > 0 {
+                setNameText.draw(at: CGPoint(x: setNameX, y: setNameY), withAttributes: [
+                    NSAttributedString.Key.font: setNameFont,
+                    NSAttributedString.Key.foregroundColor: UIColor.green])
+                
+                let setCountText = NSString(string: String(setCount))
+                setCountText.draw(at: CGPoint(x: setNameX + 288, y: setNameY), withAttributes: [
+                    NSAttributedString.Key.font: setNameFont,
+                    NSAttributedString.Key.foregroundColor: UIColor.white])
+            } else {
+                setNameText.draw(at: CGPoint(x: setNameX, y: setNameY), withAttributes: [
+                    NSAttributedString.Key.font: setNameFont,
+                    NSAttributedString.Key.foregroundColor: UIColor.white])
+            }
+        }
+        
+        let totalScore = character.judgeScore(criteria: scoreCriteria)
+        let totalScoreTextFont = UIFont(name: genshinUIFontName, size: 80)!
+        let totalScoreX: CGFloat = 1536
+        let totalScoreY: CGFloat = 420
+        let totalScoreText = NSString(string: totalScore.valueString)
+        totalScoreText.draw(at: CGPoint(x: totalScoreX, y: totalScoreY), withAttributes: [
+            NSAttributedString.Key.font: totalScoreTextFont,
+            NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        let totalScoreGradeIcon = UIImage(named: totalScore.gradeIconString)!
+        let totalScoreGradeIconX: CGFloat = 1806
+        let totalScoreGradeIconY: CGFloat = 346
+        let totalScoreGradeIconWidth: CGFloat = 60
+        let totalScoreGradeIconHeight: CGFloat = 60
+        totalScoreGradeIcon.draw(in: CGRect(x: totalScoreGradeIconX, y: totalScoreGradeIconY, width: totalScoreGradeIconWidth, height: totalScoreGradeIconHeight))
+        
+        let criteriaStringFont = UIFont(name: genshinUIFontName, size: 26)!
+        let criteriaString = NSString(string: "\(scoreCriteria.criteriaString)基準")
+        let criteriaStringTextWidth = criteriaString.size(withAttributes: [NSAttributedString.Key.font: criteriaStringFont]).width
+        let criteriaStringX = totalScoreGradeIconX + totalScoreGradeIconWidth - criteriaStringTextWidth
+        let criteriaStringY: CGFloat = 584
+        criteriaString.draw(at: CGPoint(x: criteriaStringX, y: criteriaStringY), withAttributes: [
+            NSAttributedString.Key.font: criteriaStringFont,
+            NSAttributedString.Key.foregroundColor: UIColor.white])
         
         let buildCardImage = UIGraphicsGetImageFromCurrentImageContext()
 

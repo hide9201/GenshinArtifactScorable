@@ -36,7 +36,7 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scoreLabel.text = "スコア：\(String(format: "%.1f", character.calculateTotalScore(criteria: scoreCriteria)))"
+        scoreLabel.text = "スコア：\(String(format: "%.1f", character.calculateTotalScoreValue(criteria: scoreCriteria)))"
         prepareUIImages()
     }
     
@@ -113,7 +113,7 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
         // 全ての画像についてAPIを叩き終えたかをどう管理するべき？
         // ビルドカード作成をAPIが叩き終わるごとに毎回呼ぶ？その場合，ビルドカード生成コードの引数を(現状で完成しているまでのビルドカード, 新しく追加する画像, 追加する画像のパーツ名(新しく追加する画像をどこに配置するかを判断するため，enumとかで管理する))とかにする．ビルドカード生成中に他のAPIが完了して再度呼ばれるとやばそう
         if isSkillIconsPrepared(), isArtifactsImagesPrepared(), isConstellationIconsPrepared() {
-            buildCardImageView.image = generateBuildCard(character: character, characterImage: characterImage, weaponImage: weaponImage, skillIcons: skillIcons.map { $0! }, constellationIcons: constellationIcons.map { $0! }, artifactImages: artifactImages)
+            buildCardImageView.image = generateBuildCard(character: character, scoreCriteria: scoreCriteria, characterImage: characterImage, weaponImage: weaponImage, skillIcons: skillIcons.map { $0! }, constellationIcons: constellationIcons.map { $0! }, artifactImages: artifactImages)
         }
     }
     

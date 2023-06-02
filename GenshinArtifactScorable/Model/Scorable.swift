@@ -9,8 +9,28 @@ import Foundation
 
 /// スコアをもつキャラクター，聖遺物用プロトコル
 protocol Scorable {
-    func calculateCriticalScore() -> Double
-    func calculateTotalScore(criteria: ScoreCriteria) -> Double
+    func calculateCriticalScoreValue() -> Double
+    func calculateTotalScoreValue(criteria: ScoreCriteria) -> Double
+    func judgeScore(criteria: ScoreCriteria) -> Score
+}
+
+struct Score {
+    let value: Double
+    let grade: ScoreGrade
+    
+    var valueString: String {
+        return String(format: "%.1f", round(value * 10) / 10)
+    }
+    var gradeIconString: String {
+        return "BuildCard/GradeIcon/\(grade.rawValue)"
+    }
+}
+
+enum ScoreGrade: String {
+    case ss = "SS"
+    case s = "S"
+    case a = "A"
+    case b = "B"
 }
 
 enum ScoreCriteria: CaseIterable {

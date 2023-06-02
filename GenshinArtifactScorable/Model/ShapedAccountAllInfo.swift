@@ -413,17 +413,32 @@ enum RankLevel: Int {
 }
 
 extension Character: Scorable {
-    func calculateCriticalScore() -> Double {
-        return artifacts.reduce(0) { $0 + $1.calculateCriticalScore() }
+    func calculateCriticalScoreValue() -> Double {
+        return artifacts.reduce(0) { $0 + $1.calculateCriticalScoreValue() }
     }
     
-    func calculateTotalScore(criteria: ScoreCriteria) -> Double {
-        return artifacts.reduce(0) { $0 + $1.calculateTotalScore(criteria: criteria) }
+    func calculateTotalScoreValue(criteria: ScoreCriteria) -> Double {
+        return artifacts.reduce(0) { $0 + $1.calculateTotalScoreValue(criteria: criteria) }
+    }
+    
+    func judgeScore(criteria: ScoreCriteria) -> Score {
+        let scoreValue = calculateTotalScoreValue(criteria: criteria)
+        var scoreGrade: ScoreGrade
+        if scoreValue < 180 {
+            scoreGrade = .b
+        } else if scoreValue < 200 {
+            scoreGrade = .a
+        } else if scoreValue < 220 {
+            scoreGrade = .s
+        } else {
+            scoreGrade = .ss
+        }
+        return Score(value: scoreValue, grade: scoreGrade)
     }
 }
 
 extension Artifact: Scorable {
-    func calculateCriticalScore() -> Double {
+    func calculateCriticalScoreValue() -> Double {
         return subAttributes.reduce(0) { (result, attribute) -> Double in
             switch attribute.propId {
             case "FIGHT_PROP_CRITICAL":
@@ -436,8 +451,8 @@ extension Artifact: Scorable {
         }
     }
     
-    func calculateTotalScore(criteria: ScoreCriteria) -> Double {
-        var score = calculateCriticalScore()
+    func calculateTotalScoreValue(criteria: ScoreCriteria) -> Double {
+        var score = calculateCriticalScoreValue()
         
         switch criteria {
         case .attack:
@@ -486,7 +501,65 @@ extension Artifact: Scorable {
                 }
             }
         }
-        
         return score
+    }
+    
+    func judgeScore(criteria: ScoreCriteria) -> Score {
+        let scoreValue = calculateTotalScoreValue(criteria: criteria)
+        var scoreGrade: ScoreGrade
+        
+        switch artifactType {
+        case .flower:
+            if scoreValue < 40 {
+                scoreGrade = .b
+            } else if scoreValue < 45 {
+                scoreGrade = .a
+            } else if scoreValue < 50 {
+                scoreGrade = .s
+            } else {
+                scoreGrade = .ss
+            }
+        case .plume:
+            if scoreValue < 40 {
+                scoreGrade = .b
+            } else if scoreValue < 45 {
+                scoreGrade = .a
+            } else if scoreValue < 50 {
+                scoreGrade = .s
+            } else {
+                scoreGrade = .ss
+            }
+        case .sands:
+            if scoreValue < 35 {
+                scoreGrade = .b
+            } else if scoreValue < 40 {
+                scoreGrade = .a
+            } else if scoreValue < 45 {
+                scoreGrade = .s
+            } else {
+                scoreGrade = .ss
+            }
+        case .goblet:
+            if scoreValue < 37 {
+                scoreGrade = .b
+            } else if scoreValue < 40 {
+                scoreGrade = .a
+            } else if scoreValue < 45 {
+                scoreGrade = .s
+            } else {
+                scoreGrade = .ss
+            }
+        case .circlet:
+            if scoreValue < 30 {
+                scoreGrade = .b
+            } else if scoreValue < 35 {
+                scoreGrade = .a
+            } else if scoreValue < 40 {
+                scoreGrade = .s
+            } else {
+                scoreGrade = .ss
+            }
+        }
+        return Score(value: scoreValue, grade: scoreGrade)
     }
 }
