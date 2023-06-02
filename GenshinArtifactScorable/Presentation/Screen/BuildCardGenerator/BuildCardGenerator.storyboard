@@ -44,7 +44,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="ビルドカード" id="GDr-1Z-I9S">
-                        <barButtonItem key="rightBarButtonItem" title="閉じる" id="AxV-US-zpm"/>
+                        <barButtonItem key="rightBarButtonItem" title="閉じる" id="AxV-US-zpm">
+                            <connections>
+                                <action selector="CloseButtonDidTap:" destination="Y6W-OH-hqX" id="QX7-pQ-5Dh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>

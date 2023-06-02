@@ -143,6 +143,10 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
         }
         return isPrepared
     }
+    
+    @IBAction func CloseButtonDidTap(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
 }
 
 extension BuildCardGeneratorViewController: Storyboardable {
