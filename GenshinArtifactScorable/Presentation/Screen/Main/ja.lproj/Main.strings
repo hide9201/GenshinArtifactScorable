@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "UIDを入力"; ObjectID = "0Ow-0u-GNy"; */
+"0Ow-0u-GNy.text" = "UIDを入力";
+
+/* Class = "UIViewController"; title = "Home"; ObjectID = "BYZ-38-t0r"; */
+"BYZ-38-t0r.title" = "Home";
+
+/* Class = "UIButton"; configuration.title = "送信"; ObjectID = "F2a-dx-YmN"; */
+"F2a-dx-YmN.configuration.title" = "送信";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "F2a-dx-YmN"; */
+"F2a-dx-YmN.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "Home"; ObjectID = "O0G-04-7ih"; */
+"O0G-04-7ih.title" = "Home";

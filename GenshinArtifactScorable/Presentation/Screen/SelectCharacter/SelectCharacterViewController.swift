@@ -115,7 +115,7 @@ final class SelectCharacterViewController: UIViewController {
             .map { criteria in
                 UIAction(
                     title: criteria.criteriaString,
-                    image: UIImage(named: criteria.propIconString)?.withTintColor(.darkGray, renderingMode: .alwaysOriginal),
+                    image: UIImage(named: criteria.propIconString)?.withTintColor(.label, renderingMode: .alwaysOriginal),
                     state: criteria == selectedCriteria ? .on : .off,
                     handler: { _ in
                         self.selectedCriteria = criteria

@@ -9,7 +9,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet private weak var uidTextField: UITextField!
+    @IBOutlet private weak var uidTextField: UITextField! {
+        didSet {
+            uidTextField.delegate = self
+        }
+    }
     
     @IBAction func uidSendButtonDidTap(_ sender: Any) {
         let uid = uidTextField.text!
@@ -23,3 +27,6 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: UITextFieldDelegate {
+    
+}

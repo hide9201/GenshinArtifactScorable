@@ -11,7 +11,6 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
     
     // MARK: - Outlet
     
-    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var buildCardImageView: UIImageView! {
         didSet {
             buildCardImageView.image = UIImage(named: "BuildCard/Base/\(character.element.rawValue)")
@@ -36,7 +35,6 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scoreLabel.text = "スコア：\(String(format: "%.1f", character.calculateTotalScoreValue(criteria: scoreCriteria)))"
         prepareUIImages()
     }
     
@@ -65,6 +63,7 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
             imageService.fetchUIImage(imageString: skill.iconString)
                 .done { skillIcon in
                     self.skillIcons[index] = skillIcon
+                    self.imageService.saveUIImage(image: skillIcon, imageString: skill.iconString)
                     self.generateBuildCardIfPrepared()
                 }.catch { error in
                     print(error)
@@ -75,6 +74,7 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
             imageService.fetchUIImage(imageString: character.constellationStrings[index])
                 .done { constellationIcon in
                     self.constellationIcons[index] = constellationIcon
+                    self.imageService.saveUIImage(image: constellationIcon, imageString: self.character.constellationStrings[index])
                     self.generateBuildCardIfPrepared()
                 }.catch { error in
                     print(error)
@@ -146,6 +146,37 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
     
     @IBAction func CloseButtonDidTap(_ sender: Any) {
         self.dismiss(animated: true)
+    }
+    
+    @IBAction func ShareButtonDidTap(_ sender: Any) {
+        let shareImage = buildCardImageView.image!
+        let activityViewController = UIActivityViewController(activityItems: [shareImage], applicationActivities: nil)
+        
+        var excludedActivityTypes = [
+            .addToReadingList,
+            .assignToContact,
+            .copyToPasteboard,
+            .mail,
+            .markupAsPDF,
+            .openInIBooks,
+            .print,
+            UIActivity.ActivityType(rawValue: "com.apple.reminders.sharingextension"),
+            UIActivity.ActivityType(rawValue: "com.apple.mobilenotes.SharingExtension")
+        ]
+        
+        if #available(iOS 16.0, *) {
+            excludedActivityTypes.append(.collaborationCopyLink)
+            excludedActivityTypes.append(.collaborationInviteWithLink)
+        }
+        
+        if #available(iOS 16.4, *) {
+            excludedActivityTypes.append(.addToHomeScreen)
+        }
+        
+        activityViewController.excludedActivityTypes = excludedActivityTypes
+        activityViewController.modalPresentationStyle = .pageSheet
+        let navigation = UINavigationController(rootViewController: activityViewController)
+        present(navigation, animated: true)
     }
 }
 

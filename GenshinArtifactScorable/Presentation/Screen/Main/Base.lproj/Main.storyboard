@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ehO-uu-ua7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ehO-uu-ua7">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,18 +18,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UIDを入力" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ow-0u-GNy">
-                                <rect key="frame" x="144" y="400" width="126" height="24"/>
+                                <rect key="frame" x="160" y="212" width="94" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RhL-7W-vNB">
-                                <rect key="frame" x="72" y="428" width="270" height="34"/>
+                                <rect key="frame" x="72" y="240" width="270" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2a-dx-YmN">
-                                <rect key="frame" x="160" y="466" width="94" height="38"/>
+                                <rect key="frame" x="174.5" y="278" width="65" height="38"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="送信">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
@@ -41,15 +42,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0Ow-0u-GNy" secondAttribute="trailing" constant="144" id="6Du-zQ-I5s"/>
+                            <constraint firstItem="0Ow-0u-GNy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QeF-Ly-sTd"/>
                             <constraint firstItem="RhL-7W-vNB" firstAttribute="top" secondItem="0Ow-0u-GNy" secondAttribute="bottom" constant="4" id="RAW-7U-bzq"/>
                             <constraint firstItem="F2a-dx-YmN" firstAttribute="top" secondItem="RhL-7W-vNB" secondAttribute="bottom" constant="4" id="XQX-P3-Fnz"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F2a-dx-YmN" secondAttribute="trailing" constant="160" id="YSn-oK-OeE"/>
-                            <constraint firstItem="0Ow-0u-GNy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="312" id="dJq-Vi-WYN"/>
+                            <constraint firstItem="F2a-dx-YmN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dAk-JN-1k7"/>
+                            <constraint firstItem="0Ow-0u-GNy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="dJq-Vi-WYN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RhL-7W-vNB" secondAttribute="trailing" constant="72" id="gjI-R9-Bd5"/>
                             <constraint firstItem="RhL-7W-vNB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="72" id="hR3-oi-eDM"/>
-                            <constraint firstItem="F2a-dx-YmN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="160" id="i4x-Xh-DYF"/>
-                            <constraint firstItem="0Ow-0u-GNy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="144" id="pNN-9E-B7D"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="O0G-04-7ih"/>
@@ -66,7 +65,7 @@
             <objects>
                 <navigationController id="ehO-uu-ua7" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9YN-qE-jeT">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
