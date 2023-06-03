@@ -10,8 +10,8 @@ import Foundation
 /// スコアをもつキャラクター，聖遺物用プロトコル
 protocol Scorable {
     func calculateCriticalScoreValue() -> Double
-    func calculateTotalScoreValue(criteria: ScoreCriteria) -> Double
-    func judgeScore(criteria: ScoreCriteria) -> Score
+    func calculateTotalScoreValue(calculateType: ScoreCalculateType) -> Double
+    func judgeScore(calculateType: ScoreCalculateType) -> Score
 }
 
 struct Score {
@@ -33,14 +33,14 @@ enum ScoreGrade: String {
     case b = "B"
 }
 
-enum ScoreCriteria: CaseIterable {
+enum ScoreCalculateType: CaseIterable {
     case attack
     case hp
     case defense
     case energyRecharge
     case elementalMastery
     
-    var criteriaString: String {
+    var calculateTypeString: String {
         switch self {
         case .attack:
             return "攻撃％"

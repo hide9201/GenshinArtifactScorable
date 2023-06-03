@@ -14,7 +14,7 @@ protocol BuildCardGeneratable {
 extension BuildCardGeneratable {
     
     func generateBuildCard(character: Character,
-                           scoreCriteria: ScoreCriteria,
+                           scoreCalculateType: ScoreCalculateType,
                            characterImage: UIImage,
                            weaponImage: UIImage,
                            skillIcons: [UIImage],
@@ -314,7 +314,7 @@ extension BuildCardGeneratable {
                     subStatusIconY += nameTextSize.height + 16
                 }
                 
-                let score = artifact.judgeScore(criteria: scoreCriteria)
+                let score = artifact.judgeScore(calculateType: scoreCalculateType)
                 let scoreGradeIcon = UIImage(named: score.gradeIconString)!
                 let scoreGradeIconX: CGFloat = 84 + CGFloat(373 * index)
                 let scoreGradeIconY: CGFloat = subStatusIconY
@@ -388,7 +388,7 @@ extension BuildCardGeneratable {
             }
         }
         
-        let totalScore = character.judgeScore(criteria: scoreCriteria)
+        let totalScore = character.judgeScore(calculateType: scoreCalculateType)
         let totalScoreTextFont = UIFont(name: genshinUIFontName, size: 80)!
         let totalScoreX: CGFloat = 1536
         let totalScoreY: CGFloat = 420
@@ -404,13 +404,13 @@ extension BuildCardGeneratable {
         let totalScoreGradeIconHeight: CGFloat = 60
         totalScoreGradeIcon.draw(in: CGRect(x: totalScoreGradeIconX, y: totalScoreGradeIconY, width: totalScoreGradeIconWidth, height: totalScoreGradeIconHeight))
         
-        let criteriaStringFont = UIFont(name: genshinUIFontName, size: 26)!
-        let criteriaString = NSString(string: "\(scoreCriteria.criteriaString)換算")
-        let criteriaStringTextWidth = criteriaString.size(withAttributes: [NSAttributedString.Key.font: criteriaStringFont]).width
-        let criteriaStringX = totalScoreGradeIconX + totalScoreGradeIconWidth - criteriaStringTextWidth
-        let criteriaStringY: CGFloat = 584
-        criteriaString.draw(at: CGPoint(x: criteriaStringX, y: criteriaStringY), withAttributes: [
-            NSAttributedString.Key.font: criteriaStringFont,
+        let scoreCalculateTypeFont = UIFont(name: genshinUIFontName, size: 26)!
+        let scoreCalculateTypeString = NSString(string: "\(scoreCalculateType.calculateTypeString)換算")
+        let scoreCalculateTypeTextWidth = scoreCalculateTypeString.size(withAttributes: [NSAttributedString.Key.font: scoreCalculateTypeFont]).width
+        let scoreCalculateTypeStringX = totalScoreGradeIconX + totalScoreGradeIconWidth - scoreCalculateTypeTextWidth
+        let scoreCalculateTypeStringY: CGFloat = 584
+        scoreCalculateTypeString.draw(at: CGPoint(x: scoreCalculateTypeStringX, y: scoreCalculateTypeStringY), withAttributes: [
+            NSAttributedString.Key.font: scoreCalculateTypeFont,
             NSAttributedString.Key.foregroundColor: UIColor.white])
         
         let buildCardImage = UIGraphicsGetImageFromCurrentImageContext()

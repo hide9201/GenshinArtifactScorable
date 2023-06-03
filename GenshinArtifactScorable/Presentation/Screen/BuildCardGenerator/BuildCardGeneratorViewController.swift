@@ -20,7 +20,7 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
     // MARK: - Property
     
     private var character: Character!
-    private var scoreCriteria: ScoreCriteria!
+    private var scoreCalculateType: ScoreCalculateType!
     private var imageService: ImageService!
     
     private var characterImage: UIImage?
@@ -113,7 +113,7 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
         // 全ての画像についてAPIを叩き終えたかをどう管理するべき？
         // ビルドカード作成をAPIが叩き終わるごとに毎回呼ぶ？その場合，ビルドカード生成コードの引数を(現状で完成しているまでのビルドカード, 新しく追加する画像, 追加する画像のパーツ名(新しく追加する画像をどこに配置するかを判断するため，enumとかで管理する))とかにする．ビルドカード生成中に他のAPIが完了して再度呼ばれるとやばそう
         if isSkillIconsPrepared(), isArtifactsImagesPrepared(), isConstellationIconsPrepared() {
-            buildCardImageView.image = generateBuildCard(character: character, scoreCriteria: scoreCriteria, characterImage: characterImage, weaponImage: weaponImage, skillIcons: skillIcons.map { $0! }, constellationIcons: constellationIcons.map { $0! }, artifactImages: artifactImages)
+            buildCardImageView.image = generateBuildCard(character: character, scoreCalculateType: scoreCalculateType, characterImage: characterImage, weaponImage: weaponImage, skillIcons: skillIcons.map { $0! }, constellationIcons: constellationIcons.map { $0! }, artifactImages: artifactImages)
         }
     }
     
@@ -181,9 +181,9 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
 }
 
 extension BuildCardGeneratorViewController: Storyboardable {
-    func inject(_ dependency: (character: Character, scoreCriteria: ScoreCriteria)) {
+    func inject(_ dependency: (character: Character, scoreCalculateType: ScoreCalculateType)) {
         self.character = dependency.character
-        self.scoreCriteria = dependency.scoreCriteria
+        self.scoreCalculateType = dependency.scoreCalculateType
         
         self.imageService = ImageService()
     

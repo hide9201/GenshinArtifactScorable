@@ -417,12 +417,12 @@ extension Character: Scorable {
         return artifacts.reduce(0) { $0 + $1.calculateCriticalScoreValue() }
     }
     
-    func calculateTotalScoreValue(criteria: ScoreCriteria) -> Double {
-        return artifacts.reduce(0) { $0 + $1.calculateTotalScoreValue(criteria: criteria) }
+    func calculateTotalScoreValue(calculateType: ScoreCalculateType) -> Double {
+        return artifacts.reduce(0) { $0 + $1.calculateTotalScoreValue(calculateType: calculateType) }
     }
     
-    func judgeScore(criteria: ScoreCriteria) -> Score {
-        let scoreValue = calculateTotalScoreValue(criteria: criteria)
+    func judgeScore(calculateType: ScoreCalculateType) -> Score {
+        let scoreValue = calculateTotalScoreValue(calculateType: calculateType)
         var scoreGrade: ScoreGrade
         if scoreValue < 180 {
             scoreGrade = .b
@@ -451,10 +451,10 @@ extension Artifact: Scorable {
         }
     }
     
-    func calculateTotalScoreValue(criteria: ScoreCriteria) -> Double {
+    func calculateTotalScoreValue(calculateType: ScoreCalculateType) -> Double {
         var score = calculateCriticalScoreValue()
         
-        switch criteria {
+        switch calculateType {
         case .attack:
             score += subAttributes.reduce(0) { (result, attribute) -> Double in
                 switch attribute.propId {
@@ -504,8 +504,8 @@ extension Artifact: Scorable {
         return score
     }
     
-    func judgeScore(criteria: ScoreCriteria) -> Score {
-        let scoreValue = calculateTotalScoreValue(criteria: criteria)
+    func judgeScore(calculateType: ScoreCalculateType) -> Score {
+        let scoreValue = calculateTotalScoreValue(calculateType: calculateType)
         var scoreGrade: ScoreGrade
         
         switch artifactType {
