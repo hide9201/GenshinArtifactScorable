@@ -24,7 +24,7 @@ extension SearchHistoryTableViewCell: NibInstantiatable {
             .done { profileIcon in
                 self.profileIconImageView.image = profileIcon
                 self.userNameLabel.text = dependency.playerBasicInfo.playerName
-                self.uidLabel.text = dependency.uid
+                self.uidLabel.text = "UID \(dependency.uid)"
             }.catch { error in
                 print(error)
             }

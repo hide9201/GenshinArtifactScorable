@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="n4x-kV-Y0X">
-                        <rect key="frame" x="8" y="8" width="270.66666666666669" height="72"/>
+                        <rect key="frame" x="8" y="8" width="207" height="72"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="characters/Aether(Dendro)/icon" translatesAutoresizingMaskIntoConstraints="NO" id="27L-TC-UrI">
                                 <rect key="frame" x="0.0" y="0.0" width="72" height="72"/>
@@ -26,24 +26,24 @@
                                     <constraint firstAttribute="height" constant="72" id="kcQ-8i-HL1"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="L8k-A5-FzF">
-                                <rect key="frame" x="87.999999999999986" y="0.0" width="182.66666666666663" height="72"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="L8k-A5-FzF">
+                                <rect key="frame" x="88" y="0.0" width="119" height="72"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="旅人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyg-vq-GQG">
-                                        <rect key="frame" x="0.0" y="0.0" width="48.666666666666664" height="36"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="41" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="LmS-mS-tJt"/>
+                                            <constraint firstAttribute="height" constant="40" id="LmS-mS-tJt"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UID: 000000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4O-ap-Nyp">
-                                        <rect key="frame" x="0.0" y="44" width="182.66666666666666" height="28"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UID 000000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4O-ap-Nyp">
+                                        <rect key="frame" x="0.0" y="40" width="119" height="32"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="28" id="I8h-X6-7X3"/>
+                                            <constraint firstAttribute="height" constant="32" id="I8h-X6-7X3"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>

@@ -123,7 +123,7 @@ final class SelectCharacterViewController: UIViewController {
                     })
             }
         
-        selectCalculateTypeButton.menu = UIMenu(title: "スコアの計算基準", options: .displayInline, children: actions)
+        selectCalculateTypeButton.menu = UIMenu(title: "スコア計算のタイプ", options: .displayInline, children: actions)
         selectCalculateTypeButton.showsMenuAsPrimaryAction = true
         selectCalculateTypeButton.setTitle(selectedCalculateType?.calculateTypeString ?? "選択してください", for: .normal)
         
