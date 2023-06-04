@@ -20,7 +20,13 @@ struct AccountService {
     }
     
     func getAccountAllInfoFromRealm(uid: String) -> ShapedAccountAllInfo? {
-        return realmManager.get(ShapedAccountAllInfoObject.self, primaryKey: uid)?.value
+        if var accountAllInfo = realmManager.get(ShapedAccountAllInfoObject.self, primaryKey: uid)?.value {
+            accountAllInfo.searchDate = Date()
+            saveAccountAllInfo(to: accountAllInfo)
+            return accountAllInfo
+        } else {
+            return nil
+        }
     }
     
     func getAccountAllInfoFromAPI(uid: String, nextRefreshableDate: Date?) -> Promise<ShapedAccountAllInfo> {
@@ -33,7 +39,10 @@ struct AccountService {
                 .map { accountAllInfo in
                     let appResource = AppResource.shared
                     if let locDict = appResource.localizedDictionary, let charMap = appResource.characterDetails, let nameCard = appResource.nameCard {
-                        return ShapedAccountAllInfo(accountAllInfo: accountAllInfo, localizedDictionary: locDict, characterMap: charMap, nameCardMap: nameCard)
+                        var accountAllInfo = ShapedAccountAllInfo(accountAllInfo: accountAllInfo, localizedDictionary: locDict, characterMap: charMap, nameCardMap: nameCard)
+                        accountAllInfo.searchDate = Date()
+                        saveAccountAllInfo(to: accountAllInfo)
+                        return accountAllInfo
                     } else {
                         throw AppResourceError.notFound
                     }

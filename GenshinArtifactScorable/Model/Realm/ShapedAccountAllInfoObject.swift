@@ -12,6 +12,7 @@ final class ShapedAccountAllInfoObject: Object {
     
     @Persisted(primaryKey: true) var uid = ""
     @Persisted var nextRefreshableDate = Date()
+    @Persisted var searchDate: Date? = nil
     @Persisted var playerBasicInfo: PlayerBasicInfoObject? = nil
     
     @Persisted var  characters = List<CharacterObject>()
@@ -93,6 +94,7 @@ extension ShapedAccountAllInfoObject {
         let shapedAccountAllInfoObject = ShapedAccountAllInfoObject()
         shapedAccountAllInfoObject.uid = value.uid
         shapedAccountAllInfoObject.nextRefreshableDate = value.nextRefreshableDate
+        shapedAccountAllInfoObject.searchDate = value.searchDate
         shapedAccountAllInfoObject.playerBasicInfo = PlayerBasicInfoObject.decode(from: value.playerBasicInfo)
         shapedAccountAllInfoObject.characters.append(objectsIn: value.characters.compactMap { CharacterObject.decode(from: $0) })
         
@@ -101,7 +103,7 @@ extension ShapedAccountAllInfoObject {
     
     var value: ShapedAccountAllInfo? {
         guard let playerBasicInfo = playerBasicInfo else { return nil }
-        return ShapedAccountAllInfo(uid: uid, nextRefreshableDate: nextRefreshableDate, playerBasicInfo: playerBasicInfo.value, characters: characters.compactMap { $0.value })
+        return ShapedAccountAllInfo(uid: uid, nextRefreshableDate: nextRefreshableDate, searchDate: searchDate, playerBasicInfo: playerBasicInfo.value, characters: characters.compactMap { $0.value })
     }
 }
 

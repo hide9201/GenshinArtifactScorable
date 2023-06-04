@@ -70,8 +70,6 @@ final class SelectCharacterViewController: UIViewController {
             .done { accountAllInfo in
                 self.shapedAccountAllInfo = accountAllInfo
                 self.setupUI()
-                self.accountService.saveAccountAllInfo(to: accountAllInfo)
-                
             }.catch { error in
                 print(error)
             }

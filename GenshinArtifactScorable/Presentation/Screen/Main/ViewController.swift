@@ -41,7 +41,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // なぜかストーリーボードで設定したタイトルが反映されないのでコードで変更
         self.title = "ユーザ検索"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         cashedAccounts = accountService.getAllAccountsFromRealm()
+        cashedAccounts.sort(by: { $0.searchDate ?? Date() > $1.searchDate ?? Date() })
+        searchHistoryTableView.reloadData()
     }
     
     private func transitionToSelectCharacterViewController(uid: String) {
