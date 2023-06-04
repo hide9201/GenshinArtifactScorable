@@ -39,6 +39,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // なぜかストーリーボードで設定したタイトルが反映されないのでコードで変更
+        self.title = "ユーザ検索"
         cashedAccounts = accountService.getAllAccountsFromRealm()
     }
     
