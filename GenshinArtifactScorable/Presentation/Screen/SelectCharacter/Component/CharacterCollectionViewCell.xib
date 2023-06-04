@@ -37,10 +37,10 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lv.90" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="8yq-h7-8da">
                         <rect key="frame" x="31" y="76" width="32" height="41"/>
                         <fontDescription key="fontDescription" name="SDK_JP_Web-85W" family="SDK_JP_Web" pointSize="36"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ElementIcon/anemo" translatesAutoresizingMaskIntoConstraints="NO" id="gGy-59-cGO">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ElementIcon/Anemo" translatesAutoresizingMaskIntoConstraints="NO" id="gGy-59-cGO">
                         <rect key="frame" x="4" y="4" width="32" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="32" id="IiJ-Z6-umU"/>
@@ -74,7 +74,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ElementIcon/anemo" width="256" height="256"/>
+        <image name="ElementIcon/Anemo" width="256" height="256"/>
         <image name="QualityBackground/Quality_5_background" width="112" height="136"/>
         <image name="characters/Wanderer/icon" width="256" height="256"/>
     </resources>

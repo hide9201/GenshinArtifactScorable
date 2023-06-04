@@ -63,8 +63,10 @@ struct Character {
     let name: String
     let element: Element
     let constellationLevel: Int
+    let constellationStrings: [String]
     let skills: [Skill]
     let level: Int
+    let friendshipLevel: Int
     let weapon: Weapon
     let artifacts: [Artifact]
     let fightPropMap: FightPropMap
@@ -84,17 +86,73 @@ struct Character {
         }
     }
     
+    func basicFightPropString(index: Int) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        switch index {
+        case 0:
+            return formatter.string(from: Int(round(fightPropMap.hp)) as NSNumber) ?? String(format: "%.0f", round(fightPropMap.hp))
+        case 1:
+            return formatter.string(from: Int(round(fightPropMap.atk)) as NSNumber) ?? String(format: "%.0f", round(fightPropMap.atk))
+        case 2:
+            return formatter.string(from: Int(round(fightPropMap.def)) as NSNumber) ?? String(format: "%.0f", round(fightPropMap.def))
+        case 3:
+            return formatter.string(from: Int(round(fightPropMap.elementalMastery)) as NSNumber) ?? String(format: "%.0f", round(fightPropMap.elementalMastery))
+        case 4:
+            formatter.positiveFormat = "0.0"
+            let value = round(fightPropMap.criticalRate * 1000) / 10
+            let valueString = formatter.string(from: value as NSNumber) ?? String(value)
+            return "\(valueString)%"
+        case 5:
+            formatter.positiveFormat = "0.0"
+            let value = round(fightPropMap.criticalDamage * 1000) / 10
+            let valueString = formatter.string(from: value as NSNumber) ?? String(value)
+            return "\(valueString)%"
+        case 6:
+            formatter.positiveFormat = "0.0"
+            let value = round(fightPropMap.energyRecharge * 1000) / 10
+            let valueString = formatter.string(from: value as NSNumber) ?? String(value)
+            return "\(valueString)%"
+        case 7:
+            formatter.positiveFormat = "0.0"
+            var value: Double
+            switch element {
+            case .cryo:
+                value = round(fightPropMap.cryoDamage * 1000) / 10
+            case .anemo:
+                value = round(fightPropMap.anemoDamage * 1000) / 10
+            case .electro:
+                value = round(fightPropMap.electroDamage * 1000) / 10
+            case .hydro:
+                value = round(fightPropMap.hydroDamage * 1000) / 10
+            case .pyro:
+                value = round(fightPropMap.pyroDamage * 1000) / 10
+            case .geo:
+                value = round(fightPropMap.geoDamage * 1000) / 10
+            case .dendro:
+                value = round(fightPropMap.dendroDamage * 1000) / 10
+            case .unknown:
+                value = 0.0
+            }
+            let valueString = formatter.string(from: value as NSNumber) ?? String(value)
+            return "\(valueString)%"
+        default:
+            return "0"
+        }
+    }
+    
     init?(avatarInfo: AccountAllInfo.AvatarInfo, localizedDictionary: [String: String], characterMap: [String: CharacterMap.Character]) {
         guard let character = characterMap["\(avatarInfo.avatarId)-\(avatarInfo.skillDepotId)"] ?? characterMap["\(avatarInfo.avatarId)"] else { return nil }
         
         name = localizedDictionary.nameFrom(id: character.nameTextMapHash)
-        element = Element.init(rawValue: character.element) ?? .unknown
+        element = Element.init(rawValue: character.elementMap[character.element] ?? "") ?? .unknown
         
         if let talentIdList = avatarInfo.talentIdList {
             constellationLevel = talentIdList.count
         } else {
             constellationLevel = 0
         }
+        constellationStrings = character.constellationStrings
         
         iconString = character.sideIconName.replacingOccurrences(of: "_Side", with: "")
         sideIconString = character.sideIconName
@@ -110,6 +168,7 @@ struct Character {
         })
         
         level = Int(avatarInfo.propMap.level.val) ?? 0
+        friendshipLevel = avatarInfo.fetterInfo.expLevel
         
         guard let weaponEquipment = avatarInfo.equipList.first(where: { equipment in
             equipment.flat.itemType == "ITEM_WEAPON"
@@ -126,12 +185,14 @@ struct Character {
         quality = .init(rawValue: character.qualityType) ?? .purple
     }
     
-    init(name: String, element: Element, constellationLevel: Int, skills: [Skill], level: Int, weapon: Weapon, artifacts: [Artifact], fightPropMap: FightPropMap, iconString: String, sideIconString: String,  quality: Quality) {
+    init(name: String, element: Element, constellationLevel: Int, constellationStrings: [String], skills: [Skill], level: Int, friendshipLevel: Int, weapon: Weapon, artifacts: [Artifact], fightPropMap: FightPropMap, iconString: String, sideIconString: String,  quality: Quality) {
         self.name = name
         self.element = element
         self.constellationLevel = constellationLevel
+        self.constellationStrings = constellationStrings
         self.skills = skills
         self.level = level
+        self.friendshipLevel = friendshipLevel
         self.weapon = weapon
         self.artifacts = artifacts
         self.fightPropMap = fightPropMap
@@ -141,14 +202,35 @@ struct Character {
     }
     
     enum Element: String {
-        case cryo = "Ice"
-        case anemo = "Wind"
-        case electro = "Electric"
-        case hydro = "Water"
-        case pyro = "Fire"
-        case geo = "Rock"
-        case dendro = "Grass"
+        case cryo = "Cryo"
+        case anemo = "Anemo"
+        case electro = "Electro"
+        case hydro = "Hydro"
+        case pyro = "Pyro"
+        case geo = "Geo"
+        case dendro = "Dendro"
         case unknown
+        
+        var jpName: String {
+            switch self {
+            case .cryo:
+                return "氷元素"
+            case .anemo:
+                return "風元素"
+            case .electro:
+                return "雷元素"
+            case .hydro:
+                return "水元素"
+            case .pyro:
+                return "炎元素"
+            case .geo:
+                return "岩元素"
+            case .dendro:
+                return "草元素"
+            case .unknown:
+                return "不明"
+            }
+        }
     }
     
     enum Quality: String {
@@ -239,6 +321,7 @@ struct Weapon {
         
 struct Artifact {
     let id: String
+    let level: Int
     let name: String
     let setName: String
     let mainAttribute: Attribute
@@ -258,6 +341,7 @@ struct Artifact {
     init?(artifactEquipment: AccountAllInfo.AvatarInfo.Equip, localizedDictionary: [String: String]) {
         guard artifactEquipment.flat.itemType == "ITEM_RELIQUARY" else { return nil }
         id = artifactEquipment.flat.nameTextMapHash
+        level = artifactEquipment.reliquary!.level - 1
         name = localizedDictionary.nameFrom(id: artifactEquipment.flat.nameTextMapHash)
         setName = localizedDictionary.nameFrom(id: artifactEquipment.flat.setNameTextMapHash!)
         
@@ -272,8 +356,9 @@ struct Artifact {
         rankLevel = .init(rawValue: artifactEquipment.flat.rankLevel) ?? .five
     }
     
-    init(id: String, name: String, setName: String, mainAttribute: Attribute, subAttributes: [Attribute], iconString: String, artifactType: ArtifactType, rankLevel: RankLevel) {
+    init(id: String, level: Int, name: String, setName: String, mainAttribute: Attribute, subAttributes: [Attribute], iconString: String, artifactType: ArtifactType, rankLevel: RankLevel) {
         self.id = id
+        self.level = level
         self.name = name
         self.setName = setName
         self.mainAttribute = mainAttribute
@@ -288,8 +373,19 @@ struct Attribute {
     let propId: String
     var propIconString: String { propId.replacingOccurrences(of: "FIGHT_PROP_", with: "") }
     let name: String
-    var valueString: String { String(format: "%.1f", value) }
     var value: Double
+    
+    // %表記が必要なステータスは%付きのStringを返す
+    var valueString: String {
+        if propId.contains("PERCENT") || propId.contains("HURT") || propId.contains("CRITICAL") || propId.contains("CHARGE") {
+            return "\(String(format: "%.1f", value))%"
+        } else {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            return formatter.string(from: value as NSNumber) ?? String(format: "%.0f", value)
+        }
+    }
+    
     init(propId: String, name: String, value: Double) {
         self.propId = propId
         self.name = name
@@ -317,17 +413,32 @@ enum RankLevel: Int {
 }
 
 extension Character: Scorable {
-    func calculateCriticalScore() -> Double {
-        return artifacts.reduce(0) { $0 + $1.calculateCriticalScore() }
+    func calculateCriticalScoreValue() -> Double {
+        return artifacts.reduce(0) { $0 + $1.calculateCriticalScoreValue() }
     }
     
-    func calculateTotalScore(criteria: ScoreCriteria) -> Double {
-        return artifacts.reduce(0) { $0 + $1.calculateTotalScore(criteria: criteria) }
+    func calculateTotalScoreValue(calculateType: ScoreCalculateType) -> Double {
+        return artifacts.reduce(0) { $0 + $1.calculateTotalScoreValue(calculateType: calculateType) }
+    }
+    
+    func judgeScore(calculateType: ScoreCalculateType) -> Score {
+        let scoreValue = calculateTotalScoreValue(calculateType: calculateType)
+        var scoreGrade: ScoreGrade
+        if scoreValue < 180 {
+            scoreGrade = .b
+        } else if scoreValue < 200 {
+            scoreGrade = .a
+        } else if scoreValue < 220 {
+            scoreGrade = .s
+        } else {
+            scoreGrade = .ss
+        }
+        return Score(value: scoreValue, grade: scoreGrade)
     }
 }
 
 extension Artifact: Scorable {
-    func calculateCriticalScore() -> Double {
+    func calculateCriticalScoreValue() -> Double {
         return subAttributes.reduce(0) { (result, attribute) -> Double in
             switch attribute.propId {
             case "FIGHT_PROP_CRITICAL":
@@ -340,10 +451,10 @@ extension Artifact: Scorable {
         }
     }
     
-    func calculateTotalScore(criteria: ScoreCriteria) -> Double {
-        var score = calculateCriticalScore()
+    func calculateTotalScoreValue(calculateType: ScoreCalculateType) -> Double {
+        var score = calculateCriticalScoreValue()
         
-        switch criteria {
+        switch calculateType {
         case .attack:
             score += subAttributes.reduce(0) { (result, attribute) -> Double in
                 switch attribute.propId {
@@ -390,7 +501,65 @@ extension Artifact: Scorable {
                 }
             }
         }
-        
         return score
+    }
+    
+    func judgeScore(calculateType: ScoreCalculateType) -> Score {
+        let scoreValue = calculateTotalScoreValue(calculateType: calculateType)
+        var scoreGrade: ScoreGrade
+        
+        switch artifactType {
+        case .flower:
+            if scoreValue < 40 {
+                scoreGrade = .b
+            } else if scoreValue < 45 {
+                scoreGrade = .a
+            } else if scoreValue < 50 {
+                scoreGrade = .s
+            } else {
+                scoreGrade = .ss
+            }
+        case .plume:
+            if scoreValue < 40 {
+                scoreGrade = .b
+            } else if scoreValue < 45 {
+                scoreGrade = .a
+            } else if scoreValue < 50 {
+                scoreGrade = .s
+            } else {
+                scoreGrade = .ss
+            }
+        case .sands:
+            if scoreValue < 35 {
+                scoreGrade = .b
+            } else if scoreValue < 40 {
+                scoreGrade = .a
+            } else if scoreValue < 45 {
+                scoreGrade = .s
+            } else {
+                scoreGrade = .ss
+            }
+        case .goblet:
+            if scoreValue < 37 {
+                scoreGrade = .b
+            } else if scoreValue < 40 {
+                scoreGrade = .a
+            } else if scoreValue < 45 {
+                scoreGrade = .s
+            } else {
+                scoreGrade = .ss
+            }
+        case .circlet:
+            if scoreValue < 30 {
+                scoreGrade = .b
+            } else if scoreValue < 35 {
+                scoreGrade = .a
+            } else if scoreValue < 40 {
+                scoreGrade = .s
+            } else {
+                scoreGrade = .ss
+            }
+        }
+        return Score(value: scoreValue, grade: scoreGrade)
     }
 }

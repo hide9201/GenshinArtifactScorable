@@ -31,7 +31,8 @@ final class SelectCharacterViewController: UIViewController {
     @IBOutlet weak var uidLabel: UILabel!
     @IBOutlet weak var adventureRankLabel: UILabel!
     @IBOutlet weak var worldRankLabel: UILabel!
-    @IBOutlet weak var selectCriteriaButton: UIButton!
+    @IBOutlet weak var selectCalculateTypeButton: UIButton!
+    @IBOutlet weak var generateBuildCardButton: UIButton!
     
     // MARK: - Property
     
@@ -39,12 +40,24 @@ final class SelectCharacterViewController: UIViewController {
     private var accountService: AccountService!
     private var imageService: ImageService!
     private var shapedAccountAllInfo: ShapedAccountAllInfo?
-    private var selectedCriteria: ScoreCriteria?
+    
+    private var selectedCalculateType: ScoreCalculateType? {
+        didSet {
+            changeGenerateBuildCardButtonEnabled()
+        }
+    }
+    
+    private var selectedCharacter: Character? {
+        didSet {
+            changeGenerateBuildCardButtonEnabled()
+        }
+    }
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        generateBuildCardButton.isEnabled = false
         setupUI()
         configureMenu()
         refreshShapedAccountAllInfo()
@@ -62,6 +75,10 @@ final class SelectCharacterViewController: UIViewController {
             }.catch { error in
                 print(error)
             }
+    }
+    
+    private func changeGenerateBuildCardButtonEnabled() {
+        generateBuildCardButton.isEnabled = (selectedCalculateType != nil && selectedCharacter != nil) ? true : false
     }
     
     private func setupUI() {
@@ -94,31 +111,37 @@ final class SelectCharacterViewController: UIViewController {
     }
     
     private func configureMenu() {
-        let actions = ScoreCriteria.allCases
-            .map { criteria in
+        let actions = ScoreCalculateType.allCases
+            .map { scoreCalculateType in
                 UIAction(
-                    title: criteria.criteriaString,
-                    image: UIImage(named: criteria.propIconString)?.withTintColor(.darkGray, renderingMode: .alwaysOriginal),
-                    state: criteria == selectedCriteria ? .on : .off,
+                    title: scoreCalculateType.calculateTypeString,
+                    image: UIImage(named: scoreCalculateType.propIconString)?.withTintColor(.label, renderingMode: .alwaysOriginal),
+                    state: scoreCalculateType == selectedCalculateType ? .on : .off,
                     handler: { _ in
-                        self.selectedCriteria = criteria
+                        self.selectedCalculateType = scoreCalculateType
                         self.configureMenu()
                     })
             }
         
-        selectCriteriaButton.menu = UIMenu(title: "スコアの計算基準", options: .displayInline, children: actions)
-        selectCriteriaButton.showsMenuAsPrimaryAction = true
-        selectCriteriaButton.setTitle(selectedCriteria?.criteriaString ?? "選択してください", for: .normal)
+        selectCalculateTypeButton.menu = UIMenu(title: "スコアの計算基準", options: .displayInline, children: actions)
+        selectCalculateTypeButton.showsMenuAsPrimaryAction = true
+        selectCalculateTypeButton.setTitle(selectedCalculateType?.calculateTypeString ?? "選択してください", for: .normal)
         
-        var configuration = UIButton.Configuration.filled()
+        var configuration = UIButton.Configuration.gray()
         configuration.cornerStyle = .capsule
-        configuration.imagePadding = 4
+        configuration.imagePadding = 8
         configuration.imagePlacement = .trailing
         configuration.automaticallyUpdateForSelection = false
-        configuration.image = UIImage(systemName: "chevron.up.chevron.down")
-        configuration.preferredSymbolConfigurationForImage
-        = UIImage.SymbolConfiguration(scale: .small)
-        selectCriteriaButton.configuration = configuration
+        configuration.image = UIImage(systemName: "chevron.down")
+        configuration.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(scale: .small)
+        selectCalculateTypeButton.configuration = configuration
+    }
+    
+    
+    @IBAction func generateBuildCardButtonDidTap(_ sender: Any) {
+        let buildCardGeneratorViewController = BuildCardGeneratorViewController(with: (character: selectedCharacter!, scoreCalculateType: selectedCalculateType!))
+        let navigation = UINavigationController(rootViewController: buildCardGeneratorViewController)
+        present(navigation, animated: true)
     }
 }
 
@@ -169,6 +192,6 @@ extension SelectCharacterViewController: UICollectionViewDelegateFlowLayout {
 extension SelectCharacterViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // CollectionViewCellがタップできる = shapedAccountAllInfoを参照してセルを作成できているので，強制アンラップでも良い
-        let character = shapedAccountAllInfo!.characters[indexPath.row]
+        selectedCharacter = shapedAccountAllInfo!.characters[indexPath.row]
     }
 }

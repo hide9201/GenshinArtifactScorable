@@ -33,12 +33,14 @@ final class CharacterObject: Object {
     @Persisted var element = ""
     @Persisted var constellationLevel = 0
     @Persisted var level = 0
+    @Persisted var friendshipLevel = 0
     @Persisted var weapon: WeaponObject? = nil
     @Persisted var fightPropMap: FightPropMapObject? = nil
     @Persisted var iconString = ""
     @Persisted var sideIconString = ""
     @Persisted var quality = ""
     
+    @Persisted var constellationStrings = List<String>()
     @Persisted var skills = List<SkillObject>()
     @Persisted var artifacts = List<ArtifactObject>()
 }
@@ -65,6 +67,7 @@ final class SkillObject: Object {
 final class ArtifactObject: Object {
 
     @Persisted var id = ""
+    @Persisted var level = 0
     @Persisted var name = ""
     @Persisted var setName = ""
     @Persisted var mainAttribute: AttributeObject? = nil
@@ -131,11 +134,13 @@ extension CharacterObject {
         characterObject.name = value.name
         characterObject.element = value.element.rawValue
         characterObject.constellationLevel = value.constellationLevel
+        characterObject.constellationStrings.append(objectsIn: value.constellationStrings)
         characterObject.skills.append(objectsIn: value.skills.map {
             SkillObject.decode(from: $0)
         })
         
         characterObject.level = value.level
+        characterObject.friendshipLevel = value.friendshipLevel
         characterObject.weapon = WeaponObject.decode(from: value.weapon)
         characterObject.artifacts.append(objectsIn: value.artifacts.map {
             ArtifactObject.decode(from: $0)
@@ -150,7 +155,7 @@ extension CharacterObject {
     
     var value: Character? {
         guard let weapon = weapon, let fightPropMap = fightPropMap else { return nil }
-        return Character(name: name, element: Character.Element(rawValue: element) ?? .unknown, constellationLevel: constellationLevel, skills: skills.map { $0.value }, level: level, weapon: weapon.value ?? Weapon(), artifacts: artifacts.compactMap { $0.value }, fightPropMap: fightPropMap.value,iconString: iconString, sideIconString: sideIconString, quality: Character.Quality(rawValue: quality) ?? .orange)
+        return Character(name: name, element: Character.Element(rawValue: element) ?? .unknown, constellationLevel: constellationLevel, constellationStrings: constellationStrings.map { $0 }, skills: skills.map { $0.value }, level: level, friendshipLevel: friendshipLevel, weapon: weapon.value ?? Weapon(), artifacts: artifacts.compactMap { $0.value }, fightPropMap: fightPropMap.value,iconString: iconString, sideIconString: sideIconString, quality: Character.Quality(rawValue: quality) ?? .orange)
     }
 }
 
@@ -224,6 +229,7 @@ extension ArtifactObject {
         
         let artifactObject = ArtifactObject()
         artifactObject.id = value.id
+        artifactObject.level = value.level
         artifactObject.name = value.name
         artifactObject.setName = value.setName
         artifactObject.mainAttribute = AttributeObject.decode(from: value.mainAttribute)
@@ -239,6 +245,6 @@ extension ArtifactObject {
     
     var value: Artifact? {
         guard let mainAttribute = mainAttribute else { return nil }
-        return Artifact(id: id, name: name, setName: setName, mainAttribute: mainAttribute.value, subAttributes: subAttributes.map { $0.value }, iconString: iconString, artifactType: Artifact.ArtifactType(rawValue: artifactType) ?? .flower, rankLevel: RankLevel(rawValue: rankLevel) ?? .five)
+        return Artifact(id: id, level: level, name: name, setName: setName, mainAttribute: mainAttribute.value, subAttributes: subAttributes.map { $0.value }, iconString: iconString, artifactType: Artifact.ArtifactType(rawValue: artifactType) ?? .flower, rankLevel: RankLevel(rawValue: rankLevel) ?? .five)
     }
 }
