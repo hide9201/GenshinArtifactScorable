@@ -51,7 +51,7 @@
                             <constraint firstItem="RhL-7W-vNB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="72" id="hR3-oi-eDM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="O0G-04-7ih"/>
+                    <navigationItem key="navigationItem" title="ユーザ検索" id="O0G-04-7ih"/>
                     <connections>
                         <outlet property="uidTextField" destination="RhL-7W-vNB" id="5xn-e5-vLw"/>
                     </connections>
