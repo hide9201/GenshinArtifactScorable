@@ -32,6 +32,10 @@ final class RealmManager {
         return DataStore.shared.realm.object(ofType: object.self, forPrimaryKey: primaryKey)
     }
     
+    func getAllObjects<T: Object>(_ object: T.Type) -> [T] {
+        return DataStore.shared.realm.objects(object.self).map { $0 }
+    }
+    
     func edit<T: Object>(_ object: T.Type, primaryKey: String, edit: (T?) -> Void) throws {
         let realm = DataStore.shared.realm
         do {

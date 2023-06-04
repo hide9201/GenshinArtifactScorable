@@ -15,6 +15,10 @@ struct AccountService {
         realmManager = RealmManager()
     }
     
+    func getAllAccountsFromRealm() -> [ShapedAccountAllInfo] {
+        return realmManager.getAllObjects(ShapedAccountAllInfoObject.self).compactMap { $0.value }
+    }
+    
     func getAccountAllInfoFromRealm(uid: String) -> ShapedAccountAllInfo? {
         return realmManager.get(ShapedAccountAllInfoObject.self, primaryKey: uid)?.value
     }

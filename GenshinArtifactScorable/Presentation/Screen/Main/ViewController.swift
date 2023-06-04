@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ReusableKit
 
 class ViewController: UIViewController {
 
@@ -24,9 +25,26 @@ class ViewController: UIViewController {
         }
     }
     
+    private var accountService = AccountService()
+    private var cashedAccounts: [ShapedAccountAllInfo] = []
+    
+    @IBOutlet weak var searchHistoryTableView: UITableView! {
+        didSet {
+            searchHistoryTableView.dataSource = self
+            searchHistoryTableView.delegate = self
+            searchHistoryTableView.register(SearchHistoryTableViewCell.reusable)
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        cashedAccounts = accountService.getAllAccountsFromRealm()
+    }
+    
+    private func transitionToSelectCharacterViewController(uid: String) {
+        let viewController = SelectCharacterViewController(with: uid)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -41,5 +59,26 @@ class ViewController: UIViewController {
         let uid = uidTextField.text!
         let viewController = SelectCharacterViewController(with: uid)
         navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+extension ViewController: UITableViewDataSource {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cashedAccounts.count
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = searchHistoryTableView.dequeue(SearchHistoryTableViewCell.reusable, for: indexPath)
+        cell.inject(cashedAccounts[indexPath.row])
+        
+        return cell
+    }
+}
+
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let account = cashedAccounts[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        transitionToSelectCharacterViewController(uid: account.uid)
     }
 }
