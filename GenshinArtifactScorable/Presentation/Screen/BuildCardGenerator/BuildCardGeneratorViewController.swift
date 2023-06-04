@@ -108,10 +108,6 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
     
     private func generateBuildCardIfPrepared() {
         guard let characterImage = characterImage, let weaponImage = weaponImage else { return }
-        
-        // 全ての画像が用意できたら生成する(聖遺物をつけていない場合，聖遺物の画像がnilになるので今のままだとヤバい)
-        // 全ての画像についてAPIを叩き終えたかをどう管理するべき？
-        // ビルドカード作成をAPIが叩き終わるごとに毎回呼ぶ？その場合，ビルドカード生成コードの引数を(現状で完成しているまでのビルドカード, 新しく追加する画像, 追加する画像のパーツ名(新しく追加する画像をどこに配置するかを判断するため，enumとかで管理する))とかにする．ビルドカード生成中に他のAPIが完了して再度呼ばれるとやばそう
         if isSkillIconsPrepared(), isArtifactsImagesPrepared(), isConstellationIconsPrepared() {
             buildCardImageView.image = generateBuildCard(character: character, scoreCalculateType: scoreCalculateType, characterImage: characterImage, weaponImage: weaponImage, skillIcons: skillIcons.map { $0! }, constellationIcons: constellationIcons.map { $0! }, artifactImages: artifactImages)
         }

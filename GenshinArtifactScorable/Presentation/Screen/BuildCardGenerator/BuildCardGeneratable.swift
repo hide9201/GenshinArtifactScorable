@@ -28,7 +28,7 @@ extension BuildCardGeneratable {
         let buildCardBaseImage = UIImage(named: "BuildCard/Base/\(character.element.rawValue)")!
         buildCardBaseImage.draw(in: CGRect(x: 0, y: 0, width: 1920, height: 1080))
         
-        // characterImageはアスペクト比がキャラ毎に違うので，アスペクト比固定で最大サイズに合わせる
+        // characterImageはアスペクト比がキャラ毎に違うので，アスペクト比を維持したままで最大サイズに合わせる
         // characterImageMaxHeightはもうちょい小さくてもいいかも，画像の横がはみ出るようならcharacterImageMaxHeightを小さくしてみる
         let characterImageMaxWidth: CGFloat = 756
         let characterImageMaxHeight: CGFloat = 646
