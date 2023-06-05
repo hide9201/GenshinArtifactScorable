@@ -4,9 +4,9 @@
 # 画面
 |ユーザ検索画面|プレイヤー情報画面|ビルドカード画面|
 |----|----|----|
-|![Simulator Screenshot - iPhone 14 Pro Max - 2023-06-05 at 18 33 35](https://github.com/hide9201/GenshinArtifactScorable/assets/65844566/2f168311-832a-49fd-8ba1-e31db1374461)|![Simulator Screenshot - iPhone 14 Pro Max - 2023-06-05 at 18 33 44](https://github.com/hide9201/GenshinArtifactScorable/assets/65844566/6b1587c2-b879-47f6-bb25-f78985308676)|![Simulator Screenshot - iPhone 14 Pro Max - 2023-06-05 at 18 34 23](https://github.com/hide9201/GenshinArtifactScorable/assets/65844566/d431324a-fa8a-4b21-90dd-c7749cdee920)|
-||![Simulator Screenshot - iPhone 14 Pro Max - 2023-06-05 at 18 33 55](https://github.com/hide9201/GenshinArtifactScorable/assets/65844566/b7849ed3-3899-4638-891c-8d271923ccb9)|![Simulator Screenshot - iPhone 14 Pro Max - 2023-06-05 at 18 34 32](https://github.com/hide9201/GenshinArtifactScorable/assets/65844566/4252c0e5-310f-461e-a7c2-87152e3889fe)|
-||![Simulator Screenshot - iPhone 14 Pro Max - 2023-06-05 at 18 34 17](https://github.com/hide9201/GenshinArtifactScorable/assets/65844566/ad184ac1-717e-47b7-9075-8f431c86c2ee)||
+|![Simulator Screenshot - iPhone 14 Pro Max - 2023-06-05 at 18 33 35](https://github.com/hide9201/GenshinArtifactScorable/assets/65844566/de846ec5-62c2-46a0-b2e1-47c5ac010887)|![Simulator Screenshot - iPhone 14 Pro Max - 2023-06-05 at 18 33 44](https://github.com/hide9201/GenshinArtifactScorable/assets/65844566/f2ceb601-7ee0-4e06-8075-7a292ebe3bc2)|![Simulator Screenshot - iPhone 14 Pro Max - 2023-06-05 at 18 34 23](https://github.com/hide9201/GenshinArtifactScorable/assets/65844566/176b3f55-a1aa-4370-be77-bda3e64a0f14)|
+||![Simulator Screenshot - iPhone 14 Pro Max - 2023-06-05 at 18 33 55](https://github.com/hide9201/GenshinArtifactScorable/assets/65844566/7ca6ba21-1cd3-40ee-8fb7-e48c035599d1)|![Simulator Screenshot - iPhone 14 Pro Max - 2023-06-05 at 18 34 32](https://github.com/hide9201/GenshinArtifactScorable/assets/65844566/f2f2c3e9-82d8-454c-8588-2155cd4fc690)|
+||![Simulator Screenshot - iPhone 14 Pro Max - 2023-06-05 at 18 34 17](https://github.com/hide9201/GenshinArtifactScorable/assets/65844566/b1a51579-a014-431b-b632-184854114e38)||
  
 # 特徴
 ## 手軽な検索
