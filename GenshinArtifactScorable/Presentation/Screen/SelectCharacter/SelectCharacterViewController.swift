@@ -70,8 +70,6 @@ final class SelectCharacterViewController: UIViewController {
             .done { accountAllInfo in
                 self.shapedAccountAllInfo = accountAllInfo
                 self.setupUI()
-                self.accountService.saveAccountAllInfo(to: accountAllInfo)
-                
             }.catch { error in
                 print(error)
             }
@@ -94,7 +92,6 @@ final class SelectCharacterViewController: UIViewController {
         imageService.fetchUIImage(imageString: shapedAccountAllInfo.playerBasicInfo.profilePictureCharacterIconString)
             .done { profileIconImage in
                 self.profileIconImageView.image = profileIconImage
-                self.imageService.saveUIImage(image: profileIconImage, imageString: shapedAccountAllInfo.playerBasicInfo.profilePictureCharacterIconString)
             }.catch { error in
                 print(error)
             }
@@ -102,7 +99,6 @@ final class SelectCharacterViewController: UIViewController {
         imageService.fetchUIImage(imageString: shapedAccountAllInfo.playerBasicInfo.nameCardString)
             .done { nameCardImage in
                 self.namecardImageView.image = nameCardImage
-                self.imageService.saveUIImage(image: nameCardImage, imageString: shapedAccountAllInfo.playerBasicInfo.nameCardString)
             }.catch { error in
                 print(error)
             }
@@ -123,7 +119,7 @@ final class SelectCharacterViewController: UIViewController {
                     })
             }
         
-        selectCalculateTypeButton.menu = UIMenu(title: "スコアの計算基準", options: .displayInline, children: actions)
+        selectCalculateTypeButton.menu = UIMenu(title: "スコア計算のタイプ", options: .displayInline, children: actions)
         selectCalculateTypeButton.showsMenuAsPrimaryAction = true
         selectCalculateTypeButton.setTitle(selectedCalculateType?.calculateTypeString ?? "選択してください", for: .normal)
         

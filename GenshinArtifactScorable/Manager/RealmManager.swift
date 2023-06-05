@@ -15,7 +15,7 @@ final class DataStore {
     let realm: Realm
     
     private init() {
-        let currentSchemaVersion: UInt64 = 4
+        let currentSchemaVersion: UInt64 = 5
         let config = Realm.Configuration(schemaVersion: currentSchemaVersion, migrationBlock: { migration, oldSchemaVersion in
           if oldSchemaVersion < currentSchemaVersion {
           }
@@ -30,6 +30,10 @@ final class RealmManager {
     
     func get<T: Object>(_ object: T.Type, primaryKey: String) -> T? {
         return DataStore.shared.realm.object(ofType: object.self, forPrimaryKey: primaryKey)
+    }
+    
+    func getAllObjects<T: Object>(_ object: T.Type) -> [T] {
+        return DataStore.shared.realm.objects(object.self).map { $0 }
     }
     
     func edit<T: Object>(_ object: T.Type, primaryKey: String, edit: (T?) -> Void) throws {

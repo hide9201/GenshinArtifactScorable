@@ -28,7 +28,6 @@ extension CharacterCollectionViewCell: NibInstantiatable {
         dependency.imageService.fetchUIImage(imageString: dependency.character.iconString)
             .done { image in
                 self.characterImageView.image = image
-                dependency.imageService.saveUIImage(image: image, imageString: dependency.character.iconString)
             }.catch { error in
                 print(error)
             }

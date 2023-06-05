@@ -10,12 +10,14 @@ import Foundation
 struct ShapedAccountAllInfo {
     let uid: String
     let nextRefreshableDate: Date
+    var searchDate: Date?
     let playerBasicInfo: PlayerBasicInfo
     let characters: [Character]
     
     init(accountAllInfo: AccountAllInfo, localizedDictionary: [String: String], characterMap: [String: CharacterMap.Character], nameCardMap: [String: NameCardMap.NameCard]) {
         uid = accountAllInfo.uid
         nextRefreshableDate = Calendar.current.date(byAdding: .second, value: accountAllInfo.ttl ?? 30, to: Date())!
+        searchDate = nil
         playerBasicInfo = .init(playerInfo: accountAllInfo.playerInfo, characterMap: characterMap, nameCardMap: nameCardMap)
         if let avatarInfoList = accountAllInfo.avatarInfoList {
             characters = avatarInfoList.compactMap { avatarInfo in
@@ -24,9 +26,10 @@ struct ShapedAccountAllInfo {
         } else { characters = .init() }
     }
     
-    init(uid: String, nextRefreshableDate: Date, playerBasicInfo: PlayerBasicInfo, characters: [Character]) {
+    init(uid: String, nextRefreshableDate: Date, searchDate: Date?, playerBasicInfo: PlayerBasicInfo, characters: [Character]) {
         self.uid = uid
         self.nextRefreshableDate = nextRefreshableDate
+        self.searchDate = searchDate
         self.playerBasicInfo = playerBasicInfo
         self.characters = characters
     }
