@@ -5,7 +5,7 @@
 |ユーザ検索画面|プレイヤー情報画面|ビルドカード画面|
 |----|----|----|
 |![Simulator Screenshot - iPhone 14 Pro Max - 2023-06-05 at 18 33 35](https://github.com/hide9201/GenshinArtifactScorable/assets/65844566/2f168311-832a-49fd-8ba1-e31db1374461)|![Simulator Screenshot - iPhone 14 Pro Max - 2023-06-05 at 18 33 44](https://github.com/hide9201/GenshinArtifactScorable/assets/65844566/6b1587c2-b879-47f6-bb25-f78985308676)|![Simulator Screenshot - iPhone 14 Pro Max - 2023-06-05 at 18 34 23](https://github.com/hide9201/GenshinArtifactScorable/assets/65844566/d431324a-fa8a-4b21-90dd-c7749cdee920)|
-||![Simulator Screenshot - iPhone 14 Pro Max - 2023-06-05 at 18 33 55](https://github.com/hide9201/GenshinArtifactScorable/assets/65844566/b7849ed3-3899-4638-891c-8d271923ccb9)|![Simulator Screenshot - iPhone 14 Pro Max - 2023-06-05 at 18 34 23](https://github.com/hide9201/GenshinArtifactScorable/assets/65844566/d431324a-fa8a-4b21-90dd-c7749cdee920)|
+||![Simulator Screenshot - iPhone 14 Pro Max - 2023-06-05 at 18 33 55](https://github.com/hide9201/GenshinArtifactScorable/assets/65844566/b7849ed3-3899-4638-891c-8d271923ccb9)|![Simulator Screenshot - iPhone 14 Pro Max - 2023-06-05 at 18 34 32](https://github.com/hide9201/GenshinArtifactScorable/assets/65844566/4252c0e5-310f-461e-a7c2-87152e3889fe)|
 ||![Simulator Screenshot - iPhone 14 Pro Max - 2023-06-05 at 18 34 17](https://github.com/hide9201/GenshinArtifactScorable/assets/65844566/ad184ac1-717e-47b7-9075-8f431c86c2ee)||
  
 # 特徴
