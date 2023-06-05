@@ -92,7 +92,6 @@ final class SelectCharacterViewController: UIViewController {
         imageService.fetchUIImage(imageString: shapedAccountAllInfo.playerBasicInfo.profilePictureCharacterIconString)
             .done { profileIconImage in
                 self.profileIconImageView.image = profileIconImage
-                self.imageService.saveUIImage(image: profileIconImage, imageString: shapedAccountAllInfo.playerBasicInfo.profilePictureCharacterIconString)
             }.catch { error in
                 print(error)
             }
@@ -100,7 +99,6 @@ final class SelectCharacterViewController: UIViewController {
         imageService.fetchUIImage(imageString: shapedAccountAllInfo.playerBasicInfo.nameCardString)
             .done { nameCardImage in
                 self.namecardImageView.image = nameCardImage
-                self.imageService.saveUIImage(image: nameCardImage, imageString: shapedAccountAllInfo.playerBasicInfo.nameCardString)
             }.catch { error in
                 print(error)
             }

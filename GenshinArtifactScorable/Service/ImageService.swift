@@ -22,6 +22,10 @@ struct ImageService {
             }
         } else {
             return ImageAPI.shared.call(ImageTarget.fetchUIImage(imageString: imageString))
+                .map { image in
+                    saveUIImage(image: image, imageString: imageString)
+                    return image
+                }
         }
     }
     

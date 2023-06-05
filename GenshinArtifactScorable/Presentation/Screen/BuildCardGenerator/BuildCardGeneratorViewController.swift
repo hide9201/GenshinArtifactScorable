@@ -44,7 +44,6 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
         imageService.fetchUIImage(imageString: character.imageString)
             .done { characterImage in
                 self.characterImage = characterImage
-                self.imageService.saveUIImage(image: characterImage, imageString: self.character.imageString)
                 self.generateBuildCardIfPrepared()
             }.catch { error in
                 print(error)
@@ -53,7 +52,6 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
         imageService.fetchUIImage(imageString: character.weapon.iconString)
             .done { weaponImage in
                 self.weaponImage = weaponImage
-                self.imageService.saveUIImage(image: weaponImage, imageString: self.character.weapon.iconString)
                 self.generateBuildCardIfPrepared()
             }.catch { error in
                 print(error)
@@ -63,7 +61,6 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
             imageService.fetchUIImage(imageString: skill.iconString)
                 .done { skillIcon in
                     self.skillIcons[index] = skillIcon
-                    self.imageService.saveUIImage(image: skillIcon, imageString: skill.iconString)
                     self.generateBuildCardIfPrepared()
                 }.catch { error in
                     print(error)
@@ -74,7 +71,6 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
             imageService.fetchUIImage(imageString: character.constellationStrings[index])
                 .done { constellationIcon in
                     self.constellationIcons[index] = constellationIcon
-                    self.imageService.saveUIImage(image: constellationIcon, imageString: self.character.constellationStrings[index])
                     self.generateBuildCardIfPrepared()
                 }.catch { error in
                     print(error)
@@ -98,7 +94,6 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
                     case .circlet:
                         self.artifactImages[4] = artifactImage
                     }
-                    self.imageService.saveUIImage(image: artifactImage, imageString: artifact.iconString)
                     self.generateBuildCardIfPrepared()
                 }.catch { error in
                     print(error)
