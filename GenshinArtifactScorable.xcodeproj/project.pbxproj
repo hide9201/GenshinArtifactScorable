@@ -52,6 +52,8 @@
 		08D13C392A22074C00EBBC2C /* BuildCardGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D13C382A22074C00EBBC2C /* BuildCardGeneratorViewController.swift */; };
 		08D13C3B2A22076C00EBBC2C /* BuildCardGenerator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08D13C3A2A22076C00EBBC2C /* BuildCardGenerator.storyboard */; };
 		08D13C3F2A265E6B00EBBC2C /* BuildCardGeneratable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D13C3E2A265E6B00EBBC2C /* BuildCardGeneratable.swift */; };
+		08D8F0BD2A40ABF600F322CA /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08D8F0BC2A40ABF600F322CA /* LoadingView.xib */; };
+		08D8F0BF2A40AD1B00F322CA /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D8F0BE2A40AD1B00F322CA /* LoadingView.swift */; };
 		08FABADC2A2C86CB000C0C9A /* SearchHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FABADB2A2C86CB000C0C9A /* SearchHistoryTableViewCell.swift */; };
 		08FABADE2A2C86E4000C0C9A /* SearchHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08FABADD2A2C86E4000C0C9A /* SearchHistoryTableViewCell.xib */; };
 		3629DBB7B17398A227391D43 /* Pods_GenshinArtifactScorable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95BC2788A8C2A5E7E67B1DB2 /* Pods_GenshinArtifactScorable.framework */; };
@@ -126,6 +128,8 @@
 		08D13C382A22074C00EBBC2C /* BuildCardGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildCardGeneratorViewController.swift; sourceTree = "<group>"; };
 		08D13C3A2A22076C00EBBC2C /* BuildCardGenerator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BuildCardGenerator.storyboard; sourceTree = "<group>"; };
 		08D13C3E2A265E6B00EBBC2C /* BuildCardGeneratable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildCardGeneratable.swift; sourceTree = "<group>"; };
+		08D8F0BC2A40ABF600F322CA /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		08D8F0BE2A40AD1B00F322CA /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		08FABADB2A2C86CB000C0C9A /* SearchHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		08FABADD2A2C86E4000C0C9A /* SearchHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		52BEE03A606A545B9482FBE3 /* Pods-GenshinArtifactScorableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenshinArtifactScorableTests.release.xcconfig"; path = "Target Support Files/Pods-GenshinArtifactScorableTests/Pods-GenshinArtifactScorableTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -252,6 +256,9 @@
 		0868FEE129C438E8000AC079 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				0868FEEB29C44575000AC079 /* Storyboardable.swift */,
+				0898313E29D3FD7A00D9E5C8 /* NibInstantiatable.swift */,
+				08D8F0B92A40AA2B00F322CA /* Common */,
 				0868FEE629C43B1D000AC079 /* Screen */,
 			);
 			path = Presentation;
@@ -264,8 +271,6 @@
 				0868FEE729C43B2B000AC079 /* Main */,
 				0868FEED29C44EF5000AC079 /* SelectCharacter */,
 				08D13C372A2206F100EBBC2C /* BuildCardGenerator */,
-				0868FEEB29C44575000AC079 /* Storyboardable.swift */,
-				0898313E29D3FD7A00D9E5C8 /* NibInstantiatable.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -399,6 +404,15 @@
 				08D13C3E2A265E6B00EBBC2C /* BuildCardGeneratable.swift */,
 			);
 			path = BuildCardGenerator;
+			sourceTree = "<group>";
+		};
+		08D8F0B92A40AA2B00F322CA /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				08D8F0BC2A40ABF600F322CA /* LoadingView.xib */,
+				08D8F0BE2A40AD1B00F322CA /* LoadingView.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		08FABADA2A2C869B000C0C9A /* Component */ = {
@@ -551,6 +565,7 @@
 				088A4F0129E99ED300F99D85 /* ja-jp.ttf in Resources */,
 				088A4EEE29E7FF9300F99D85 /* namecards.json in Resources */,
 				08D13C3B2A22076C00EBBC2C /* BuildCardGenerator.storyboard in Resources */,
+				08D8F0BD2A40ABF600F322CA /* LoadingView.xib in Resources */,
 				08694CAC298A51F100FC98F8 /* Main.storyboard in Resources */,
 				088A4EF029E7FFBA00F99D85 /* characters.json in Resources */,
 			);
@@ -701,6 +716,7 @@
 				0898313F29D3FD7A00D9E5C8 /* NibInstantiatable.swift in Sources */,
 				08694CA5298A51F100FC98F8 /* AppDelegate.swift in Sources */,
 				082077CC29D3F02B00854579 /* AccountAllInfo.swift in Sources */,
+				08D8F0BF2A40AD1B00F322CA /* LoadingView.swift in Sources */,
 				082077D329D3F04300854579 /* AccountTarget.swift in Sources */,
 				08FABADC2A2C86CB000C0C9A /* SearchHistoryTableViewCell.swift in Sources */,
 				0868FEEF29C44F27000AC079 /* SelectCharacterViewController.swift in Sources */,
