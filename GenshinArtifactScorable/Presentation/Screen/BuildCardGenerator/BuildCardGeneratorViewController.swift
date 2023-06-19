@@ -31,6 +31,8 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
     
     private var isArtifactEquipedArray: [Bool]!
     
+    private var loadingView = LoadingView(with: ())
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -40,7 +42,19 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
     
     // MARK: - Private
     
+    private func showLoadingView() {
+        loadingView.frame = view.frame
+        view.addSubview(loadingView)
+        loadingView.startLoading()
+    }
+    
+    private func hideLoadingView() {
+        loadingView.stopLoading()
+        loadingView.removeFromSuperview()
+    }
+    
     private func prepareUIImages() {
+        showLoadingView()
         imageService.fetchUIImage(imageString: character.imageString)
             .done { characterImage in
                 self.characterImage = characterImage
@@ -105,6 +119,7 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
         guard let characterImage = characterImage, let weaponImage = weaponImage else { return }
         if isSkillIconsPrepared(), isArtifactsImagesPrepared(), isConstellationIconsPrepared() {
             buildCardImageView.image = generateBuildCard(character: character, scoreCalculateType: scoreCalculateType, characterImage: characterImage, weaponImage: weaponImage, skillIcons: skillIcons.map { $0! }, constellationIcons: constellationIcons.map { $0! }, artifactImages: artifactImages)
+            hideLoadingView()
         }
     }
     
