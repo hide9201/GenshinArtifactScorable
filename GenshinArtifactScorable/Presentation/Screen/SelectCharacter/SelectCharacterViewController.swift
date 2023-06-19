@@ -41,6 +41,13 @@ final class SelectCharacterViewController: UIViewController {
     private var imageService: ImageService!
     private var shapedAccountAllInfo: ShapedAccountAllInfo?
     
+    private var loadingView = LoadingView(with: ())
+    private var characterIcons: [UIImage] = []
+    private var isCharacterIconsLoaded: [Bool] = []
+    private var isProfileIconLoaded = false
+    private var isNameCardImageLoaded = false
+    private var isInitial = true
+    
     private var selectedCalculateType: ScoreCalculateType? {
         didSet {
             changeGenerateBuildCardButtonEnabled()
@@ -58,7 +65,6 @@ final class SelectCharacterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         generateBuildCardButton.isEnabled = false
-        setupUI()
         configureMenu()
         refreshShapedAccountAllInfo()
     }
@@ -66,17 +72,34 @@ final class SelectCharacterViewController: UIViewController {
     // MARK: - Private
     
     private func refreshShapedAccountAllInfo() {
+        showLoadingView()
         accountService.getAccountAllInfoFromAPI(uid: uid, nextRefreshableDate: shapedAccountAllInfo?.nextRefreshableDate)
             .done { accountAllInfo in
                 self.shapedAccountAllInfo = accountAllInfo
+                self.characterIcons = Array(repeating: UIImage(), count: accountAllInfo.characters.count)
+                self.isCharacterIconsLoaded = Array(repeating: false, count: accountAllInfo.characters.count)
                 self.setupUI()
             }.catch { error in
+                if let _ = self.shapedAccountAllInfo {
+                    self.setupUI()
+                }
                 print(error)
             }
     }
     
     private func changeGenerateBuildCardButtonEnabled() {
         generateBuildCardButton.isEnabled = (selectedCalculateType != nil && selectedCharacter != nil) ? true : false
+    }
+    
+    private func showLoadingView() {
+        loadingView.frame = view.frame
+        view.addSubview(loadingView)
+        loadingView.startLoading()
+    }
+    
+    private func hideLoadingView() {
+        loadingView.stopLoading()
+        loadingView.removeFromSuperview()
     }
     
     private func setupUI() {
@@ -92,18 +115,49 @@ final class SelectCharacterViewController: UIViewController {
         imageService.fetchUIImage(imageString: shapedAccountAllInfo.playerBasicInfo.profilePictureCharacterIconString)
             .done { profileIconImage in
                 self.profileIconImageView.image = profileIconImage
+                self.isProfileIconLoaded = true
+                if self.isAllUIImagesFetched() { self.hideLoadingView() }
             }.catch { error in
+                self.isProfileIconLoaded = true
+                if self.isAllUIImagesFetched() { self.hideLoadingView() }
                 print(error)
             }
         
         imageService.fetchUIImage(imageString: shapedAccountAllInfo.playerBasicInfo.nameCardString)
             .done { nameCardImage in
                 self.namecardImageView.image = nameCardImage
+                self.isNameCardImageLoaded = true
+                if self.isAllUIImagesFetched() { self.hideLoadingView() }
             }.catch { error in
+                self.isNameCardImageLoaded = true
+                if self.isAllUIImagesFetched() { self.hideLoadingView() }
                 print(error)
             }
         
-        characterCollectionView.reloadData()
+        shapedAccountAllInfo.characters.enumerated().forEach { (index, character) in
+            imageService.fetchUIImage(imageString: character.iconString)
+                .done { characterIcon in
+                    self.characterIcons[index] = characterIcon
+                    self.isCharacterIconsLoaded[index] = true
+                    if self.isCharacterIconsLoaded.allSatisfy({ $0 }) {
+                        self.isInitial = false
+                        self.characterCollectionView.reloadData()
+                    }
+                    if self.isAllUIImagesFetched() { self.hideLoadingView() }
+                }.catch { error in
+                    self.isCharacterIconsLoaded[index] = true
+                    if self.isCharacterIconsLoaded.allSatisfy({ $0 }) {
+                        self.isInitial = false
+                        self.characterCollectionView.reloadData()
+                    }
+                    if self.isAllUIImagesFetched() { self.hideLoadingView() }
+                    print(error)
+                }
+        }
+    }
+    
+    private func isAllUIImagesFetched() -> Bool {
+        return isProfileIconLoaded && isNameCardImageLoaded && isCharacterIconsLoaded.allSatisfy({ $0 })
     }
     
     private func configureMenu() {
@@ -147,6 +201,8 @@ extension SelectCharacterViewController: Storyboardable {
         self.accountService = AccountService()
         self.imageService = ImageService()
         self.shapedAccountAllInfo = accountService.getAccountAllInfoFromRealm(uid: uid)
+        self.characterIcons = Array(repeating: UIImage(), count: shapedAccountAllInfo?.characters.count ?? 0)
+        self.isCharacterIconsLoaded = Array(repeating: false, count: shapedAccountAllInfo?.characters.count ?? 0)
     }
 }
 
@@ -161,8 +217,8 @@ extension SelectCharacterViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(CharacterCollectionViewCell.reusable, for: indexPath)
-        if let shapedAccountAllInfo = shapedAccountAllInfo {
-            cell.inject((shapedAccountAllInfo.characters[indexPath.row], imageService))
+        if !isInitial, let shapedAccountAllInfo = shapedAccountAllInfo {
+            cell.inject((shapedAccountAllInfo.characters[indexPath.row], characterIcons[indexPath.row]))
         }
         return cell
     }
