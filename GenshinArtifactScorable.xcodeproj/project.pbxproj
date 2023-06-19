@@ -95,9 +95,7 @@
 		08694CA4298A51F100FC98F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08694CA6298A51F100FC98F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		08694CA8298A51F100FC98F8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		08694CAB298A51F100FC98F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		08694CAD298A51F500FC98F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		08694CB0298A51F500FC98F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08694CB2298A51F500FC98F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08694CB7298A51F500FC98F8 /* GenshinArtifactScorableTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GenshinArtifactScorableTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		08694CBB298A51F500FC98F8 /* GenshinArtifactScorableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinArtifactScorableTests.swift; sourceTree = "<group>"; };
@@ -130,6 +128,8 @@
 		08D13C3E2A265E6B00EBBC2C /* BuildCardGeneratable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildCardGeneratable.swift; sourceTree = "<group>"; };
 		08D8F0BC2A40ABF600F322CA /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		08D8F0BE2A40AD1B00F322CA /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		08D8F0D12A40E58900F322CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		08D8F0D22A40E58900F322CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		08FABADB2A2C86CB000C0C9A /* SearchHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		08FABADD2A2C86E4000C0C9A /* SearchHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		52BEE03A606A545B9482FBE3 /* Pods-GenshinArtifactScorableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenshinArtifactScorableTests.release.xcconfig"; path = "Target Support Files/Pods-GenshinArtifactScorableTests/Pods-GenshinArtifactScorableTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -537,7 +537,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
 			mainGroup = 08694C98298A51F100FC98F8;
 			productRefGroup = 08694CA2298A51F100FC98F8 /* Products */;
@@ -768,7 +767,7 @@
 		08694CAA298A51F100FC98F8 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				08694CAB298A51F100FC98F8 /* Base */,
+				08D8F0D22A40E58900F322CA /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -776,7 +775,7 @@
 		08694CAF298A51F500FC98F8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				08694CB0298A51F500FC98F8 /* Base */,
+				08D8F0D12A40E58900F322CA /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
