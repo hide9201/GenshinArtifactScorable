@@ -36,12 +36,28 @@ final class API {
                     do {
                         resolver.fulfill(try self.decoder.decode(T.self, from: result.data))
                     } catch {
-                        resolver.reject(error)
+                        resolver.reject(APIError.decode(error))
                     }
                 case .failure(let error):
-                    resolver.reject(error)
+                    resolver.reject(self.createError(from: error))
                 }
             }
+        }
+    }
+    
+    // MARK: - Private
+    
+    private func createError(from error: MoyaError) -> Error {
+        switch error {
+        case .statusCode(let response):
+            return APIError.statusCode(.init(statusCode: response.statusCode))
+            
+        case .underlying(let underlyingError, let response):
+            guard let response = response else { return APIError.response(underlyingError) }
+            return APIError.statusCode(.init(statusCode: response.statusCode))
+            
+        default:
+            return APIError.response(error)
         }
     }
     
