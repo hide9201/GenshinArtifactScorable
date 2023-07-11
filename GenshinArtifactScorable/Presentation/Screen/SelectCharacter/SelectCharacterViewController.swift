@@ -84,7 +84,6 @@ final class SelectCharacterViewController: UIViewController {
             .done { accountAllInfo in
                 self.shapedAccountAllInfo = accountAllInfo
                 self.characterIcons = Array(repeating: UIImage(), count: accountAllInfo.characters.count)
-                self.isCharacterIconsLoaded = Array(repeating: false, count: accountAllInfo.characters.count)
                 self.setupUI()
             }.catch { error in
                 if let _ = self.shapedAccountAllInfo {
@@ -92,6 +91,7 @@ final class SelectCharacterViewController: UIViewController {
                     self.setupUI()
                 } else {
                     self.showErrorView()
+                    self.hideLoadingView()
                 }
                 print(error)
             }
@@ -124,15 +124,14 @@ final class SelectCharacterViewController: UIViewController {
         isShowingErrorView = false
     }
     
-    private func setupUI() {
-        uidLabel.text = "UID " + uid
-        
-        guard let shapedAccountAllInfo = self.shapedAccountAllInfo else { return }
-        
-        userNameLabel.text = shapedAccountAllInfo.playerBasicInfo.playerName
-        adventureRankLabel.text = String(shapedAccountAllInfo.playerBasicInfo.adventureLevel)
-        worldRankLabel.text = String(shapedAccountAllInfo.playerBasicInfo.worldLevel)
-        statusMessageLabel.text = shapedAccountAllInfo.playerBasicInfo.statusMessage
+    private func resetLoadedFlags(numOfCharacterIcons: Int) {
+        isProfileIconLoaded = false
+        isNameCardImageLoaded = false
+        isCharacterIconsLoaded = Array(repeating: false, count: numOfCharacterIcons)
+    }
+    
+    private func fetchImages(shapedAccountAllInfo: ShapedAccountAllInfo) {
+        resetLoadedFlags(numOfCharacterIcons: shapedAccountAllInfo.characters.count)
         
         imageService.fetchUIImage(imageString: shapedAccountAllInfo.playerBasicInfo.profilePictureCharacterIconString)
             .done { profileIconImage in
@@ -183,6 +182,19 @@ final class SelectCharacterViewController: UIViewController {
                     print(error)
                 }
         }
+    }
+    
+    private func setupUI() {
+        uidLabel.text = "UID " + uid
+        
+        guard let shapedAccountAllInfo = self.shapedAccountAllInfo else { return }
+        
+        userNameLabel.text = shapedAccountAllInfo.playerBasicInfo.playerName
+        adventureRankLabel.text = String(shapedAccountAllInfo.playerBasicInfo.adventureLevel)
+        worldRankLabel.text = String(shapedAccountAllInfo.playerBasicInfo.worldLevel)
+        statusMessageLabel.text = shapedAccountAllInfo.playerBasicInfo.statusMessage
+        
+        fetchImages(shapedAccountAllInfo: shapedAccountAllInfo)
     }
     
     private func isAllUIImagesFetched() -> Bool {
