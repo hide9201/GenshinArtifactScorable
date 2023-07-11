@@ -14,6 +14,8 @@
 		082077D829D3F05200854579 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082077D729D3F05200854579 /* AccountService.swift */; };
 		0842FA6729D3395F008CD2AC /* AppResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0842FA6629D3395F008CD2AC /* AppResource.swift */; };
 		0842FA6A29D34B01008CD2AC /* CharacterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0842FA6929D34B01008CD2AC /* CharacterCollectionViewCell.xib */; };
+		0849F1452A55261F00E42E32 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0849F1442A55261F00E42E32 /* ErrorView.swift */; };
+		0849F14F2A55325A00E42E32 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0849F14E2A55325A00E42E32 /* ErrorView.xib */; };
 		0868FEEA29C443EF000AC079 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FEE929C443EF000AC079 /* NSObject+.swift */; };
 		0868FEEC29C44575000AC079 /* Storyboardable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FEEB29C44575000AC079 /* Storyboardable.swift */; };
 		0868FEEF29C44F27000AC079 /* SelectCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868FEEE29C44F27000AC079 /* SelectCharacterViewController.swift */; };
@@ -86,6 +88,8 @@
 		082077D729D3F05200854579 /* AccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		0842FA6629D3395F008CD2AC /* AppResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppResource.swift; sourceTree = "<group>"; };
 		0842FA6929D34B01008CD2AC /* CharacterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCollectionViewCell.xib; sourceTree = "<group>"; };
+		0849F1442A55261F00E42E32 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		0849F14E2A55325A00E42E32 /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
 		0868FEE929C443EF000AC079 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 		0868FEEB29C44575000AC079 /* Storyboardable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboardable.swift; sourceTree = "<group>"; };
 		0868FEEE29C44F27000AC079 /* SelectCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCharacterViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +226,15 @@
 				0898313C29D3FC6300D9E5C8 /* CharacterCollectionViewCell.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		0849F1432A5525FC00E42E32 /* ErrorView */ = {
+			isa = PBXGroup;
+			children = (
+				0849F1442A55261F00E42E32 /* ErrorView.swift */,
+				0849F14E2A55325A00E42E32 /* ErrorView.xib */,
+			);
+			path = ErrorView;
 			sourceTree = "<group>";
 		};
 		0868FEDD29C43821000AC079 /* App */ = {
@@ -409,6 +422,7 @@
 		08D8F0B92A40AA2B00F322CA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0849F1432A5525FC00E42E32 /* ErrorView */,
 				08D8F0BC2A40ABF600F322CA /* LoadingView.xib */,
 				08D8F0BE2A40AD1B00F322CA /* LoadingView.swift */,
 			);
@@ -563,6 +577,7 @@
 				08FABADE2A2C86E4000C0C9A /* SearchHistoryTableViewCell.xib in Resources */,
 				088A4F0129E99ED300F99D85 /* ja-jp.ttf in Resources */,
 				088A4EEE29E7FF9300F99D85 /* namecards.json in Resources */,
+				0849F14F2A55325A00E42E32 /* ErrorView.xib in Resources */,
 				08D13C3B2A22076C00EBBC2C /* BuildCardGenerator.storyboard in Resources */,
 				08D8F0BD2A40ABF600F322CA /* LoadingView.xib in Resources */,
 				08694CAC298A51F100FC98F8 /* Main.storyboard in Resources */,
@@ -719,6 +734,7 @@
 				082077D329D3F04300854579 /* AccountTarget.swift in Sources */,
 				08FABADC2A2C86CB000C0C9A /* SearchHistoryTableViewCell.swift in Sources */,
 				0868FEEF29C44F27000AC079 /* SelectCharacterViewController.swift in Sources */,
+				0849F1452A55261F00E42E32 /* ErrorView.swift in Sources */,
 				082077D529D3F04300854579 /* API.swift in Sources */,
 				0898314729E5800E00D9E5C8 /* Scorable.swift in Sources */,
 				088A4EF629E80A8A00F99D85 /* Localized.swift in Sources */,
