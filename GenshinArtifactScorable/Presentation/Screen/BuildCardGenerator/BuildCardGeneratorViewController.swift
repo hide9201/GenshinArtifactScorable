@@ -30,13 +30,20 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
     private var artifactImages: [UIImage?]!
     
     private var isArtifactEquipedArray: [Bool]!
+    private var isShowingErrorView = false
     
     private var loadingView = LoadingView(with: ())
+    private var errorView = ErrorView(with: ())
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        errorView.setRefreshButtonHandler { [weak self] in
+            guard let self = self else { return }
+            self.prepareUIImages()
+            self.hideErrorView()
+        }
         prepareUIImages()
     }
     
@@ -53,6 +60,18 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
         loadingView.removeFromSuperview()
     }
     
+    private func showErrorView() {
+        if isShowingErrorView { return }
+        isShowingErrorView = true
+        errorView.frame = view.frame
+        view.addSubview(errorView)
+    }
+    
+    private func hideErrorView() {
+        errorView.removeFromSuperview()
+        isShowingErrorView = false
+    }
+    
     private func prepareUIImages() {
         showLoadingView()
         imageService.fetchUIImage(imageString: character.imageString)
@@ -60,6 +79,8 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
                 self.characterImage = characterImage
                 self.generateBuildCardIfPrepared()
             }.catch { error in
+                self.showErrorView()
+                self.hideLoadingView()
                 print(error)
             }
         
@@ -68,6 +89,8 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
                 self.weaponImage = weaponImage
                 self.generateBuildCardIfPrepared()
             }.catch { error in
+                self.showErrorView()
+                self.hideLoadingView()
                 print(error)
             }
         
@@ -77,6 +100,8 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
                     self.skillIcons[index] = skillIcon
                     self.generateBuildCardIfPrepared()
                 }.catch { error in
+                    self.showErrorView()
+                    self.hideLoadingView()
                     print(error)
                 }
         }
@@ -87,6 +112,8 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
                     self.constellationIcons[index] = constellationIcon
                     self.generateBuildCardIfPrepared()
                 }.catch { error in
+                    self.showErrorView()
+                    self.hideLoadingView()
                     print(error)
                 }
         }
@@ -110,6 +137,8 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
                     }
                     self.generateBuildCardIfPrepared()
                 }.catch { error in
+                    self.showErrorView()
+                    self.hideLoadingView()
                     print(error)
                 }
         }
@@ -118,7 +147,14 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
     private func generateBuildCardIfPrepared() {
         guard let characterImage = characterImage, let weaponImage = weaponImage else { return }
         if isSkillIconsPrepared(), isArtifactsImagesPrepared(), isConstellationIconsPrepared() {
-            buildCardImageView.image = generateBuildCard(character: character, scoreCalculateType: scoreCalculateType, characterImage: characterImage, weaponImage: weaponImage, skillIcons: skillIcons.map { $0! }, constellationIcons: constellationIcons.map { $0! }, artifactImages: artifactImages)
+            buildCardImageView.image = generateBuildCard(
+                character: character,
+                scoreCalculateType: scoreCalculateType,
+                characterImage: characterImage,
+                weaponImage: weaponImage,
+                skillIcons: skillIcons.map { $0! },
+                constellationIcons: constellationIcons.map { $0! },
+                artifactImages: artifactImages)
             hideLoadingView()
         }
     }

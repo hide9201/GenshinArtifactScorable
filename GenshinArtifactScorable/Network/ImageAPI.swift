@@ -30,7 +30,7 @@ final class ImageAPI {
                     if let image = UIImage(data: result.data) {
                         resolver.fulfill(image)
                     } else {
-                        resolver.reject(APIError.invalidData)
+                        resolver.reject(ImageAPIError.invalidData)
                     }
                 case .failure(let error):
                     resolver.reject(error)

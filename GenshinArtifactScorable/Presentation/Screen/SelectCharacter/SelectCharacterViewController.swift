@@ -42,11 +42,13 @@ final class SelectCharacterViewController: UIViewController {
     private var shapedAccountAllInfo: ShapedAccountAllInfo?
     
     private var loadingView = LoadingView(with: ())
+    private var errorView = ErrorView(with: ())
+    
     private var characterIcons: [UIImage] = []
     private var isCharacterIconsLoaded: [Bool] = []
     private var isProfileIconLoaded = false
     private var isNameCardImageLoaded = false
-    private var isInitial = true
+    private var isShowingErrorView = false
     
     private var selectedCalculateType: ScoreCalculateType? {
         didSet {
@@ -66,6 +68,11 @@ final class SelectCharacterViewController: UIViewController {
         super.viewDidLoad()
         generateBuildCardButton.isEnabled = false
         configureMenu()
+        errorView.setRefreshButtonHandler { [weak self] in
+            guard let self = self else { return }
+            self.refreshShapedAccountAllInfo()
+            self.hideErrorView()
+        }
         refreshShapedAccountAllInfo()
     }
     
@@ -77,11 +84,14 @@ final class SelectCharacterViewController: UIViewController {
             .done { accountAllInfo in
                 self.shapedAccountAllInfo = accountAllInfo
                 self.characterIcons = Array(repeating: UIImage(), count: accountAllInfo.characters.count)
-                self.isCharacterIconsLoaded = Array(repeating: false, count: accountAllInfo.characters.count)
                 self.setupUI()
             }.catch { error in
                 if let _ = self.shapedAccountAllInfo {
+                    // 通信に失敗してもキャッシュによりnilでなければUIのセットアップをする
                     self.setupUI()
+                } else {
+                    self.showErrorView()
+                    self.hideLoadingView()
                 }
                 print(error)
             }
@@ -102,15 +112,26 @@ final class SelectCharacterViewController: UIViewController {
         loadingView.removeFromSuperview()
     }
     
-    private func setupUI() {
-        uidLabel.text = "UID " + uid
-        
-        guard let shapedAccountAllInfo = self.shapedAccountAllInfo else { return }
-        
-        userNameLabel.text = shapedAccountAllInfo.playerBasicInfo.playerName
-        adventureRankLabel.text = String(shapedAccountAllInfo.playerBasicInfo.adventureLevel)
-        worldRankLabel.text = String(shapedAccountAllInfo.playerBasicInfo.worldLevel)
-        statusMessageLabel.text = shapedAccountAllInfo.playerBasicInfo.statusMessage
+    private func showErrorView() {
+        if isShowingErrorView { return }
+        errorView.frame = view.frame
+        view.addSubview(errorView)
+        isShowingErrorView = true
+    }
+    
+    private func hideErrorView() {
+        errorView.removeFromSuperview()
+        isShowingErrorView = false
+    }
+    
+    private func resetLoadedFlags(numOfCharacterIcons: Int) {
+        isProfileIconLoaded = false
+        isNameCardImageLoaded = false
+        isCharacterIconsLoaded = Array(repeating: false, count: numOfCharacterIcons)
+    }
+    
+    private func fetchImages(shapedAccountAllInfo: ShapedAccountAllInfo) {
+        resetLoadedFlags(numOfCharacterIcons: shapedAccountAllInfo.characters.count)
         
         imageService.fetchUIImage(imageString: shapedAccountAllInfo.playerBasicInfo.profilePictureCharacterIconString)
             .done { profileIconImage in
@@ -119,7 +140,10 @@ final class SelectCharacterViewController: UIViewController {
                 if self.isAllUIImagesFetched() { self.hideLoadingView() }
             }.catch { error in
                 self.isProfileIconLoaded = true
-                if self.isAllUIImagesFetched() { self.hideLoadingView() }
+                if self.isAllUIImagesFetched() {
+                    self.showErrorView()
+                    self.hideLoadingView()
+                }
                 print(error)
             }
         
@@ -130,7 +154,10 @@ final class SelectCharacterViewController: UIViewController {
                 if self.isAllUIImagesFetched() { self.hideLoadingView() }
             }.catch { error in
                 self.isNameCardImageLoaded = true
-                if self.isAllUIImagesFetched() { self.hideLoadingView() }
+                if self.isAllUIImagesFetched() {
+                    self.showErrorView()
+                    self.hideLoadingView()
+                }
                 print(error)
             }
         
@@ -140,20 +167,34 @@ final class SelectCharacterViewController: UIViewController {
                     self.characterIcons[index] = characterIcon
                     self.isCharacterIconsLoaded[index] = true
                     if self.isCharacterIconsLoaded.allSatisfy({ $0 }) {
-                        self.isInitial = false
                         self.characterCollectionView.reloadData()
                     }
                     if self.isAllUIImagesFetched() { self.hideLoadingView() }
                 }.catch { error in
                     self.isCharacterIconsLoaded[index] = true
                     if self.isCharacterIconsLoaded.allSatisfy({ $0 }) {
-                        self.isInitial = false
                         self.characterCollectionView.reloadData()
                     }
-                    if self.isAllUIImagesFetched() { self.hideLoadingView() }
+                    if self.isAllUIImagesFetched() {
+                        self.showErrorView()
+                        self.hideLoadingView()
+                    }
                     print(error)
                 }
         }
+    }
+    
+    private func setupUI() {
+        uidLabel.text = "UID " + uid
+        
+        guard let shapedAccountAllInfo = self.shapedAccountAllInfo else { return }
+        
+        userNameLabel.text = shapedAccountAllInfo.playerBasicInfo.playerName
+        adventureRankLabel.text = String(shapedAccountAllInfo.playerBasicInfo.adventureLevel)
+        worldRankLabel.text = String(shapedAccountAllInfo.playerBasicInfo.worldLevel)
+        statusMessageLabel.text = shapedAccountAllInfo.playerBasicInfo.statusMessage
+        
+        fetchImages(shapedAccountAllInfo: shapedAccountAllInfo)
     }
     
     private func isAllUIImagesFetched() -> Bool {
@@ -217,7 +258,7 @@ extension SelectCharacterViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(CharacterCollectionViewCell.reusable, for: indexPath)
-        if !isInitial, let shapedAccountAllInfo = shapedAccountAllInfo {
+        if let shapedAccountAllInfo = shapedAccountAllInfo, characterIcons.count == shapedAccountAllInfo.characters.count {
             cell.inject((shapedAccountAllInfo.characters[indexPath.row], characterIcons[indexPath.row]))
         }
         return cell
