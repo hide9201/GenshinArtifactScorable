@@ -380,13 +380,17 @@ struct Attribute {
     
     // %表記が必要なステータスは%付きのStringを返す
     var valueString: String {
-        if propId.contains("PERCENT") || propId.contains("HURT") || propId.contains("CRITICAL") || propId.contains("CHARGE") {
+        if isPercentValue() {
             return "\(String(format: "%.1f", value))%"
         } else {
             let formatter = NumberFormatter()
             formatter.numberStyle = .decimal
             return formatter.string(from: value as NSNumber) ?? String(format: "%.0f", value)
         }
+    }
+    
+    private func isPercentValue() -> Bool {
+        return propId.contains("PERCENT") || propId.contains("HURT") || propId.contains("CRITICAL") || propId.contains("CHARGE") || propId.contains("HEAL_ADD")
     }
     
     init(propId: String, name: String, value: Double) {
