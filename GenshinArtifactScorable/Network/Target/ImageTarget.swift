@@ -30,7 +30,7 @@ extension ImageTarget: BaseTarget {
     
     var task: Task {
         switch self {
-        case .fetchUIImage(_):
+        case .fetchUIImage:
             return .requestPlain
         }
     }

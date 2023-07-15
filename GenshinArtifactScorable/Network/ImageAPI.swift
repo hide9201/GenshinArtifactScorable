@@ -18,7 +18,6 @@ final class ImageAPI {
     
     private let provider: MoyaProvider<MultiTarget>
     
-
     // MARK: - Public
     
     func call<Target: TargetType>(_ request: Target) -> Promise<UIImage> {
@@ -30,12 +29,28 @@ final class ImageAPI {
                     if let image = UIImage(data: result.data) {
                         resolver.fulfill(image)
                     } else {
-                        resolver.reject(ImageAPIError.invalidData)
+                        resolver.reject(APIError.ImageAPIError.invalidData)
                     }
                 case .failure(let error):
-                    resolver.reject(error)
+                    resolver.reject(self.createError(from: error))
                 }
             }
+        }
+    }
+    
+    // MARK: - Private
+    
+    private func createError(from error: MoyaError) -> Error {
+        switch error {
+        case .statusCode(let response):
+            return APIError.statusCode(.init(statusCode: response.statusCode))
+            
+        case .underlying(let underlyingError, let response):
+            guard let response = response else { return APIError.response(underlyingError) }
+            return APIError.statusCode(.init(statusCode: response.statusCode))
+            
+        default:
+            return APIError.response(error)
         }
     }
     

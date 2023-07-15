@@ -19,7 +19,22 @@ struct AccountService {
         return realmManager.getAllObjects(ShapedAccountAllInfoObject.self).compactMap { $0.value }
     }
     
-    func getAccountAllInfoFromRealm(uid: String) -> ShapedAccountAllInfo? {
+    func getAccountAllInfo(uid: String) -> Promise<ShapedAccountAllInfo> {
+        if let cachedAccountAllInfo = getAccountAllInfoFromRealm(uid: uid) {
+            return Promise { resolver in
+                getAccountAllInfoFromAPI(uid: uid, nextRefreshableDate: cachedAccountAllInfo.nextRefreshableDate)
+                    .done { shapedAccountAllInfo in
+                        resolver.fulfill(shapedAccountAllInfo)
+                    }.catch { _ in
+                        resolver.fulfill(cachedAccountAllInfo)
+                    }
+            }
+        } else {
+            return getAccountAllInfoFromAPI(uid: uid, nextRefreshableDate: nil)
+        }
+    }
+    
+    private func getAccountAllInfoFromRealm(uid: String) -> ShapedAccountAllInfo? {
         if var accountAllInfo = realmManager.get(ShapedAccountAllInfoObject.self, primaryKey: uid)?.value {
             accountAllInfo.searchDate = Date()
             saveAccountAllInfo(to: accountAllInfo)
@@ -29,10 +44,10 @@ struct AccountService {
         }
     }
     
-    func getAccountAllInfoFromAPI(uid: String, nextRefreshableDate: Date?) -> Promise<ShapedAccountAllInfo> {
+    private func getAccountAllInfoFromAPI(uid: String, nextRefreshableDate: Date?) -> Promise<ShapedAccountAllInfo> {
         if let nextRefreshableDate = nextRefreshableDate, nextRefreshableDate > Date() {
             return Promise { resolver in
-                resolver.reject(APIError.refreshTooFast(dateWhenRefreshable: nextRefreshableDate))
+                resolver.reject(APIError.AccountAPIError.refreshTooFast(dateWhenRefreshable: nextRefreshableDate))
             }
         } else {
             return API.shared.call(AccountTarget.getAccountAllInfo(uid: uid))

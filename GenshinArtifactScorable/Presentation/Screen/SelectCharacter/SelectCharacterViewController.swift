@@ -80,19 +80,14 @@ final class SelectCharacterViewController: UIViewController {
     
     private func refreshShapedAccountAllInfo() {
         showLoadingView()
-        accountService.getAccountAllInfoFromAPI(uid: uid, nextRefreshableDate: shapedAccountAllInfo?.nextRefreshableDate)
-            .done { accountAllInfo in
-                self.shapedAccountAllInfo = accountAllInfo
-                self.characterIcons = Array(repeating: UIImage(), count: accountAllInfo.characters.count)
+        accountService.getAccountAllInfo(uid: uid)
+            .done { shapedAccountAllInfo in
+                self.shapedAccountAllInfo = shapedAccountAllInfo
+                self.characterIcons = Array(repeating: UIImage(), count: shapedAccountAllInfo.characters.count)
                 self.setupUI()
             }.catch { error in
-                if let _ = self.shapedAccountAllInfo {
-                    // 通信に失敗してもキャッシュによりnilでなければUIのセットアップをする
-                    self.setupUI()
-                } else {
-                    self.showErrorView()
-                    self.hideLoadingView()
-                }
+                self.showErrorView()
+                self.hideLoadingView()
                 print(error)
             }
     }
@@ -241,7 +236,6 @@ extension SelectCharacterViewController: Storyboardable {
         self.uid = dependency
         self.accountService = AccountService()
         self.imageService = ImageService()
-        self.shapedAccountAllInfo = accountService.getAccountAllInfoFromRealm(uid: uid)
         self.characterIcons = Array(repeating: UIImage(), count: shapedAccountAllInfo?.characters.count ?? 0)
         self.isCharacterIconsLoaded = Array(repeating: false, count: shapedAccountAllInfo?.characters.count ?? 0)
     }
