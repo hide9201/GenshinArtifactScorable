@@ -24,7 +24,7 @@ final class CharacterCollectionViewCell: UICollectionViewCell {
 }
 
 extension CharacterCollectionViewCell: NibInstantiatable {
-    func inject(_ dependency: (character: Character, characterIcon: UIImage)) {
+    func inject(_ dependency: (character: Character, characterIcon: UIImage?)) {
         characterImageView.image = dependency.characterIcon
         characterLevelLabel.text = "Lv.\(dependency.character.level)"
         characterBackgroundImageView.image = UIImage(named: dependency.character.quality.characterBackgroundIconString)

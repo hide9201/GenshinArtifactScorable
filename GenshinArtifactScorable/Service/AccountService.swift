@@ -19,18 +19,24 @@ struct AccountService {
         return realmManager.getAllObjects(ShapedAccountAllInfoObject.self).compactMap { $0.value }
     }
     
-    func getAccountAllInfo(uid: String) -> Promise<ShapedAccountAllInfo> {
-        if let cachedAccountAllInfo = getAccountAllInfoFromRealm(uid: uid) {
-            return Promise { resolver in
+    // 失敗した場合はキャッシュと同時に失敗時のエラーも返しfulfillする，キャッシュもなければreject
+    func getAccountAllInfo(uid: String) -> Promise<(ShapedAccountAllInfo, Error?)> {
+        return Promise { resolver in
+            if let cachedAccountAllInfo = getAccountAllInfoFromRealm(uid: uid) {
                 getAccountAllInfoFromAPI(uid: uid, nextRefreshableDate: cachedAccountAllInfo.nextRefreshableDate)
                     .done { shapedAccountAllInfo in
-                        resolver.fulfill(shapedAccountAllInfo)
-                    }.catch { _ in
-                        resolver.fulfill(cachedAccountAllInfo)
+                        resolver.fulfill((shapedAccountAllInfo, nil))
+                    }.catch { error in
+                        resolver.fulfill((cachedAccountAllInfo, error))
+                    }
+            } else {
+                getAccountAllInfoFromAPI(uid: uid, nextRefreshableDate: nil)
+                    .done { shapedAccountAllInfo in
+                        resolver.fulfill((shapedAccountAllInfo, nil))
+                    }.catch { error in
+                        resolver.reject(error)
                     }
             }
-        } else {
-            return getAccountAllInfoFromAPI(uid: uid, nextRefreshableDate: nil)
         }
     }
     

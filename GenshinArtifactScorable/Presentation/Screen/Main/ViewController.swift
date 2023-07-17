@@ -81,8 +81,14 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        uidTextField.resignFirstResponder()
+        
         let account = cashedAccounts[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
         transitionToSelectCharacterViewController(uid: account.uid)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        uidTextField.resignFirstResponder()
     }
 }

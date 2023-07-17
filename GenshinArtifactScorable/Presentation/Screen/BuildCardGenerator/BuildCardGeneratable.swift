@@ -405,7 +405,7 @@ extension BuildCardGeneratable {
         totalScoreGradeIcon.draw(in: CGRect(x: totalScoreGradeIconX, y: totalScoreGradeIconY, width: totalScoreGradeIconWidth, height: totalScoreGradeIconHeight))
         
         let scoreCalculateTypeFont = UIFont(name: genshinUIFontName, size: 26)!
-        let scoreCalculateTypeString = NSString(string: "\(scoreCalculateType.calculateTypeString)換算")
+        let scoreCalculateTypeString = NSString(string: "\(scoreCalculateType.typeName)換算")
         let scoreCalculateTypeTextWidth = scoreCalculateTypeString.size(withAttributes: [NSAttributedString.Key.font: scoreCalculateTypeFont]).width
         let scoreCalculateTypeStringX = totalScoreGradeIconX + totalScoreGradeIconWidth - scoreCalculateTypeTextWidth
         let scoreCalculateTypeStringY: CGFloat = 584
