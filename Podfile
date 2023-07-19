@@ -17,6 +17,9 @@ target 'GenshinArtifactScorable' do
   # Misc
   pod 'Instantiate'
 
+  # UI
+  pod 'SwiftEntryKit', '2.0.0'
+
   # Pods for GenshinArtifactScorable
 
   target 'GenshinArtifactScorableTests' do

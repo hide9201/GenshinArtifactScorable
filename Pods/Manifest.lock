@@ -24,6 +24,7 @@ PODS:
   - ReusableKit (3.0.0):
     - ReusableKit/Core (= 3.0.0)
   - ReusableKit/Core (3.0.0)
+  - SwiftEntryKit (2.0.0)
 
 DEPENDENCIES:
   - Instantiate
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - PromiseKit
   - RealmSwift
   - ReusableKit
+  - SwiftEntryKit (= 2.0.0)
 
 SPEC REPOS:
   trunk:
@@ -42,6 +44,7 @@ SPEC REPOS:
     - RealmSwift
     - Result
     - ReusableKit
+    - SwiftEntryKit
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -52,7 +55,8 @@ SPEC CHECKSUMS:
   RealmSwift: aeaaeab72cac19141a788c96c5d6f5705407fb65
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   ReusableKit: e5f853ad4652e411f96b6119b2488afa12929be6
+  SwiftEntryKit: 61b5fa36f34a97dd8013e48a7345bc4c4720be9a
 
-PODFILE CHECKSUM: 5ecd93e3d3a5e74d7a9c9baba406438f555a94d0
+PODFILE CHECKSUM: ca395298e270a7dfb4d4149eee266d55060e0931
 
 COCOAPODS: 1.11.2
