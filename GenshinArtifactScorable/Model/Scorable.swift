@@ -40,7 +40,7 @@ enum ScoreCalculateType: CaseIterable {
     case energyRecharge
     case elementalMastery
     
-    var calculateTypeString: String {
+    var typeName: String {
         switch self {
         case .attack:
             return "攻撃％"
@@ -55,7 +55,7 @@ enum ScoreCalculateType: CaseIterable {
         }
     }
     
-    var propIconString: String {
+    var typeIconString: String {
         switch self {
         case .attack:
             return "PropIcon/ATTACK_PERCENT"

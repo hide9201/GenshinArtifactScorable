@@ -44,6 +44,10 @@
                 <constraint firstItem="SRU-NJ-1XT" firstAttribute="centerY" secondItem="7MA-Ax-3Kf" secondAttribute="centerY" id="Pf4-mW-cZX"/>
                 <constraint firstItem="SRU-NJ-1XT" firstAttribute="centerX" secondItem="7MA-Ax-3Kf" secondAttribute="centerX" id="pgX-Px-yTq"/>
             </constraints>
+            <connections>
+                <outlet property="refreshButton" destination="hFT-hm-ziL" id="1j0-4K-u4F"/>
+                <outlet property="titleLabel" destination="4k2-hI-iZv" id="ADa-8C-tzw"/>
+            </connections>
             <point key="canvasLocation" x="-1179" y="-379"/>
         </view>
     </objects>

@@ -53,21 +53,26 @@ enum APIError: Error {
         }
     }
     
+    enum AccountAPIError: Error {
+        
+        /// レスポンスのデコードに失敗した
+        case decode(Error)
+        
+        /// 同一UIDに対して短時間に複数リクエストをした
+        case refreshTooFast(dateWhenRefreshable: Date)
+    }
+    
+    enum ImageAPIError: Error {
+        
+        /// UIImageに変換できないデータだった
+        case invalidData
+    }
+    
     /// 200番台以外のステータスコードが返ってきた
     case statusCode(HTTPStatusCodeError)
     
-    /// レスポンスのデコードに失敗した
-    case decode(Error)
-    
     /// レスポンスを受け取れなかった(ネットワーク不良など)
     case response(Error)
-    
-    /// 同一UIDに対して短時間に複数リクエストをした
-    case refreshTooFast(dateWhenRefreshable: Date)
-}
-
-enum ImageAPIError: Error {
-    case invalidData
 }
 
 enum AppResourceError: Error {

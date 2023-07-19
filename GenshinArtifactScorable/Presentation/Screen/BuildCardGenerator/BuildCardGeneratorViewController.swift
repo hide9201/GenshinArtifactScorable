@@ -33,7 +33,7 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
     private var isShowingErrorView = false
     
     private var loadingView = LoadingView(with: ())
-    private var errorView = ErrorView(with: ())
+    private var errorView = ErrorView(with: (title: AppConstant.ErrorViewTitle.errorOccured, hideRefreshButton: false))
     
     // MARK: - Lifecycle
     
