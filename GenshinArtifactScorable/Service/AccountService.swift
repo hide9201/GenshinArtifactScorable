@@ -53,7 +53,7 @@ struct AccountService {
     private func getAccountAllInfoFromAPI(uid: String, nextRefreshableDate: Date?) -> Promise<ShapedAccountAllInfo> {
         if let nextRefreshableDate = nextRefreshableDate, nextRefreshableDate > Date() {
             return Promise { resolver in
-                resolver.reject(APIError.AccountAPIError.refreshTooFast(dateWhenRefreshable: nextRefreshableDate))
+                resolver.reject(APIError.refreshTooFast(dateWhenRefreshable: nextRefreshableDate))
             }
         } else {
             return API.shared.call(AccountTarget.getAccountAllInfo(uid: uid))
@@ -65,7 +65,7 @@ struct AccountService {
                         saveAccountAllInfo(to: accountAllInfo)
                         return accountAllInfo
                     } else {
-                        throw AppResourceError.notFound
+                        throw AppResourceError.fileReadError
                     }
                 }
         }

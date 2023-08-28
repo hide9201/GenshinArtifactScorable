@@ -26,11 +26,7 @@ final class ImageAPI {
             self.provider.request(target) { response in
                 switch response.result {
                 case .success(let result):
-                    if let image = UIImage(data: result.data) {
-                        resolver.fulfill(image)
-                    } else {
-                        resolver.reject(APIError.ImageAPIError.invalidData)
-                    }
+                    resolver.fulfill(UIImage(data: result.data)!)
                 case .failure(let error):
                     resolver.reject(self.createError(from: error))
                 }

@@ -8,7 +8,7 @@
 import UIKit
 import ReusableKit
 
-final class SelectCharacterViewController: UIViewController {
+final class SelectCharacterViewController: UIViewController, ErrorShowable {
     
     // MARK: - Outlet
     
@@ -89,9 +89,11 @@ final class SelectCharacterViewController: UIViewController {
                 self.characterIcons = Array(repeating: nil, count: shapedAccountAllInfo.characters.count)
                 self.setupUI()
                 if let apiError = apiError {
+                    self.showErrorBanner(apiError)
                     print(apiError)
                 }
             }.catch { error in
+                self.showErrorBanner(error)
                 self.showErrorView()
                 self.hideLoadingView()
                 print(error)
@@ -140,6 +142,7 @@ final class SelectCharacterViewController: UIViewController {
             .done { profileIconImage in
                 self.profileIconImageView.image = profileIconImage
             }.catch { error in
+                self.showErrorBanner(error)
                 self.showErrorView()
                 print(error)
             }.finally {
@@ -154,6 +157,7 @@ final class SelectCharacterViewController: UIViewController {
             .done { nameCardImage in
                 self.namecardImageView.image = nameCardImage
             }.catch { error in
+                self.showErrorBanner(error)
                 self.showErrorView()
                 print(error)
             }.finally {
@@ -169,6 +173,7 @@ final class SelectCharacterViewController: UIViewController {
                 .done { characterIcon in
                     self.characterIcons[index] = characterIcon
                 }.catch { error in
+                    self.showErrorBanner(error)
                     self.showErrorView()
                     print(error)
                 }.finally {

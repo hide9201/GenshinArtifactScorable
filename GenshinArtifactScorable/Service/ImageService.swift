@@ -33,6 +33,7 @@ struct ImageService {
         do {
             try imageCachesManager.saveUIImage(image: image, imageString: imageString)
         } catch {
+            // キャッシュの失敗はユーザへの通知は必要ない？のでViewControllerにはthrowしない
             print(error)
         }
     }

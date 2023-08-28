@@ -11,10 +11,7 @@ struct JSONFileDecoder<T: Codable> {
     
     static func decode(fileName: String) -> T? {
         let decoder = JSONDecoder()
-        guard let jsonFilePath = Bundle.main.url(forResource: fileName, withExtension: "json") else {
-            print("File not Found")
-            return nil
-        }
+        let jsonFilePath = Bundle.main.url(forResource: fileName, withExtension: "json")!
         
         guard let jsonData = try? Data(contentsOf: jsonFilePath) else {
             print("File Read Error")
