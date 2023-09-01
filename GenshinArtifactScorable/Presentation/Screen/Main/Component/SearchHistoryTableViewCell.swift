@@ -17,16 +17,9 @@ final class SearchHistoryTableViewCell: UITableViewCell {
 }
 
 extension SearchHistoryTableViewCell: NibInstantiatable {
-    func inject(_ dependency: ShapedAccountAllInfo) {
-        let imageService = ImageService()
-        
-        imageService.fetchUIImage(imageString: dependency.playerBasicInfo.profilePictureCharacterIconString)
-            .done { profileIcon in
-                self.profileIconImageView.image = profileIcon
-                self.userNameLabel.text = dependency.playerBasicInfo.playerName
-                self.uidLabel.text = "UID \(dependency.uid)"
-            }.catch { error in
-                print(error)
-            }
+    func inject(_ dependency: (shapedAccountAllInfo: ShapedAccountAllInfo, profileIcon: UIImage?)) {
+        profileIconImageView.image = dependency.profileIcon
+        userNameLabel.text = dependency.shapedAccountAllInfo.playerBasicInfo.playerName
+        uidLabel.text = "UID \(dependency.shapedAccountAllInfo.uid)"
     }
 }

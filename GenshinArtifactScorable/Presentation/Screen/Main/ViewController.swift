@@ -8,7 +8,7 @@
 import UIKit
 import ReusableKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ErrorShowable {
 
     @IBOutlet private weak var uidTextField: UITextField! {
         didSet {
@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     
     private var accountService = AccountService()
     private var cashedAccounts: [ShapedAccountAllInfo] = []
+    private var cashedAccountsProfileIcons: [UIImage?] = []
     
     @IBOutlet weak var searchHistoryTableView: UITableView! {
         didSet {
@@ -44,7 +45,21 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         cashedAccounts = accountService.getAllAccountsFromRealm()
         cashedAccounts.sort(by: { $0.searchDate ?? Date() > $1.searchDate ?? Date() })
-        searchHistoryTableView.reloadData()
+        cashedAccountsProfileIcons = Array(repeating: nil, count: cashedAccounts.count)
+        let imageService = ImageService()
+        cashedAccounts.enumerated().forEach { (index, account) in
+            imageService.fetchUIImage(imageString: account.playerBasicInfo.profilePictureCharacterIconString)
+                .done { profileIcon in
+                    self.cashedAccountsProfileIcons[index] = profileIcon
+                }.catch { error in
+                    self.cashedAccountsProfileIcons[index] = UIImage()
+                    self.showErrorBanner(error)
+                }.finally {
+                    if self.cashedAccountsProfileIcons.allSatisfy({ $0 != nil }) {
+                        self.searchHistoryTableView.reloadData()
+                    }
+                }
+        }
     }
     
     private func transitionToSelectCharacterViewController(uid: String) {
@@ -73,7 +88,7 @@ extension ViewController: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = searchHistoryTableView.dequeue(SearchHistoryTableViewCell.reusable, for: indexPath)
-        cell.inject(cashedAccounts[indexPath.row])
+        cell.inject((cashedAccounts[indexPath.row], cashedAccountsProfileIcons[indexPath.row]))
         
         return cell
     }
