@@ -17,7 +17,7 @@ struct AccountAllInfo: Codable {
         let nickname: String
         let signature: String?
         let level: Int
-        let worldLevel: Int
+        let worldLevel: Int?
         let nameCardId: Int
         let finishAchievementNum: Int
         let towerFloorIndex: Int?

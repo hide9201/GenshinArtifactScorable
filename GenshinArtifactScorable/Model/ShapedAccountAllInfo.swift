@@ -47,7 +47,7 @@ struct PlayerBasicInfo {
         playerName = playerInfo.nickname
         adventureLevel = playerInfo.level
         statusMessage = playerInfo.signature ?? "ステータスメッセージを設定していません"
-        worldLevel = playerInfo.worldLevel
+        worldLevel = playerInfo.worldLevel ?? 0
         nameCardString = nameCardMap["\(playerInfo.nameCardId)"]?.icon ?? ""
         profilePictureCharacterIconString = characterMap["\(playerInfo.profilePicture.avatarId)"]?.sideIconName.replacingOccurrences(of: "_Side", with: "") ?? ""
     }
