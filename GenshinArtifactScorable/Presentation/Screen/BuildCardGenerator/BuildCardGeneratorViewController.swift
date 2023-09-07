@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class BuildCardGeneratorViewController: UIViewController, BuildCardGeneratable {
+final class BuildCardGeneratorViewController: UIViewController, BuildCardGeneratable, ErrorShowable {
     
     // MARK: - Outlet
     
@@ -79,6 +79,7 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
                 self.characterImage = characterImage
                 self.generateBuildCardIfPrepared()
             }.catch { error in
+                self.showErrorBanner(error)
                 self.showErrorView()
                 self.hideLoadingView()
                 print(error)
@@ -89,6 +90,7 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
                 self.weaponImage = weaponImage
                 self.generateBuildCardIfPrepared()
             }.catch { error in
+                self.showErrorBanner(error)
                 self.showErrorView()
                 self.hideLoadingView()
                 print(error)
@@ -100,6 +102,7 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
                     self.skillIcons[index] = skillIcon
                     self.generateBuildCardIfPrepared()
                 }.catch { error in
+                    self.showErrorBanner(error)
                     self.showErrorView()
                     self.hideLoadingView()
                     print(error)
@@ -112,6 +115,7 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
                     self.constellationIcons[index] = constellationIcon
                     self.generateBuildCardIfPrepared()
                 }.catch { error in
+                    self.showErrorBanner(error)
                     self.showErrorView()
                     self.hideLoadingView()
                     print(error)
@@ -137,6 +141,7 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
                     }
                     self.generateBuildCardIfPrepared()
                 }.catch { error in
+                    self.showErrorBanner(error)
                     self.showErrorView()
                     self.hideLoadingView()
                     print(error)

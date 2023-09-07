@@ -36,7 +36,7 @@ final class API {
                     do {
                         resolver.fulfill(try self.decoder.decode(T.self, from: result.data))
                     } catch {
-                        resolver.reject(APIError.AccountAPIError.decode(error))
+                        resolver.reject(APIError.convert(error))
                     }
                 case .failure(let error):
                     resolver.reject(self.createError(from: error))

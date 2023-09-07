@@ -30,6 +30,8 @@
 		08694CBC298A51F500FC98F8 /* GenshinArtifactScorableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694CBB298A51F500FC98F8 /* GenshinArtifactScorableTests.swift */; };
 		08694CC6298A51F500FC98F8 /* GenshinArtifactScorableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694CC5298A51F500FC98F8 /* GenshinArtifactScorableUITests.swift */; };
 		08694CC8298A51F500FC98F8 /* GenshinArtifactScorableUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08694CC7298A51F500FC98F8 /* GenshinArtifactScorableUITestsLaunchTests.swift */; };
+		08743D762A67841C0055B276 /* MessageBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08743D752A67841C0055B276 /* MessageBanner.swift */; };
+		08743D782A67BE160055B276 /* ErrorShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08743D772A67BE160055B276 /* ErrorShowable.swift */; };
 		088A4EEE29E7FF9300F99D85 /* namecards.json in Resources */ = {isa = PBXBuildFile; fileRef = 088A4EED29E7FF9300F99D85 /* namecards.json */; };
 		088A4EF029E7FFBA00F99D85 /* characters.json in Resources */ = {isa = PBXBuildFile; fileRef = 088A4EEF29E7FFBA00F99D85 /* characters.json */; };
 		088A4EF229E8005600F99D85 /* NameCardMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088A4EF129E8005600F99D85 /* NameCardMap.swift */; };
@@ -106,6 +108,8 @@
 		08694CC1298A51F500FC98F8 /* GenshinArtifactScorableUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GenshinArtifactScorableUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		08694CC5298A51F500FC98F8 /* GenshinArtifactScorableUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinArtifactScorableUITests.swift; sourceTree = "<group>"; };
 		08694CC7298A51F500FC98F8 /* GenshinArtifactScorableUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenshinArtifactScorableUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		08743D752A67841C0055B276 /* MessageBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBanner.swift; sourceTree = "<group>"; };
+		08743D772A67BE160055B276 /* ErrorShowable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorShowable.swift; sourceTree = "<group>"; };
 		088A4EED29E7FF9300F99D85 /* namecards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = namecards.json; sourceTree = "<group>"; };
 		088A4EEF29E7FFBA00F99D85 /* characters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = characters.json; sourceTree = "<group>"; };
 		088A4EF129E8005600F99D85 /* NameCardMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCardMap.swift; sourceTree = "<group>"; };
@@ -271,6 +275,7 @@
 			children = (
 				0868FEEB29C44575000AC079 /* Storyboardable.swift */,
 				0898313E29D3FD7A00D9E5C8 /* NibInstantiatable.swift */,
+				08743D772A67BE160055B276 /* ErrorShowable.swift */,
 				08D8F0B92A40AA2B00F322CA /* Common */,
 				0868FEE629C43B1D000AC079 /* Screen */,
 			);
@@ -425,6 +430,7 @@
 				0849F1432A5525FC00E42E32 /* ErrorView */,
 				08D8F0BC2A40ABF600F322CA /* LoadingView.xib */,
 				08D8F0BE2A40AD1B00F322CA /* LoadingView.swift */,
+				08743D752A67841C0055B276 /* MessageBanner.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -740,8 +746,10 @@
 				088A4EF629E80A8A00F99D85 /* Localized.swift in Sources */,
 				0868FEEC29C44575000AC079 /* Storyboardable.swift in Sources */,
 				088A4EF829E86E5200F99D85 /* AppError.swift in Sources */,
+				08743D782A67BE160055B276 /* ErrorShowable.swift in Sources */,
 				08D13C362A1C9EA700EBBC2C /* ImageCachesManager.swift in Sources */,
 				08694CA7298A51F100FC98F8 /* SceneDelegate.swift in Sources */,
+				08743D762A67841C0055B276 /* MessageBanner.swift in Sources */,
 				082077D829D3F05200854579 /* AccountService.swift in Sources */,
 				0898314E29E63D3000D9E5C8 /* JSONFileDecoder.swift in Sources */,
 			);
