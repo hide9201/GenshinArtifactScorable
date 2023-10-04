@@ -16,11 +16,12 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
             buildCardImageView.image = UIImage(named: "BuildCard/Base/\(character.element.rawValue)")
         }
     }
+    @IBOutlet weak var selectCalculateTypeButton: UIButton!
     
     // MARK: - Property
     
     private var character: Character!
-    private var scoreCalculateType: ScoreCalculateType!
+    private var selectedScoreCalculateType: ScoreCalculateType!
     private var imageService: ImageService!
     
     private var characterImage: UIImage?
@@ -39,6 +40,7 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureMenu()
         errorView.setRefreshButtonHandler { [weak self] in
             guard let self = self else { return }
             self.prepareUIImages()
@@ -77,7 +79,10 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
         imageService.fetchUIImage(imageString: character.imageString)
             .done { characterImage in
                 self.characterImage = characterImage
-                self.generateBuildCardIfPrepared()
+                if self.isAllUIImagesPrepared() {
+                    self.generateBuildCard()
+                    self.hideLoadingView()
+                }
             }.catch { error in
                 self.showErrorBanner(error)
                 self.showErrorView()
@@ -88,7 +93,10 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
         imageService.fetchUIImage(imageString: character.weapon.iconString)
             .done { weaponImage in
                 self.weaponImage = weaponImage
-                self.generateBuildCardIfPrepared()
+                if self.isAllUIImagesPrepared() {
+                    self.generateBuildCard()
+                    self.hideLoadingView()
+                }
             }.catch { error in
                 self.showErrorBanner(error)
                 self.showErrorView()
@@ -100,7 +108,10 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
             imageService.fetchUIImage(imageString: skill.iconString)
                 .done { skillIcon in
                     self.skillIcons[index] = skillIcon
-                    self.generateBuildCardIfPrepared()
+                    if self.isAllUIImagesPrepared() {
+                        self.generateBuildCard()
+                        self.hideLoadingView()
+                    }
                 }.catch { error in
                     self.showErrorBanner(error)
                     self.showErrorView()
@@ -113,7 +124,10 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
             imageService.fetchUIImage(imageString: character.constellationStrings[index])
                 .done { constellationIcon in
                     self.constellationIcons[index] = constellationIcon
-                    self.generateBuildCardIfPrepared()
+                    if self.isAllUIImagesPrepared() {
+                        self.generateBuildCard()
+                        self.hideLoadingView()
+                    }
                 }.catch { error in
                     self.showErrorBanner(error)
                     self.showErrorView()
@@ -139,7 +153,10 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
                     case .circlet:
                         self.artifactImages[4] = artifactImage
                     }
-                    self.generateBuildCardIfPrepared()
+                    if self.isAllUIImagesPrepared() {
+                        self.generateBuildCard()
+                        self.hideLoadingView()
+                    }
                 }.catch { error in
                     self.showErrorBanner(error)
                     self.showErrorView()
@@ -149,19 +166,19 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
         }
     }
     
-    private func generateBuildCardIfPrepared() {
-        guard let characterImage = characterImage, let weaponImage = weaponImage else { return }
-        if isSkillIconsPrepared(), isArtifactsImagesPrepared(), isConstellationIconsPrepared() {
-            buildCardImageView.image = generateBuildCard(
-                character: character,
-                scoreCalculateType: scoreCalculateType,
-                characterImage: characterImage,
-                weaponImage: weaponImage,
-                skillIcons: skillIcons.map { $0! },
-                constellationIcons: constellationIcons.map { $0! },
-                artifactImages: artifactImages)
-            hideLoadingView()
-        }
+    private func generateBuildCard() {
+        buildCardImageView.image = generateBuildCard(
+            character: character,
+            scoreCalculateType: selectedScoreCalculateType,
+            characterImage: characterImage!,
+            weaponImage: weaponImage!,
+            skillIcons: skillIcons.map { $0! },
+            constellationIcons: constellationIcons.map { $0! },
+            artifactImages: artifactImages)
+    }
+    
+    private func isAllUIImagesPrepared() -> Bool {
+        return characterImage != nil && weaponImage != nil && isSkillIconsPrepared() && isArtifactsImagesPrepared() && isConstellationIconsPrepared()
     }
     
     private func isSkillIconsPrepared() -> Bool {
@@ -191,11 +208,44 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
         return isPrepared
     }
     
-    @IBAction func CloseButtonDidTap(_ sender: Any) {
+    private func configureMenu() {
+        let actions = ScoreCalculateType.allCases
+            .map { scoreCalculateType in
+                UIAction(
+                    title: scoreCalculateType.typeName,
+                    image: UIImage(named: scoreCalculateType.typeIconString)?.withTintColor(.label, renderingMode: .alwaysOriginal),
+                    state: scoreCalculateType == selectedScoreCalculateType ? .on : .off,
+                    handler: { _ in
+                        self.selectedScoreCalculateType = scoreCalculateType
+                        self.configureMenu()
+                    })
+            }
+        
+        selectCalculateTypeButton.menu = UIMenu(title: "スコア計算のタイプ", options: .displayInline, children: actions)
+        selectCalculateTypeButton.showsMenuAsPrimaryAction = true
+        selectCalculateTypeButton.setTitle(selectedScoreCalculateType?.typeName ?? "選択してください", for: .normal)
+        
+        var configuration = UIButton.Configuration.gray()
+        configuration.cornerStyle = .capsule
+        configuration.imagePadding = 8
+        configuration.imagePlacement = .trailing
+        configuration.automaticallyUpdateForSelection = false
+        configuration.image = UIImage(systemName: "chevron.down")
+        configuration.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(scale: .small)
+        selectCalculateTypeButton.configuration = configuration
+    }
+    
+    // MARK: - Action
+    
+    @IBAction func closeButtonDidTap(_ sender: Any) {
         self.dismiss(animated: true)
     }
     
-    @IBAction func ShareButtonDidTap(_ sender: Any) {
+    @IBAction func regenerateBuildCardButtonDidTap(_ sender: Any) {
+        generateBuildCard()
+    }
+    
+    @IBAction func shareButtonDidTap(_ sender: Any) {
         let shareImage = buildCardImageView.image!
         let activityViewController = UIActivityViewController(activityItems: [shareImage], applicationActivities: nil)
         
@@ -227,10 +277,12 @@ final class BuildCardGeneratorViewController: UIViewController, BuildCardGenerat
     }
 }
 
+// MARK: - Storyboardable
+
 extension BuildCardGeneratorViewController: Storyboardable {
     func inject(_ dependency: (character: Character, scoreCalculateType: ScoreCalculateType)) {
         self.character = dependency.character
-        self.scoreCalculateType = dependency.scoreCalculateType
+        self.selectedScoreCalculateType = dependency.scoreCalculateType
         
         self.imageService = ImageService()
     
