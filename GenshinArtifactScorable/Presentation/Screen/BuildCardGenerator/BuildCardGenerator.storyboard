@@ -3,7 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,12 +23,49 @@
                                     <constraint firstAttribute="height" constant="240" id="Tmm-qM-AQv"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="スコアの計算タイプを選択" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJh-zd-6AC">
+                                <rect key="frame" x="20" y="355" width="200" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="bBh-c0-AFl"/>
+                                    <constraint firstAttribute="width" constant="200" id="gV0-gB-UDH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELq-Q3-vaP">
+                                <rect key="frame" x="159" y="387" width="75" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="KTw-cr-Gc4"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Button" cornerStyle="capsule"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGF-ex-FtR">
+                                <rect key="frame" x="106.66666666666669" y="443" width="180" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="TWZ-li-CVw"/>
+                                    <constraint firstAttribute="height" constant="32" id="yE1-Me-fyl"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="ビルドカード再生成" cornerStyle="capsule"/>
+                                <connections>
+                                    <action selector="regenerateBuildCardButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Khf-ko-IMQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="wGF-ex-FtR" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="4ad-eH-Hgv"/>
+                            <constraint firstItem="wGF-ex-FtR" firstAttribute="top" secondItem="ELq-Q3-vaP" secondAttribute="bottom" constant="24" id="8II-bf-dJU"/>
                             <constraint firstItem="NCi-Q4-Q8c" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Cw2-r9-BSW"/>
+                            <constraint firstItem="FJh-zd-6AC" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Snx-4Z-nig"/>
                             <constraint firstItem="NCi-Q4-Q8c" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ZFx-ev-pm0"/>
+                            <constraint firstItem="ELq-Q3-vaP" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="bfz-8U-9d2"/>
+                            <constraint firstItem="ELq-Q3-vaP" firstAttribute="top" secondItem="FJh-zd-6AC" secondAttribute="bottom" constant="4" id="cQc-wk-PjY"/>
+                            <constraint firstItem="FJh-zd-6AC" firstAttribute="top" secondItem="NCi-Q4-Q8c" secondAttribute="bottom" constant="12" id="i7f-GW-lgW"/>
                             <constraint firstItem="NCi-Q4-Q8c" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="kEs-zp-ESu"/>
                         </constraints>
                     </view>
@@ -36,12 +73,12 @@
                         <rightBarButtonItems>
                             <barButtonItem title="閉じる" id="AxV-US-zpm">
                                 <connections>
-                                    <action selector="CloseButtonDidTap:" destination="Y6W-OH-hqX" id="QX7-pQ-5Dh"/>
+                                    <action selector="closeButtonDidTap:" destination="Y6W-OH-hqX" id="QX7-pQ-5Dh"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Share" image="square.and.arrow.up" catalog="system" id="l9X-Ci-EJj">
                                 <connections>
-                                    <action selector="ShareButtonDidTap:" destination="Y6W-OH-hqX" id="gli-Ds-tEN"/>
+                                    <action selector="shareButtonDidTap:" destination="Y6W-OH-hqX" id="gli-Ds-tEN"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -49,6 +86,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="buildCardImageView" destination="NCi-Q4-Q8c" id="T9k-3i-hDK"/>
+                        <outlet property="selectCalculateTypeButton" destination="ELq-Q3-vaP" id="GgJ-od-vC4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
